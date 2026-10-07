@@ -6,6 +6,22 @@ import '../app_database.dart';
 import '../ids.dart';
 import '../tables.dart';
 
+/// Verdadeiro para um alimento cujo nome termina em "cru" ou "crua" e que tem
+/// outro alimento ativo com o mesmo nome terminando em cozido, grelhado ou
+/// assado.
+const _rawWithReadyVersion =
+    "(CASE WHEN f.search_text LIKE '% cru' THEN EXISTS ("
+    'SELECT 1 FROM foods r WHERE r.is_active = 1 AND r.search_text IN ('
+    "substr(f.search_text, 1, length(f.search_text) - 3) || 'cozido', "
+    "substr(f.search_text, 1, length(f.search_text) - 3) || 'grelhado', "
+    "substr(f.search_text, 1, length(f.search_text) - 3) || 'assado')) "
+    "WHEN f.search_text LIKE '% crua' THEN EXISTS ("
+    'SELECT 1 FROM foods r WHERE r.is_active = 1 AND r.search_text IN ('
+    "substr(f.search_text, 1, length(f.search_text) - 4) || 'cozida', "
+    "substr(f.search_text, 1, length(f.search_text) - 4) || 'grelhada', "
+    "substr(f.search_text, 1, length(f.search_text) - 4) || 'assada')) "
+    'ELSE 0 END)';
+
 class FoodRepository {
   FoodRepository(this._db);
 
@@ -15,10 +31,15 @@ class FoodRepository {
   ///
   /// Vêm primeiro os nomes que começam pelo primeiro termo, depois os
   /// alimentos do usuário, depois a relevância do FTS5 e os nomes mais curtos.
+  ///
+  /// Um alimento cru fica depois da sua versão pronta (cozida, grelhada ou
+  /// assada) quando ela existe, porque é a pronta que costuma ser registrada.
+  /// Quem digita "cru" na busca recebe o cru primeiro.
   Future<List<FoodRow>> search(String input, {int limit = 40}) async {
     final query = buildFtsQuery(input);
     if (query == null) return const [];
     final firstTerm = leadingSearchPrefix(input)!;
+    final wantsRaw = searchTokens(input).any((term) => term.startsWith('cru'));
     final rows = await _db
         .customSelect(
           'SELECT f.* FROM food_search '
@@ -26,12 +47,14 @@ class FoodRepository {
           'WHERE food_search MATCH ?1 AND f.is_active = 1 '
           'ORDER BY (f.search_text LIKE ?2) DESC, '
           "(f.source = 'user') DESC, "
+          '(?4 AND $_rawWithReadyVersion) ASC, '
           'bm25(food_search), length(f.name), f.name '
           'LIMIT ?3',
           variables: [
             Variable.withString(query),
             Variable.withString('$firstTerm%'),
             Variable.withInt(limit),
+            Variable.withBool(!wantsRaw),
           ],
           readsFrom: {_db.foods},
         )

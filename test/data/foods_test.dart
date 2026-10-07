@@ -224,6 +224,25 @@ void main() {
       },
     );
 
+    test(
+      'a versão pronta vem antes da crua, salvo se pedirem a crua',
+      () async {
+        final rice = await names('arroz integral');
+        expect(rice, ['Arroz, integral, cozido', 'Arroz, integral, cru']);
+        final beans = await names('feijao carioca');
+        expect(beans.first, 'Feijão, carioca, cozido');
+        final chicken = await names('frango peito sem pele');
+        expect(chicken.last, 'Frango, peito, sem pele, cru');
+
+        expect(
+          (await names('arroz integral cru')).single,
+          'Arroz, integral, cru',
+        );
+        // Fruta crua não tem versão pronta: não é rebaixada.
+        expect(await names('banana prata'), ['Banana, prata, crua']);
+      },
+    );
+
     test('plural e gênero diferentes encontram o alimento', () async {
       expect(
         await names('ovos fritos'),

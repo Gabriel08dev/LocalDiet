@@ -1,0 +1,501 @@
+import 'dart:async';
+
+import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
+
+import '../../data/app_database.dart';
+import '../../data/tables.dart';
+import '../../domain/local_date.dart';
+import '../../domain/nutrients.dart';
+import '../../domain/portion.dart';
+import '../../domain/profile_enums.dart';
+import '../../providers.dart';
+import '../format.dart';
+import '../strings.dart';
+import '../theme/app_theme.dart';
+import '../widgets/common.dart';
+import '../widgets/portion_sheet.dart';
+import 'meal_text_sheet.dart';
+
+/// Para onde vão os alimentos escolhidos.
+enum AddTarget { diary, plan }
+
+/// Monta uma refeição: busca, escolha de porção, revisão e gravação.
+///
+/// Nada é salvo até o usuário confirmar na revisão. A gravação é feita de
+/// uma vez, em transação, pelo repositório.
+class MealBuilderScreen extends ConsumerStatefulWidget {
+  const MealBuilderScreen({
+    super.key,
+    required this.target,
+    required this.meal,
+    required this.date,
+  });
+
+  final AddTarget target;
+  final MealType meal;
+  final LocalDate date;
+
+  @override
+  ConsumerState<MealBuilderScreen> createState() => _MealBuilderScreenState();
+}
+
+class _MealBuilderScreenState extends ConsumerState<MealBuilderScreen> {
+  late MealType _meal = widget.meal;
+  final _draft = <FoodPortion>[];
+  final _search = TextEditingController();
+  Timer? _debounce;
+  String _query = '';
+  Future<List<FoodRow>>? _results;
+  bool _reviewing = false;
+  bool _saving = false;
+
+  @override
+  void dispose() {
+    _debounce?.cancel();
+    _search.dispose();
+    super.dispose();
+  }
+
+  void _onQueryChanged(String text) {
+    _debounce?.cancel();
+    final query = text.trim();
+    if (query.isEmpty) {
+      // Apagar a busca volta às sugestões na hora, sem esperar o debounce.
+      setState(() {
+        _query = '';
+        _results = null;
+      });
+      return;
+    }
+    _debounce = Timer(const Duration(milliseconds: 250), () {
+      if (!mounted) return;
+      setState(() {
+        _query = query;
+        _results = ref.read(foodRepositoryProvider).search(query);
+      });
+    });
+  }
+
+  Future<void> _pick(FoodRow food) async {
+    final portion = await showPortionSheet(
+      context,
+      foodId: food.id,
+      foodName: food.name,
+      per100: food.per100,
+      actionLabel: S.add,
+    );
+    if (portion == null || !mounted) return;
+    setState(
+      () => _draft.add(
+        FoodPortion(
+          foodId: food.id,
+          foodName: food.name,
+          per100: food.per100,
+          portion: portion,
+        ),
+      ),
+    );
+  }
+
+  Future<void> _editDraft(int index) async {
+    final item = _draft[index];
+    final portion = await showPortionSheet(
+      context,
+      foodId: item.foodId,
+      foodName: item.foodName,
+      per100: item.per100,
+      initial: item.portion,
+      actionLabel: S.save,
+    );
+    if (portion == null || !mounted) return;
+    setState(() => _draft[index] = item.withPortion(portion));
+  }
+
+  Future<void> _createFood() async {
+    final location = Uri(
+      path: '/food/new',
+      queryParameters: _query.isEmpty ? null : {'name': _query},
+    ).toString();
+    final id = await context.push<String>(location);
+    if (id == null || !mounted) return;
+    final food = await ref.read(foodRepositoryProvider).byId(id);
+    if (food != null && mounted) await _pick(food);
+  }
+
+  Future<void> _describe() async {
+    final items = await showModalBottomSheet<List<FoodPortion>>(
+      context: context,
+      isScrollControlled: true,
+      useSafeArea: true,
+      useRootNavigator: true,
+      builder: (context) => const MealTextSheet(),
+    );
+    if (items == null || items.isEmpty || !mounted) return;
+    setState(() {
+      _draft.addAll(items);
+      _reviewing = true;
+    });
+  }
+
+  Future<void> _save() async {
+    setState(() => _saving = true);
+    try {
+      switch (widget.target) {
+        case AddTarget.diary:
+          await ref
+              .read(diaryRepositoryProvider)
+              .addItems(widget.date, _meal, _draft);
+        case AddTarget.plan:
+          await ref.read(planRepositoryProvider).addItems(_meal, _draft);
+      }
+      if (!mounted) return;
+      showMessage(
+        context,
+        widget.target == AddTarget.diary ? S.mealSaved : S.planSaved,
+      );
+      context.pop();
+    } catch (_) {
+      if (!mounted) return;
+      setState(() => _saving = false);
+      showMessage(context, S.saveFailed);
+    }
+  }
+
+  Future<void> _handleBack() async {
+    if (_reviewing) {
+      setState(() => _reviewing = false);
+      return;
+    }
+    final discard = await confirmAction(
+      context,
+      title: S.discardMealTitle,
+      message: S.discardMealMessage,
+      confirmLabel: S.discard,
+      destructive: true,
+    );
+    if (discard && mounted) context.pop();
+  }
+
+  String get _title {
+    final base = widget.target == AddTarget.diary ? S.diary : S.plan;
+    if (widget.target == AddTarget.plan) return base;
+    final today = ref.read(todayProvider);
+    return '$base · ${formatRelativeDay(widget.date, today)}';
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final total = Nutrients.sum(_draft.map((item) => item.nutrients));
+    return PopScope(
+      canPop: !_reviewing && _draft.isEmpty,
+      onPopInvokedWithResult: (didPop, result) {
+        if (!didPop) _handleBack();
+      },
+      child: Scaffold(
+        appBar: AppBar(title: Text(_reviewing ? S.reviewMeal : _title)),
+        body: _reviewing ? _buildReview(total) : _buildSearch(),
+        bottomNavigationBar: _draft.isEmpty
+            ? null
+            : SafeArea(
+                child: Padding(
+                  padding: const EdgeInsets.fromLTRB(
+                    Gap.lg,
+                    Gap.sm,
+                    Gap.lg,
+                    Gap.md,
+                  ),
+                  child: _reviewing
+                      ? FilledButton(
+                          onPressed: _saving ? null : _save,
+                          child: Text(
+                            widget.target == AddTarget.diary
+                                ? S.saveToDiary(mealLabel(_meal))
+                                : S.saveToPlan(mealLabel(_meal)),
+                          ),
+                        )
+                      : Row(
+                          children: [
+                            Expanded(
+                              child: Text(
+                                S.itemsAndKcal(_draft.length, total.kcal),
+                                style: context.text.titleMedium,
+                              ),
+                            ),
+                            const SizedBox(width: Gap.md),
+                            FilledButton(
+                              onPressed: () =>
+                                  setState(() => _reviewing = true),
+                              child: const Text(S.review),
+                            ),
+                          ],
+                        ),
+                ),
+              ),
+      ),
+    );
+  }
+
+  Widget _buildMealChips() => SingleChildScrollView(
+    scrollDirection: Axis.horizontal,
+    padding: const EdgeInsets.symmetric(horizontal: Gap.lg),
+    child: Row(
+      children: [
+        for (final meal in MealType.values)
+          Padding(
+            padding: const EdgeInsets.only(right: Gap.sm),
+            child: ChoiceChip(
+              label: Text(mealLabel(meal)),
+              selected: meal == _meal,
+              onSelected: (_) => setState(() => _meal = meal),
+            ),
+          ),
+      ],
+    ),
+  );
+
+  Widget _buildSearch() {
+    return Column(
+      children: [
+        Padding(
+          padding: const EdgeInsets.fromLTRB(Gap.lg, Gap.sm, Gap.lg, Gap.md),
+          child: TextField(
+            controller: _search,
+            textInputAction: TextInputAction.search,
+            decoration: InputDecoration(
+              hintText: S.searchHint,
+              prefixIcon: const Icon(Icons.search),
+              suffixIcon: _search.text.isEmpty
+                  ? null
+                  : IconButton(
+                      onPressed: () {
+                        _search.clear();
+                        _onQueryChanged('');
+                      },
+                      icon: const Icon(Icons.close),
+                      tooltip: S.clear,
+                    ),
+            ),
+            onChanged: (text) {
+              setState(() {});
+              _onQueryChanged(text);
+            },
+          ),
+        ),
+        _buildMealChips(),
+        const SizedBox(height: Gap.sm),
+        Expanded(
+          child: _query.isEmpty
+              ? _Suggestions(
+                  onPick: _pick,
+                  onDescribe: _describe,
+                  onCreate: _createFood,
+                )
+              : FutureBuilder<List<FoodRow>>(
+                  future: _results,
+                  builder: (context, snapshot) {
+                    final foods = snapshot.data;
+                    if (foods == null) {
+                      return const Center(child: CircularProgressIndicator());
+                    }
+                    if (foods.isEmpty) {
+                      return SingleChildScrollView(
+                        child: EmptyState(
+                          icon: Icons.search_off,
+                          title: S.noFoodFound,
+                          message: S.noFoodFoundHelp,
+                          action: OutlinedButton.icon(
+                            onPressed: _createFood,
+                            icon: const Icon(Icons.add),
+                            label: Text(S.createFoodNamed(_query)),
+                          ),
+                        ),
+                      );
+                    }
+                    return ListView.builder(
+                      keyboardDismissBehavior:
+                          ScrollViewKeyboardDismissBehavior.onDrag,
+                      itemCount: foods.length,
+                      itemBuilder: (context, index) =>
+                          FoodTile(food: foods[index], onTap: _pick),
+                    );
+                  },
+                ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildReview(Nutrients total) {
+    return ListView(
+      padding: const EdgeInsets.fromLTRB(Gap.lg, Gap.sm, Gap.lg, Gap.xl),
+      children: [
+        _buildMealChipsInset(),
+        const SizedBox(height: Gap.md),
+        Card(
+          clipBehavior: Clip.antiAlias,
+          child: Column(
+            children: [
+              for (final (index, item) in _draft.indexed)
+                ListTile(
+                  title: Text(item.foodName),
+                  subtitle: Text(
+                    item.isEstimate
+                        ? '${S.portionText(item.portion)} · ${S.estimate}'
+                        : S.portionText(item.portion),
+                  ),
+                  trailing: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Text(
+                        formatInteger(item.nutrients.kcal),
+                        style: context.text.titleMedium,
+                      ),
+                      IconButton(
+                        onPressed: () => setState(() {
+                          _draft.removeAt(index);
+                          if (_draft.isEmpty) _reviewing = false;
+                        }),
+                        icon: const Icon(Icons.close),
+                        tooltip: S.remove,
+                      ),
+                    ],
+                  ),
+                  contentPadding: const EdgeInsets.only(left: Gap.lg),
+                  onTap: () => _editDraft(index),
+                ),
+            ],
+          ),
+        ),
+        const SizedBox(height: Gap.md),
+        Card(
+          child: Padding(
+            padding: const EdgeInsets.all(Gap.lg),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(S.mealTotal, style: context.text.labelLarge),
+                const SizedBox(height: Gap.xs),
+                Text(formatKcal(total.kcal), style: context.text.headlineSmall),
+                const SizedBox(height: Gap.xs),
+                MacroLine(total),
+              ],
+            ),
+          ),
+        ),
+        const SizedBox(height: Gap.sm),
+        Align(
+          alignment: Alignment.centerLeft,
+          child: TextButton.icon(
+            onPressed: () => setState(() => _reviewing = false),
+            icon: const Icon(Icons.add),
+            label: const Text(S.addMoreFoods),
+          ),
+        ),
+      ],
+    );
+  }
+
+  /// As opções de refeição dentro de uma lista que já tem margem lateral.
+  Widget _buildMealChipsInset() => Wrap(
+    spacing: Gap.sm,
+    runSpacing: Gap.xs,
+    children: [
+      for (final meal in MealType.values)
+        ChoiceChip(
+          label: Text(mealLabel(meal)),
+          selected: meal == _meal,
+          onSelected: (_) => setState(() => _meal = meal),
+        ),
+    ],
+  );
+}
+
+/// Linha de um alimento em listas de busca e sugestões.
+class FoodTile extends StatelessWidget {
+  const FoodTile({super.key, required this.food, required this.onTap});
+
+  final FoodRow food;
+  final ValueChanged<FoodRow> onTap;
+
+  @override
+  Widget build(BuildContext context) {
+    final kcal = S.kcalPer100(food.kcal);
+    return ListTile(
+      title: Text(food.name),
+      subtitle: Text(
+        food.source == FoodSource.user ? '$kcal · ${S.myFood}' : kcal,
+      ),
+      trailing: const Icon(Icons.add),
+      onTap: () => onTap(food),
+    );
+  }
+}
+
+/// O que aparece antes de o usuário digitar: atalhos e alimentos já usados.
+class _Suggestions extends ConsumerWidget {
+  const _Suggestions({
+    required this.onPick,
+    required this.onDescribe,
+    required this.onCreate,
+  });
+
+  final ValueChanged<FoodRow> onPick;
+  final VoidCallback onDescribe;
+  final VoidCallback onCreate;
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final favorites = ref.watch(favoriteFoodsProvider).value ?? const [];
+    final recents = ref.watch(recentFoodsProvider).value ?? const [];
+    final shown = {...favorites, ...recents}.map((food) => food.id).toSet();
+    final frequents = (ref.watch(frequentFoodsProvider).value ?? const [])
+        .where((food) => !shown.contains(food.id))
+        .toList();
+    final nothingYet = favorites.isEmpty && recents.isEmpty;
+
+    return ListView(
+      keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
+      children: [
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: Gap.lg),
+          child: Wrap(
+            spacing: Gap.sm,
+            runSpacing: Gap.xs,
+            children: [
+              ActionChip(
+                avatar: const Icon(Icons.notes, size: 18),
+                label: const Text(S.describeMeal),
+                onPressed: onDescribe,
+              ),
+              ActionChip(
+                avatar: const Icon(Icons.add, size: 18),
+                label: const Text(S.createFood),
+                onPressed: onCreate,
+              ),
+            ],
+          ),
+        ),
+        if (favorites.isNotEmpty) ...[
+          const SectionHeader(S.favorites),
+          for (final food in favorites) FoodTile(food: food, onTap: onPick),
+        ],
+        if (recents.isNotEmpty) ...[
+          const SectionHeader(S.recents),
+          for (final food in recents) FoodTile(food: food, onTap: onPick),
+        ],
+        if (frequents.isNotEmpty) ...[
+          const SectionHeader(S.frequents),
+          for (final food in frequents) FoodTile(food: food, onTap: onPick),
+        ],
+        if (nothingYet)
+          const Padding(
+            padding: EdgeInsets.fromLTRB(Gap.lg, Gap.lg, Gap.lg, 0),
+            child: InfoBanner(S.searchIntro, icon: Icons.lightbulb_outline),
+          ),
+        const SizedBox(height: Gap.xl),
+      ],
+    );
+  }
+}

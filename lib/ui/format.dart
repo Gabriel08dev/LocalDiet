@@ -6,6 +6,8 @@ const _locale = 'pt_BR';
 
 final _oneDecimal = NumberFormat('#,##0.#', _locale);
 final _integer = NumberFormat('#,##0', _locale);
+final _twoDecimals = NumberFormat('#,##0.##', _locale);
+final _longDay = DateFormat("EEEE, d 'de' MMMM", _locale);
 final _dayMonth = DateFormat("d 'de' MMMM", _locale);
 final _weekday = DateFormat('EEEE', _locale);
 final _shortDate = DateFormat('dd/MM/yyyy', _locale);
@@ -16,6 +18,12 @@ String formatNumber(num value) => _oneDecimal.format(value);
 
 /// Número inteiro arredondado: "1.840".
 String formatInteger(num value) => _integer.format(value);
+
+/// Número com até duas casas, para a ficha do alimento: "0,08".
+String formatPrecise(num value) => _twoDecimals.format(value);
+
+/// "quarta-feira, 7 de outubro".
+String formatLongDay(LocalDate date) => _longDay.format(date.toLocalNoon());
 
 String formatKcal(num value) => '${formatInteger(value)} kcal';
 
