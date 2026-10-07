@@ -38,25 +38,28 @@ class DiaryRepository {
     return (current ?? -1) + 1;
   }
 
-  /// Registra os itens de uma refeição.
+  /// Registra os itens de uma refeição e devolve os ids criados.
   ///
   /// A gravação é uma transação: se algum item for inválido, nenhum é salvo.
   /// Cada linha guarda o snapshot dos valores por 100 g do alimento.
-  Future<void> addItems(
+  Future<List<String>> addItems(
     LocalDate date,
     MealType meal,
     List<FoodPortion> items,
   ) => _db.transaction(() async {
     var position = await _nextPosition(date, meal);
+    final ids = <String>[];
     for (final item in items) {
       if (!item.portion.isValid) {
         throw ArgumentError.value(item.portion.grams, 'grams', item.foodName);
       }
+      final id = newId();
+      ids.add(id);
       await _db
           .into(_db.diaryItems)
           .insert(
             DiaryItemsCompanion.insert(
-              id: newId(),
+              id: id,
               date: date,
               meal: meal,
               position: position++,
@@ -76,7 +79,11 @@ class DiaryRepository {
             ),
           );
     }
+    return ids;
   });
+
+  Future<void> deleteItems(List<String> ids) =>
+      (_db.delete(_db.diaryItems)..where((t) => t.id.isIn(ids))).go();
 
   /// Altera a porção de um item. O snapshot nutricional não muda.
   Future<void> updatePortion(String id, Portion portion) {

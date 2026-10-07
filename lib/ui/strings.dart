@@ -187,6 +187,32 @@ abstract final class S {
   static String kcalTargetLine(double kcal) => 'Meta de ${formatKcal(kcal)}';
   static String addToMeal(String meal) => 'Adicionar a $meal';
 
+  // Seguir o plano
+  static const followPlan = 'Segui o plano';
+  static const ateSomethingElse = 'Comi outra coisa';
+  static String followPlanFor(String meal) => 'Segui o plano: $meal';
+  static String ateSomethingElseFor(String meal) => 'Comi outra coisa: $meal';
+  static const planFollowed = 'Plano seguido';
+  static const otherMeal = 'Outra refeição';
+  static const clearPlanCheck = 'Desmarcar';
+  static String planFollowedMessage(String meal) =>
+      '$meal registrado conforme o plano';
+  static String plannedSummary(int count, double kcal) =>
+      'Planejado: ${count == 1 ? '1 item' : '$count itens'} · '
+      '${formatKcal(kcal)}';
+  static const adherenceTitle = 'Adesão nos últimos 7 dias';
+  static const adherenceEmpty =
+      'No Início, marque em cada refeição se você seguiu o plano ou comeu '
+      'outra coisa. O resumo aparece aqui.';
+  static String adherenceSummary(int followed, int marked) =>
+      'Plano seguido em $followed de '
+      '${marked == 1 ? '1 refeição marcada' : '$marked refeições marcadas'}';
+  static String adherenceOther(int other) => switch (other) {
+    0 => 'Nenhuma refeição trocada por outra.',
+    1 => '1 refeição trocada por outra.',
+    _ => '$other refeições trocadas por outras.',
+  };
+
   // Diário
   static const previousDay = 'Dia anterior';
   static const nextDay = 'Dia seguinte';
@@ -204,6 +230,7 @@ abstract final class S {
   static const searchHint = 'Buscar alimento';
   static const searchIntro =
       'Busque entre os 597 alimentos da TACO e os que você cadastrar. '
+      'Os mais comuns já têm medidas como colher, concha e unidade. '
       'Os que você usar aparecem aqui para o próximo registro.';
   static const favorites = 'Favoritos';
   static const recents = 'Recentes';
@@ -235,9 +262,21 @@ abstract final class S {
   static const removeFavorite = 'Tirar dos favoritos';
   static const myPortion = 'Minha porção';
   static const myPortionHelp =
-      'Salve uma medida sua para este alimento, com o peso que você medir.';
+      'Salve uma medida sua para este alimento, com o peso que você medir. '
+      'Toque em um nome ou escreva o seu.';
   static const portionName = 'Nome da porção';
-  static const portionNameHint = 'Ex.: fatia, concha, unidade';
+  static const portionNameHint = 'Ex.: fatia, concha, scoop';
+  static const portionNameSuggestions = [
+    'colher de sopa',
+    'colher de servir',
+    'concha',
+    'scoop',
+    'xícara',
+    'copo',
+    'fatia',
+    'unidade',
+    'pote',
+  ];
   static const portionWeight = 'Peso da porção';
   static const portionWeightMissing = 'Informe o peso da porção em gramas';
   static String removeMeasureTitle(String label) =>
@@ -261,6 +300,9 @@ abstract final class S {
   static const parserGramsMissing =
       'Não foi possível determinar a quantidade. Informe os gramas.';
   static const addToMealReview = 'Adicionar à refeição';
+  static String measureNote(Portion portion) =>
+      '${formatNumber(portion.quantity)} × ${portion.measureLabel} de '
+      '${formatGrams(portion.measureGrams)}';
   static String oilEstimateFor(String preparation) =>
       'Óleo do preparo ($preparation): estimativa do app';
   static const oilEstimateHelp =
@@ -433,10 +475,13 @@ abstract final class S {
       'por você.';
   static const aboutMeasuresTitle = 'Medidas caseiras';
   static const aboutMeasuresBody =
-      'Esta versão ainda não traz medidas caseiras prontas, como colher ou '
-      'unidade, porque cada conversão para gramas precisa de fonte '
-      'documentada. Enquanto isso, você pode salvar suas próprias porções em '
-      'qualquer alimento, com o peso que medir.';
+      'As medidas caseiras (colher, concha, xícara, copo, fatia, unidade) vêm '
+      'da Tabela de Medidas Referidas para os Alimentos Consumidos no Brasil, '
+      'da Pesquisa de Orçamentos Familiares 2008-2009 do IBGE. Colheres, '
+      'conchas e pratos são cheios, e os tamanhos são médios. Elas existem '
+      'para 225 dos 597 alimentos, nas formas em que são consumidos; nos '
+      'demais, use gramas ou salve a sua própria porção, como um scoop. Em '
+      'bebidas, 1 ml conta como 1 g, como na tabela do IBGE.';
   static const aboutFormulasTitle = 'Fórmulas';
   static const aboutFormulasBody =
       'Taxa metabólica basal: equação de Mifflin-St Jeor (1990).\n'

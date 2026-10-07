@@ -69,6 +69,11 @@ FOOTNOTE_NAMES = {
     "Cerveja, pilsen 2": "Cerveja, pilsen",
 }
 
+# Na planilha, o alimento 540 traz apenas "L" como descricao. Pela posicao na
+# ordem alfabetica do grupo "Alimentos preparados" (entre "Feijao tropeiro
+# mineiro" e "Frango, com acafrao") e pela composicao, e a feijoada.
+NAME_FIXES = {540: ("L", "Feijoada")}
+
 
 def round_half_up(value, places):
     quantum = Decimal(1).scaleb(-places)
@@ -115,6 +120,11 @@ def main():
                 raise ValueError(f"alimento {number} sem categoria")
             name = " ".join(second.split())
             name = FOOTNOTE_NAMES.get(name, name)
+            if number in NAME_FIXES:
+                found, fixed = NAME_FIXES[number]
+                if name != found:
+                    raise ValueError(f"alimento {number}: esperado {found!r}, veio {name!r}")
+                name = fixed
             food = {"n": number, "name": name, "category": category}
             for index, key, places in COLUMNS:
                 food[key] = convert_cell(row[index], places, f"alimento {number}, {key}")

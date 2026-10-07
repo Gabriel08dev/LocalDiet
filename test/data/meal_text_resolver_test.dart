@@ -67,6 +67,74 @@ void main() {
     expect(rice.grams, 75);
   });
 
+  group('com as medidas do IBGE', () {
+    late AppDatabase full;
+    late MealTextResolver withMeasures;
+
+    setUp(() async {
+      full = await databaseWithAssets();
+      withMeasures = MealTextResolver(
+        FoodRepository(full),
+        MeasureRepository(full),
+      );
+    });
+
+    tearDown(() => full.close());
+
+    test('contagem vira unidades do alimento', () async {
+      final egg = (await withMeasures.resolve('2 ovos fritos')).single;
+      expect(egg.portion!.measureLabel, 'unidade');
+      expect(egg.portion!.quantity, 2);
+      expect(egg.grams, 100);
+      final bread = (await withMeasures.resolve('1 pão francês')).single;
+      expect(bread.grams, 50);
+    });
+
+    test('a porção fica na medida dita, não só em gramas', () async {
+      final items = await withMeasures.resolve(
+        '3 colheres de servir de arroz tipo 1 cozido, '
+        '1 concha de feijão carioca, 2 fatias de pão de forma integral',
+      );
+      expect(items.map((item) => item.portion!.measureLabel), [
+        'colher de servir',
+        'concha',
+        'fatia',
+      ]);
+      expect(items.map((item) => item.grams), [135, 140, 50]);
+    });
+
+    test('palavra genérica usa a medida mais comum', () async {
+      final milk = (await withMeasures.resolve('1 copo de leite integral'))
+          .single;
+      expect(milk.food!.name, 'Leite, de vaca, integral');
+      expect(milk.portion!.measureLabel, 'copo médio');
+      expect(milk.grams, 240);
+      final rice = (await withMeasures.resolve(
+        '2 colheres de arroz tipo 1 cozido',
+      )).single;
+      expect(rice.portion!.measureLabel, 'colher de sopa');
+      expect(rice.grams, 50);
+    });
+
+    test('medida que o alimento não tem fica sem gramas', () async {
+      final item = (await withMeasures.resolve('1 concha de pão francês'))
+          .single;
+      expect(item.food!.name, 'Pão, trigo, francês');
+      expect(item.portion, isNull);
+    });
+
+    test('scoop do usuário resolve a quantidade', () async {
+      final id = await FoodRepository(full)
+          .saveUserFood(name: 'Whey protein', per100: sampleNutrients);
+      await MeasureRepository(full)
+          .addUserMeasure(foodId: id, label: 'scoop', grams: 30);
+      final item = (await withMeasures.resolve('2 scoops de whey')).single;
+      expect(item.food!.id, id);
+      expect(item.portion!.measureLabel, 'scoop');
+      expect(item.grams, 60);
+    });
+  });
+
   test('volume e item sem quantidade ficam sem gramas', () async {
     final items = await resolver.resolve(
       '200 ml de leite integral, banana prata',

@@ -3,7 +3,10 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../data/app_database.dart';
+import '../../data/repositories/plan_repository.dart';
+import '../../data/tables.dart';
 import '../../domain/local_date.dart';
+import '../../domain/nutrients.dart';
 import '../../domain/profile_enums.dart';
 import '../../providers.dart';
 import '../strings.dart';
@@ -32,6 +35,35 @@ MealType mealForHour(int hour) {
   return MealType.dinner;
 }
 
+/// Marca a refeição como seguida e registra no Diário o que estava no plano.
+Future<void> followPlannedMeal(
+  BuildContext context,
+  WidgetRef ref,
+  LocalDate date,
+  MealType meal,
+) async {
+  final plan = ref.read(planRepositoryProvider);
+  final ids = await plan.followMeal(date, meal);
+  if (!context.mounted) return;
+  showUndo(
+    context,
+    S.planFollowedMessage(mealLabel(meal)),
+    () => plan.undoFollow(date, meal, ids),
+  );
+}
+
+/// Marca que a refeição foi trocada e abre o registro do que foi comido.
+Future<void> logOtherMeal(
+  BuildContext context,
+  WidgetRef ref,
+  LocalDate date,
+  MealType meal,
+) async {
+  await ref.read(planRepositoryProvider).markOther(date, meal);
+  if (!context.mounted) return;
+  context.push(addFoodLocation(target: 'diary', meal: meal, date: date));
+}
+
 class HomeScreen extends ConsumerWidget {
   const HomeScreen({super.key});
 
@@ -40,12 +72,18 @@ class HomeScreen extends ConsumerWidget {
     final today = ref.watch(todayProvider);
     final profile = ref.watch(profileProvider).value;
     final items = ref.watch(diaryDayProvider(today)).value ?? const [];
+    final plan = ref.watch(planProvider).value ?? const [];
+    final checks = ref.watch(planChecksProvider(today)).value ?? const {};
     final comparison = ref.watch(dayComparisonProvider(today));
     final target = ref.watch(calorieTargetProvider);
-    final hasPlan = ref.watch(planTotalProvider) != null;
 
     void add(MealType meal) =>
         context.push(addFoodLocation(target: 'diary', meal: meal, date: today));
+
+    void openDiary() {
+      ref.read(selectedDateProvider.notifier).select(today);
+      context.go('/diary');
+    }
 
     return Scaffold(
       body: SafeArea(
@@ -98,7 +136,7 @@ class HomeScreen extends ConsumerWidget {
                     ),
                     const SizedBox(height: Gap.lg),
                     MacroBars(comparison),
-                    if (!hasPlan) ...[
+                    if (plan.isEmpty) ...[
                       const SizedBox(height: Gap.md),
                       Align(
                         alignment: Alignment.centerLeft,
@@ -128,16 +166,21 @@ class HomeScreen extends ConsumerWidget {
             Card(
               clipBehavior: Clip.antiAlias,
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   for (final meal in MealType.values)
                     _MealRow(
                       meal: meal,
                       items: items.where((item) => item.meal == meal).toList(),
+                      planned: plan
+                          .where((entry) => entry.item.meal == meal)
+                          .toList(),
+                      check: checks[meal],
                       onAdd: () => add(meal),
-                      onOpen: () {
-                        ref.read(selectedDateProvider.notifier).select(today);
-                        context.go('/diary');
-                      },
+                      onOpen: openDiary,
+                      onFollow: () =>
+                          followPlannedMeal(context, ref, today, meal),
+                      onOther: () => logOtherMeal(context, ref, today, meal),
                     ),
                 ],
               ),
@@ -149,29 +192,56 @@ class HomeScreen extends ConsumerWidget {
   }
 }
 
+/// Uma refeição do dia no Início.
+///
+/// Quando o Plano Base tem itens para a refeição e nada foi registrado nem
+/// marcado, a linha mostra o que estava planejado e pergunta se o plano foi
+/// seguido. Nos demais casos, mostra o que já foi registrado.
 class _MealRow extends StatelessWidget {
   const _MealRow({
     required this.meal,
     required this.items,
+    required this.planned,
+    required this.check,
     required this.onAdd,
     required this.onOpen,
+    required this.onFollow,
+    required this.onOther,
   });
 
   final MealType meal;
   final List<DiaryItemRow> items;
+  final List<PlanEntry> planned;
+  final PlanCheckStatus? check;
   final VoidCallback onAdd;
   final VoidCallback onOpen;
+  final VoidCallback onFollow;
+  final VoidCallback onOther;
 
   @override
   Widget build(BuildContext context) {
-    final kcal = items.fold<double>(
-      0,
-      (sum, item) => sum + item.nutrients.kcal,
-    );
+    final awaitsAnswer = planned.isNotEmpty && check == null && items.isEmpty;
+    if (awaitsAnswer) return _buildQuestion(context);
+
+    final kcal = Nutrients.sum(items.map((item) => item.nutrients)).kcal;
+    final logged = items.isEmpty
+        ? S.nothingLogged
+        : S.itemsAndKcal(items.length, kcal);
+    final subtitle = switch (check) {
+      PlanCheckStatus.followed => '${S.planFollowed} · $logged',
+      PlanCheckStatus.other => '${S.otherMeal} · $logged',
+      null => logged,
+    };
     return ListTile(
       title: Text(mealLabel(meal)),
-      subtitle: Text(
-        items.isEmpty ? S.nothingLogged : S.itemsAndKcal(items.length, kcal),
+      subtitle: Row(
+        children: [
+          if (check == PlanCheckStatus.followed) ...[
+            Icon(Icons.check_circle, size: 16, color: context.colors.primary),
+            const SizedBox(width: Gap.xs),
+          ],
+          Expanded(child: Text(subtitle)),
+        ],
       ),
       trailing: IconButton(
         onPressed: onAdd,
@@ -179,6 +249,56 @@ class _MealRow extends StatelessWidget {
         tooltip: S.addToMeal(mealLabel(meal)),
       ),
       onTap: items.isEmpty ? onAdd : onOpen,
+    );
+  }
+
+  Widget _buildQuestion(BuildContext context) {
+    final plannedKcal = Nutrients.sum(planned.map((entry) => entry.nutrients))
+        .kcal;
+    final muted = context.colors.onSurfaceVariant;
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(Gap.lg, Gap.md, Gap.lg, Gap.md),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(mealLabel(meal), style: context.text.bodyLarge),
+          const SizedBox(height: 2),
+          Text(
+            S.plannedSummary(planned.length, plannedKcal),
+            style: context.text.bodyMedium?.copyWith(color: muted),
+          ),
+          Text(
+            planned.map((entry) => entry.food.name).join(' · '),
+            maxLines: 2,
+            overflow: TextOverflow.ellipsis,
+            style: context.text.bodySmall?.copyWith(color: muted),
+          ),
+          const SizedBox(height: Gap.sm),
+          Wrap(
+            spacing: Gap.sm,
+            runSpacing: Gap.xs,
+            children: [
+              FilledButton.tonalIcon(
+                style: compactButton,
+                onPressed: onFollow,
+                icon: const Icon(Icons.check, size: 18),
+                label: Text(
+                  S.followPlan,
+                  semanticsLabel: S.followPlanFor(mealLabel(meal)),
+                ),
+              ),
+              OutlinedButton(
+                style: compactButton,
+                onPressed: onOther,
+                child: Text(
+                  S.ateSomethingElse,
+                  semanticsLabel: S.ateSomethingElseFor(mealLabel(meal)),
+                ),
+              ),
+            ],
+          ),
+        ],
+      ),
     );
   }
 }

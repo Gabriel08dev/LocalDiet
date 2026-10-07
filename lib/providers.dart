@@ -10,10 +10,12 @@ import 'data/repositories/food_repository.dart';
 import 'data/repositories/measure_repository.dart';
 import 'data/repositories/plan_repository.dart';
 import 'data/repositories/profile_repository.dart';
+import 'data/tables.dart';
 import 'domain/calorie_target.dart';
 import 'domain/intake_comparison.dart';
 import 'domain/local_date.dart';
 import 'domain/nutrients.dart';
+import 'domain/profile_enums.dart';
 
 final databaseProvider = Provider<AppDatabase>((ref) {
   final db = AppDatabase();
@@ -87,6 +89,20 @@ final diaryDayProvider = StreamProvider.family<List<DiaryItemRow>, LocalDate>(
 final planProvider = StreamProvider<List<PlanEntry>>(
   (ref) => ref.watch(planRepositoryProvider).watchAll(),
 );
+
+/// O que foi marcado em cada refeição do plano em um dia.
+final planChecksProvider =
+    StreamProvider.family<Map<MealType, PlanCheckStatus>, LocalDate>(
+      (ref, date) => ref.watch(planRepositoryProvider).watchChecks(date),
+    );
+
+/// Adesão ao plano nos últimos sete dias, contando hoje.
+final planAdherenceProvider = StreamProvider<PlanAdherence>((ref) {
+  final today = ref.watch(todayProvider);
+  return ref
+      .watch(planRepositoryProvider)
+      .watchAdherence(from: today.addDays(-6), to: today);
+});
 
 final userFoodsProvider = StreamProvider<List<FoodRow>>(
   (ref) => ref.watch(foodRepositoryProvider).watchUserFoods(),

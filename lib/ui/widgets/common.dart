@@ -183,6 +183,8 @@ void showUndo(BuildContext context, String message, VoidCallback onUndo) {
       SnackBar(
         content: Text(message),
         action: SnackBarAction(label: S.undo, onPressed: onUndo),
+        persist: false,
+        duration: const Duration(seconds: 6),
       ),
     );
 }
@@ -229,7 +231,7 @@ class _MacroBar extends StatelessWidget {
           child: LinearProgressIndicator(
             value: status.progress ?? 0,
             minHeight: 6,
-            color: status.isOver ? context.appColors.over : color,
+            color: color,
             backgroundColor: context.colors.surfaceContainerHighest,
           ),
         ),
@@ -395,12 +397,16 @@ class MealBlock extends StatelessWidget {
     required this.lines,
     required this.onAdd,
     this.menu,
+    this.status,
   });
 
   final String title;
   final List<MealLine> lines;
   final VoidCallback onAdd;
   final Widget? menu;
+
+  /// Situação da refeição frente ao Plano Base, quando foi marcada.
+  final String? status;
 
   @override
   Widget build(BuildContext context) {
@@ -425,9 +431,12 @@ class MealBlock extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(title, style: context.text.titleMedium),
-                        if (lines.isNotEmpty)
+                        if (lines.isNotEmpty || status != null)
                           Text(
-                            formatKcal(total),
+                            [
+                              ?status,
+                              if (lines.isNotEmpty) formatKcal(total),
+                            ].join(' · '),
                             style: context.text.bodySmall?.copyWith(
                               color: context.colors.onSurfaceVariant,
                             ),

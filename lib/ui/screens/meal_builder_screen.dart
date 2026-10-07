@@ -87,6 +87,8 @@ class _MealBuilderScreenState extends ConsumerState<MealBuilderScreen> {
       actionLabel: S.add,
     );
     if (portion == null || !mounted) return;
+    _search.clear();
+    _onQueryChanged('');
     setState(
       () => _draft.add(
         FoodPortion(

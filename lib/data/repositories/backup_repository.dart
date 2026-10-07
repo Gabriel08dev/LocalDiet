@@ -53,6 +53,7 @@ class _ParsedBackup {
     required this.userMeasures,
     required this.diaryItems,
     required this.planItems,
+    required this.planChecks,
     required this.favorites,
     required this.settings,
   });
@@ -64,6 +65,7 @@ class _ParsedBackup {
   final List<MeasureRow> userMeasures;
   final List<DiaryItemRow> diaryItems;
   final List<PlanItemRow> planItems;
+  final List<PlanCheckRow> planChecks;
   final List<FavoriteRow> favorites;
   final List<SettingRow> settings;
 }
@@ -100,6 +102,7 @@ class BackupRepository {
       'userMeasures': all(userMeasures),
       'diaryItems': all(await _db.select(_db.diaryItems).get()),
       'planItems': all(await _db.select(_db.planItems).get()),
+      'planChecks': all(await _db.select(_db.planChecks).get()),
       'favorites': all(await _db.select(_db.favorites).get()),
       'settings': all(await _db.select(_db.settings).get()),
     });
@@ -146,6 +149,10 @@ class BackupRepository {
         userMeasures: userMeasures,
         diaryItems: rows('diaryItems', DiaryItemRow.fromJson),
         planItems: rows('planItems', PlanItemRow.fromJson),
+        // Backups do schema 1 são anteriores às marcações do plano.
+        planChecks: schemaVersion < 2
+            ? const []
+            : rows('planChecks', PlanCheckRow.fromJson),
         favorites: rows('favorites', FavoriteRow.fromJson),
         settings: rows('settings', SettingRow.fromJson),
       );
@@ -183,6 +190,7 @@ class BackupRepository {
     final backup = _parse(content);
     await _db.transaction(() async {
       await _db.delete(_db.favorites).go();
+      await _db.delete(_db.planChecks).go();
       await _db.delete(_db.planItems).go();
       await _db.delete(_db.diaryItems).go();
       await _db.delete(_db.bodyMeasurements).go();
@@ -202,6 +210,7 @@ class BackupRepository {
         batch.insertAll(_db.bodyMeasurements, backup.bodyMeasurements);
         batch.insertAll(_db.diaryItems, backup.diaryItems);
         batch.insertAll(_db.planItems, backup.planItems);
+        batch.insertAll(_db.planChecks, backup.planChecks);
         batch.insertAll(_db.favorites, backup.favorites);
         batch.insertAll(_db.settings, backup.settings);
       });

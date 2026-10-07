@@ -4,6 +4,7 @@ import 'package:drift_flutter/drift_flutter.dart';
 import '../domain/local_date.dart';
 import '../domain/nutrients.dart';
 import '../domain/profile_enums.dart';
+import 'app_database.steps.dart';
 import 'tables.dart';
 
 part 'app_database.g.dart';
@@ -19,6 +20,7 @@ const databaseName = 'localdiet2';
     AssetVersions,
     DiaryItems,
     PlanItems,
+    PlanChecks,
     BodyMeasurements,
     Profiles,
     Favorites,
@@ -31,10 +33,16 @@ class AppDatabase extends _$AppDatabase {
     : super(executor ?? driftDatabase(name: databaseName));
 
   @override
-  int get schemaVersion => 1;
+  int get schemaVersion => 2;
 
   @override
   MigrationStrategy get migration => MigrationStrategy(
+    onUpgrade: stepByStep(
+      // v2: marcação diária das refeições do Plano Base.
+      from1To2: (m, schema) async {
+        await m.createTable(schema.planChecks);
+      },
+    ),
     beforeOpen: (details) async {
       await customStatement('PRAGMA foreign_keys = ON');
     },

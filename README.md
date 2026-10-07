@@ -14,16 +14,17 @@ Abra o link no celular, baixe o arquivo e toque nele para instalar. Na primeira 
 
 - **Diário.** Registre o que comeu por refeição. Cada registro guarda os valores nutricionais do momento, então mudanças futuras na base não alteram o histórico.
 - **Busca.** 597 alimentos da TACO e os que você cadastrar, com busca por prefixo, sem acentos, e atalhos para recentes, mais usados e favoritos.
-- **Porções.** Em gramas ou em medidas que você mesmo salva ("minha fatia = 35 g"). A escolha de porção abre na última quantidade usada.
-- **Texto livre.** Descreva a refeição ("2 ovos fritos, 150 g de arroz") e confira a proposta antes de salvar.
+- **Porções em medidas caseiras.** Colher, concha, xícara, copo, fatia e unidade para 225 alimentos, com os pesos da tabela de medidas referidas do IBGE. Nos demais, gramas ou uma porção que você mesmo salva, como um scoop. A escolha de porção abre na última quantidade usada.
+- **Texto livre.** Descreva a refeição ("2 ovos fritos, 3 colheres de arroz e 1 concha de feijão") e confira a proposta antes de salvar.
 - **Plano Base.** A dieta planejada por refeição, que serve de meta para proteína, carboidrato e gordura.
+- **Seguir o plano.** Em cada refeição do dia, marque se seguiu o plano (o app registra o que estava planejado) ou se comeu outra coisa, e acompanhe a adesão da semana.
 - **Meta de calorias.** Calculada a partir do perfil, ou definida manualmente.
 - **Evolução.** Peso, cintura, pescoço e quadril, com gráficos, IMC e estimativa de gordura corporal.
 - **Backup.** Exporte e importe todos os seus dados em um arquivo.
 
 O app não pede permissão de internet, não tem conta e não envia nada para fora do aparelho. Ele é uma ferramenta de registro e não substitui o acompanhamento de nutricionista ou médico.
 
-Capturas de tela: [tema claro](docs/screenshots/claro) e [tema escuro](docs/screenshots/escuro).
+Capturas de tela: [tema claro](docs/screenshots/claro), [tema escuro](docs/screenshots/escuro) e [um dia de uso](docs/screenshots/dia).
 
 ## Desenvolvimento
 
@@ -55,7 +56,7 @@ flutter test --update-goldens test/ui/screenshots_test.dart
 
 - [docs/SPEC.md](docs/SPEC.md): regras de produto e fórmulas.
 - [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md): camadas, banco, busca, backup e como criar uma migration.
-- [docs/NUTRITION_DATA.md](docs/NUTRITION_DATA.md): origem e conversão dos dados nutricionais.
+- [docs/NUTRITION_DATA.md](docs/NUTRITION_DATA.md): origem e conversão dos dados nutricionais e das medidas caseiras.
 - [docs/PERFORMANCE.md](docs/PERFORMANCE.md): medições de desempenho.
 - [ROADMAP.md](ROADMAP.md): o que vem a seguir e o que está fora de escopo.
 

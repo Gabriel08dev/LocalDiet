@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../data/app_database.dart';
+import '../../data/tables.dart';
 import '../../domain/local_date.dart';
 import '../../domain/nutrients.dart';
 import '../../domain/portion.dart';
@@ -75,6 +76,8 @@ class DiaryScreen extends ConsumerWidget {
     final today = ref.watch(todayProvider);
     final items = ref.watch(diaryDayProvider(date));
     final comparison = ref.watch(dayComparisonProvider(date));
+    final plan = ref.watch(planProvider).value ?? const [];
+    final checks = ref.watch(planChecksProvider(date)).value ?? const {};
     final selection = ref.read(selectedDateProvider.notifier);
 
     return Scaffold(
@@ -146,12 +149,31 @@ class DiaryScreen extends ConsumerWidget {
             for (final meal in MealType.values)
               MealBlock(
                 title: mealLabel(meal),
+                status: switch (checks[meal]) {
+                  PlanCheckStatus.followed => S.planFollowed,
+                  PlanCheckStatus.other => S.otherMeal,
+                  null => null,
+                },
                 onAdd: () => context.push(
                   addFoodLocation(target: 'diary', meal: meal, date: date),
                 ),
                 menu: PopupMenuButton<void>(
                   tooltip: S.moreOptions,
                   itemBuilder: (context) => [
+                    if (checks[meal] != PlanCheckStatus.followed &&
+                        plan.any((entry) => entry.item.meal == meal))
+                      PopupMenuItem(
+                        onTap: () =>
+                            followPlannedMeal(context, ref, date, meal),
+                        child: const Text(S.followPlan),
+                      ),
+                    if (checks[meal] != null)
+                      PopupMenuItem(
+                        onTap: () => ref
+                            .read(planRepositoryProvider)
+                            .clearCheck(date, meal),
+                        child: const Text(S.clearPlanCheck),
+                      ),
                     PopupMenuItem(
                       onTap: () =>
                           _copyFromAnotherDay(context, ref, date, meal),

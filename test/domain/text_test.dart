@@ -187,6 +187,21 @@ void main() {
       expect(laranja.foodText, 'laranja');
     });
 
+    test('o trecho mostrado mantém os acentos digitados', () {
+      final item = parseMealText('2 Fatias de Pão de Fôrma').single;
+      expect(item.source, '2 fatias de pão de fôrma');
+      expect(item.foodText, 'pao de forma');
+      expect(item.measure, 'fatia');
+    });
+
+    test('scoop e dosador são medidas', () {
+      final whey = parseMealText('2 scoops de whey').single;
+      expect(whey.measure, 'scoop');
+      expect(whey.quantity, 2);
+      expect(whey.foodText, 'whey');
+      expect(parseMealText('1 dosador de creatina').single.measure, 'dosador');
+    });
+
     test('texto vazio ou só com separadores não gera itens', () {
       expect(parseMealText(''), isEmpty);
       expect(parseMealText(' , ; \n'), isEmpty);

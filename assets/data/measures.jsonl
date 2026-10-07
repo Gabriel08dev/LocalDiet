@@ -1,0 +1,912 @@
+{"food":1,"label":"colher de sopa","grams":20.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 36 do PDF: Arroz integral"}
+{"food":1,"label":"colher de servir","grams":63.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 36 do PDF: Arroz integral"}
+{"food":1,"label":"concha","grams":117.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 36 do PDF: Arroz integral"}
+{"food":1,"label":"escumadeira","grams":59.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 36 do PDF: Arroz integral"}
+{"food":1,"label":"prato raso","grams":100.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 36 do PDF: Arroz integral"}
+{"food":1,"label":"prato fundo","grams":200.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 36 do PDF: Arroz integral"}
+{"food":1,"label":"porção","grams":198.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 36 do PDF: Arroz integral"}
+{"food":3,"label":"colher de sopa","grams":25.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 35 do PDF: Arroz (polido, parboilizado)"}
+{"food":3,"label":"colher de servir","grams":45.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 35 do PDF: Arroz (polido, parboilizado)"}
+{"food":3,"label":"concha","grams":100.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 35 do PDF: Arroz (polido, parboilizado)"}
+{"food":3,"label":"escumadeira","grams":85.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 35 do PDF: Arroz (polido, parboilizado)"}
+{"food":3,"label":"prato raso","grams":100.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 35 do PDF: Arroz (polido, parboilizado)"}
+{"food":3,"label":"prato fundo","grams":200.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 35 do PDF: Arroz (polido, parboilizado)"}
+{"food":3,"label":"porção","grams":125.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 35 do PDF: Arroz (polido, parboilizado)"}
+{"food":5,"label":"colher de sopa","grams":25.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 35 do PDF: Arroz (polido, parboilizado)"}
+{"food":5,"label":"colher de servir","grams":45.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 35 do PDF: Arroz (polido, parboilizado)"}
+{"food":5,"label":"concha","grams":100.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 35 do PDF: Arroz (polido, parboilizado)"}
+{"food":5,"label":"escumadeira","grams":85.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 35 do PDF: Arroz (polido, parboilizado)"}
+{"food":5,"label":"prato raso","grams":100.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 35 do PDF: Arroz (polido, parboilizado)"}
+{"food":5,"label":"prato fundo","grams":200.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 35 do PDF: Arroz (polido, parboilizado)"}
+{"food":5,"label":"porção","grams":125.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 35 do PDF: Arroz (polido, parboilizado)"}
+{"food":7,"label":"colher de sopa","grams":15.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 74 do PDF: Aveia em flocos"}
+{"food":7,"label":"colher de servir","grams":30.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 74 do PDF: Aveia em flocos"}
+{"food":7,"label":"colher de sobremesa","grams":7.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 74 do PDF: Aveia em flocos"}
+{"food":7,"label":"colher de chá","grams":2.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 74 do PDF: Aveia em flocos"}
+{"food":7,"label":"colher de café","grams":1.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 74 do PDF: Aveia em flocos"}
+{"food":7,"label":"porção","grams":37.5,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 74 do PDF: Aveia em flocos"}
+{"food":8,"label":"unidade","grams":5.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 399 do PDF: Biscoito doce"}
+{"food":8,"label":"pacote","grams":200.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 398 do PDF: Biscoito doce"}
+{"food":8,"label":"porção","grams":35.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 398 do PDF: Biscoito doce"}
+{"food":9,"label":"unidade","grams":13.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 405 do PDF: Biscoito recheado"}
+{"food":9,"label":"pacote","grams":200.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 404 do PDF: Biscoito recheado"}
+{"food":9,"label":"porção","grams":34.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 404 do PDF: Biscoito recheado"}
+{"food":10,"label":"unidade","grams":13.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 405 do PDF: Biscoito recheado"}
+{"food":10,"label":"pacote","grams":200.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 404 do PDF: Biscoito recheado"}
+{"food":10,"label":"porção","grams":34.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 404 do PDF: Biscoito recheado"}
+{"food":11,"label":"unidade","grams":7.5,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 405 do PDF: Waffer (biscoito)"}
+{"food":11,"label":"pacote","grams":160.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 405 do PDF: Waffer (biscoito)"}
+{"food":12,"label":"unidade","grams":7.5,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 405 do PDF: Waffer (biscoito)"}
+{"food":12,"label":"pacote","grams":160.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 405 do PDF: Waffer (biscoito)"}
+{"food":13,"label":"unidade","grams":5.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 397 do PDF: Biscoito salgado"}
+{"food":13,"label":"pacote","grams":200.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 396 do PDF: Biscoito salgado"}
+{"food":13,"label":"porção","grams":32.5,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 396 do PDF: Biscoito salgado"}
+{"food":15,"label":"fatia","grams":80.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 401 do PDF: Bolo de aipim"}
+{"food":15,"label":"pedaço","grams":80.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 401 do PDF: Bolo de aipim"}
+{"food":16,"label":"fatia","grams":60.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 403 do PDF: Bolo de chocolate"}
+{"food":16,"label":"pedaço","grams":60.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 403 do PDF: Bolo de chocolate"}
+{"food":17,"label":"fatia","grams":60.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 404 do PDF: Bolo de coco"}
+{"food":17,"label":"pedaço","grams":60.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 404 do PDF: Bolo de coco"}
+{"food":18,"label":"fatia","grams":60.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 401 do PDF: Bolo de milho"}
+{"food":18,"label":"pedaço","grams":60.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 401 do PDF: Bolo de milho"}
+{"food":25,"label":"colher de sopa","grams":4.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 79 do PDF: Cereal matinal de milho em flocos"}
+{"food":25,"label":"xícara de chá","grams":30.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 79 do PDF: Cereal matinal de milho em flocos"}
+{"food":25,"label":"copo americano","grams":25.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 79 do PDF: Cereal matinal de milho em flocos"}
+{"food":25,"label":"punhado","grams":9.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 79 do PDF: Cereal matinal de milho em flocos"}
+{"food":26,"label":"colher de sopa","grams":4.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 79 do PDF: Cereal matinal de milho em flocos"}
+{"food":26,"label":"xícara de chá","grams":30.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 79 do PDF: Cereal matinal de milho em flocos"}
+{"food":26,"label":"copo americano","grams":25.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 79 do PDF: Cereal matinal de milho em flocos"}
+{"food":26,"label":"punhado","grams":9.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 79 do PDF: Cereal matinal de milho em flocos"}
+{"food":45,"label":"colher de sopa","grams":24.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 312 do PDF: Milho verde em conserva"}
+{"food":45,"label":"colher de servir","grams":38.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 312 do PDF: Milho verde em conserva"}
+{"food":45,"label":"concha","grams":76.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 312 do PDF: Milho verde em conserva"}
+{"food":45,"label":"colher de sobremesa","grams":17.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 312 do PDF: Milho verde em conserva"}
+{"food":45,"label":"colher de chá","grams":8.5,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 312 do PDF: Milho verde em conserva"}
+{"food":45,"label":"colher de café","grams":4.3,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 312 do PDF: Milho verde em conserva"}
+{"food":48,"label":"fatia","grams":25.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 394 do PDF: Pão de forma industrializado de qualquer marca"}
+{"food":51,"label":"fatia","grams":25.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 394 do PDF: Pão de forma industrializado de qualquer marca"}
+{"food":52,"label":"fatia","grams":25.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 395 do PDF: Pão integral"}
+{"food":53,"label":"unidade","grams":50.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 393 do PDF: Pão de sal"}
+{"food":56,"label":"unidade","grams":32.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 475 do PDF: Pastel (queijo, carne, palmito, etc.)"}
+{"food":58,"label":"unidade","grams":32.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 475 do PDF: Pastel (queijo, carne, palmito, etc.)"}
+{"food":61,"label":"xícara de chá","grams":6.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 505 do PDF: Pipoca doce ou salgada"}
+{"food":61,"label":"copo americano","grams":6.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 504 do PDF: Pipoca doce ou salgada"}
+{"food":61,"label":"copo médio","grams":7.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 504 do PDF: Pipoca doce ou salgada"}
+{"food":61,"label":"copo grande","grams":11.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 504 do PDF: Pipoca doce ou salgada"}
+{"food":62,"label":"colher de sopa","grams":35.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 478 do PDF: Polenta"}
+{"food":62,"label":"colher de servir","grams":60.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 478 do PDF: Polenta"}
+{"food":62,"label":"concha","grams":150.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 479 do PDF: Polenta"}
+{"food":62,"label":"escumadeira","grams":150.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 479 do PDF: Polenta"}
+{"food":62,"label":"pedaço","grams":150.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 479 do PDF: Polenta"}
+{"food":62,"label":"prato raso","grams":300.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 479 do PDF: Polenta"}
+{"food":62,"label":"prato fundo","grams":500.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 479 do PDF: Polenta"}
+{"food":63,"label":"unidade","grams":8.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 395 do PDF: Torrada de qualquer pão"}
+{"food":63,"label":"pacote","grams":160.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 395 do PDF: Torrada de qualquer pão"}
+{"food":64,"label":"fatia","grams":50.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 130 do PDF: Abóbora"}
+{"food":64,"label":"colher de sopa","grams":36.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 130 do PDF: Abóbora"}
+{"food":64,"label":"colher de servir","grams":72.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 130 do PDF: Abóbora"}
+{"food":64,"label":"concha","grams":100.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 130 do PDF: Abóbora"}
+{"food":64,"label":"escumadeira","grams":100.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 130 do PDF: Abóbora"}
+{"food":64,"label":"pedaço","grams":50.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 130 do PDF: Abóbora"}
+{"food":64,"label":"colher de sobremesa","grams":18.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 130 do PDF: Abóbora"}
+{"food":68,"label":"fatia","grams":50.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 131 do PDF: Abóbora"}
+{"food":68,"label":"colher de sopa","grams":30.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 131 do PDF: Abóbora"}
+{"food":68,"label":"colher de servir","grams":60.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 131 do PDF: Abóbora"}
+{"food":68,"label":"concha","grams":105.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 131 do PDF: Abóbora"}
+{"food":68,"label":"escumadeira","grams":105.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 131 do PDF: Abóbora"}
+{"food":68,"label":"pedaço","grams":50.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 131 do PDF: Abóbora"}
+{"food":68,"label":"rodela","grams":30.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 131 do PDF: Abóbora"}
+{"food":70,"label":"unidade","grams":335.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 127 do PDF: Abobrinha"}
+{"food":70,"label":"fatia","grams":61.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 127 do PDF: Abobrinha"}
+{"food":70,"label":"colher de sopa","grams":30.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 127 do PDF: Abobrinha"}
+{"food":70,"label":"colher de servir","grams":70.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 127 do PDF: Abobrinha"}
+{"food":70,"label":"concha","grams":90.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 127 do PDF: Abobrinha"}
+{"food":70,"label":"escumadeira","grams":90.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 127 do PDF: Abobrinha"}
+{"food":70,"label":"pedaço","grams":17.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 127 do PDF: Abobrinha"}
+{"food":72,"label":"unidade","grams":335.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 129 do PDF: Abobrinha"}
+{"food":72,"label":"colher de sopa","grams":30.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 128 do PDF: Abobrinha"}
+{"food":72,"label":"colher de servir","grams":70.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 128 do PDF: Abobrinha"}
+{"food":72,"label":"concha","grams":90.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 128 do PDF: Abobrinha"}
+{"food":72,"label":"escumadeira","grams":90.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 128 do PDF: Abobrinha"}
+{"food":72,"label":"pedaço","grams":17.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 129 do PDF: Abobrinha"}
+{"food":72,"label":"colher de sobremesa","grams":15.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 128 do PDF: Abobrinha"}
+{"food":75,"label":"folha","grams":5.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 116 do PDF: Agrião"}
+{"food":75,"label":"colher de sopa","grams":7.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 116 do PDF: Agrião"}
+{"food":75,"label":"colher de servir","grams":50.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 116 do PDF: Agrião"}
+{"food":75,"label":"prato raso","grams":80.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 116 do PDF: Agrião"}
+{"food":75,"label":"prato fundo","grams":80.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 116 do PDF: Agrião"}
+{"food":75,"label":"porção","grams":37.5,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 116 do PDF: Agrião"}
+{"food":77,"label":"unidade","grams":200.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 105 do PDF: Alface"}
+{"food":77,"label":"folha","grams":10.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 104 do PDF: Alface"}
+{"food":77,"label":"colher de sopa","grams":8.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 104 do PDF: Alface"}
+{"food":77,"label":"colher de servir","grams":16.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 104 do PDF: Alface"}
+{"food":77,"label":"concha","grams":32.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 104 do PDF: Alface"}
+{"food":77,"label":"escumadeira","grams":16.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 104 do PDF: Alface"}
+{"food":77,"label":"prato raso","grams":50.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 104 do PDF: Alface"}
+{"food":78,"label":"unidade","grams":200.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 105 do PDF: Alface"}
+{"food":78,"label":"folha","grams":10.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 104 do PDF: Alface"}
+{"food":78,"label":"colher de sopa","grams":8.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 104 do PDF: Alface"}
+{"food":78,"label":"colher de servir","grams":16.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 104 do PDF: Alface"}
+{"food":78,"label":"concha","grams":32.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 104 do PDF: Alface"}
+{"food":78,"label":"escumadeira","grams":16.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 104 do PDF: Alface"}
+{"food":78,"label":"prato raso","grams":50.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 104 do PDF: Alface"}
+{"food":79,"label":"unidade","grams":200.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 105 do PDF: Alface"}
+{"food":79,"label":"folha","grams":10.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 104 do PDF: Alface"}
+{"food":79,"label":"colher de sopa","grams":8.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 104 do PDF: Alface"}
+{"food":79,"label":"colher de servir","grams":16.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 104 do PDF: Alface"}
+{"food":79,"label":"concha","grams":32.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 104 do PDF: Alface"}
+{"food":79,"label":"escumadeira","grams":16.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 104 do PDF: Alface"}
+{"food":79,"label":"prato raso","grams":50.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 104 do PDF: Alface"}
+{"food":80,"label":"unidade","grams":200.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 105 do PDF: Alface"}
+{"food":80,"label":"folha","grams":10.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 104 do PDF: Alface"}
+{"food":80,"label":"colher de sopa","grams":8.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 104 do PDF: Alface"}
+{"food":80,"label":"colher de servir","grams":16.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 104 do PDF: Alface"}
+{"food":80,"label":"concha","grams":32.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 104 do PDF: Alface"}
+{"food":80,"label":"escumadeira","grams":16.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 104 do PDF: Alface"}
+{"food":80,"label":"prato raso","grams":50.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 104 do PDF: Alface"}
+{"food":88,"label":"unidade","grams":355.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 51 do PDF: Batata-doce"}
+{"food":88,"label":"fatia","grams":70.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 51 do PDF: Batata-doce"}
+{"food":88,"label":"colher de sopa","grams":42.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 51 do PDF: Batata-doce"}
+{"food":88,"label":"colher de servir","grams":100.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 51 do PDF: Batata-doce"}
+{"food":88,"label":"concha","grams":100.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 51 do PDF: Batata-doce"}
+{"food":88,"label":"pedaço","grams":70.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 51 do PDF: Batata-doce"}
+{"food":88,"label":"rodela","grams":70.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 51 do PDF: Batata-doce"}
+{"food":91,"label":"unidade","grams":140.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 46 do PDF: Batata-inglesa"}
+{"food":91,"label":"fatia","grams":16.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 46 do PDF: Batata-inglesa"}
+{"food":91,"label":"colher de sopa","grams":30.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 46 do PDF: Batata-inglesa"}
+{"food":91,"label":"colher de servir","grams":60.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 45 do PDF: Batata-inglesa"}
+{"food":91,"label":"concha","grams":80.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 46 do PDF: Batata-inglesa"}
+{"food":91,"label":"escumadeira","grams":80.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 46 do PDF: Batata-inglesa"}
+{"food":91,"label":"pedaço","grams":16.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 46 do PDF: Batata-inglesa"}
+{"food":93,"label":"unidade","grams":140.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 47 do PDF: Batata-inglesa"}
+{"food":93,"label":"fatia","grams":16.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 47 do PDF: Batata-inglesa"}
+{"food":93,"label":"colher de sopa","grams":25.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 47 do PDF: Batata-inglesa"}
+{"food":93,"label":"colher de servir","grams":50.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 47 do PDF: Batata-inglesa"}
+{"food":93,"label":"concha","grams":65.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 47 do PDF: Batata-inglesa"}
+{"food":93,"label":"escumadeira","grams":65.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 47 do PDF: Batata-inglesa"}
+{"food":93,"label":"pedaço","grams":16.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 47 do PDF: Batata-inglesa"}
+{"food":95,"label":"fatia","grams":20.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 145 do PDF: Berinjela"}
+{"food":95,"label":"colher de sopa","grams":25.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 145 do PDF: Berinjela"}
+{"food":95,"label":"colher de servir","grams":75.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 145 do PDF: Berinjela"}
+{"food":95,"label":"escumadeira","grams":125.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 145 do PDF: Berinjela"}
+{"food":95,"label":"pedaço","grams":20.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 145 do PDF: Berinjela"}
+{"food":95,"label":"colher de sobremesa","grams":12.5,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 145 do PDF: Berinjela"}
+{"food":95,"label":"porção","grams":60.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 145 do PDF: Berinjela"}
+{"food":97,"label":"unidade","grams":125.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 67 do PDF: Beterraba"}
+{"food":97,"label":"fatia","grams":12.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 67 do PDF: Beterraba"}
+{"food":97,"label":"colher de sopa","grams":20.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 67 do PDF: Beterraba"}
+{"food":97,"label":"colher de servir","grams":38.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 66 do PDF: Beterraba"}
+{"food":97,"label":"concha","grams":76.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 67 do PDF: Beterraba"}
+{"food":97,"label":"escumadeira","grams":45.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 67 do PDF: Beterraba"}
+{"food":97,"label":"pedaço","grams":12.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 67 do PDF: Beterraba"}
+{"food":98,"label":"unidade","grams":140.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 66 do PDF: Beterraba"}
+{"food":98,"label":"fatia","grams":12.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 66 do PDF: Beterraba"}
+{"food":98,"label":"colher de sopa","grams":16.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 66 do PDF: Beterraba"}
+{"food":98,"label":"colher de servir","grams":38.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 66 do PDF: Beterraba"}
+{"food":98,"label":"concha","grams":76.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 66 do PDF: Beterraba"}
+{"food":98,"label":"pedaço","grams":12.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 66 do PDF: Beterraba"}
+{"food":98,"label":"colher de sobremesa","grams":8.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 66 do PDF: Beterraba"}
+{"food":100,"label":"unidade","grams":60.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 121 do PDF: Brócolis"}
+{"food":100,"label":"colher de sopa","grams":10.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 121 do PDF: Brócolis"}
+{"food":100,"label":"colher de servir","grams":20.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 121 do PDF: Brócolis"}
+{"food":100,"label":"concha","grams":40.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 121 do PDF: Brócolis"}
+{"food":100,"label":"escumadeira","grams":20.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 121 do PDF: Brócolis"}
+{"food":100,"label":"colher de sobremesa","grams":5.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 121 do PDF: Brócolis"}
+{"food":100,"label":"porção","grams":60.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 121 do PDF: Brócolis"}
+{"food":107,"label":"unidade","grams":70.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 148 do PDF: Cebola"}
+{"food":107,"label":"fatia","grams":6.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 148 do PDF: Cebola"}
+{"food":107,"label":"colher de sopa","grams":10.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 148 do PDF: Cebola"}
+{"food":107,"label":"colher de servir","grams":20.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 147 do PDF: Cebola"}
+{"food":107,"label":"pedaço","grams":17.5,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 148 do PDF: Cebola"}
+{"food":107,"label":"colher de sobremesa","grams":5.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 147 do PDF: Cebola"}
+{"food":107,"label":"colher de chá","grams":2.5,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 147 do PDF: Cebola"}
+{"food":109,"label":"unidade","grams":100.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 69 do PDF: Cenoura"}
+{"food":109,"label":"fatia","grams":5.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 69 do PDF: Cenoura"}
+{"food":109,"label":"colher de sopa","grams":25.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 69 do PDF: Cenoura"}
+{"food":109,"label":"colher de servir","grams":40.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 69 do PDF: Cenoura"}
+{"food":109,"label":"concha","grams":48.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 69 do PDF: Cenoura"}
+{"food":109,"label":"escumadeira","grams":48.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 69 do PDF: Cenoura"}
+{"food":109,"label":"pedaço","grams":5.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 69 do PDF: Cenoura"}
+{"food":110,"label":"unidade","grams":120.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 69 do PDF: Cenoura"}
+{"food":110,"label":"fatia","grams":5.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 68 do PDF: Cenoura"}
+{"food":110,"label":"colher de sopa","grams":12.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 68 do PDF: Cenoura"}
+{"food":110,"label":"colher de servir","grams":40.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 68 do PDF: Cenoura"}
+{"food":110,"label":"concha","grams":48.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 68 do PDF: Cenoura"}
+{"food":110,"label":"escumadeira","grams":48.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 68 do PDF: Cenoura"}
+{"food":110,"label":"pedaço","grams":5.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 68 do PDF: Cenoura"}
+{"food":112,"label":"unidade","grams":230.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 134 do PDF: Chuchu"}
+{"food":112,"label":"fatia","grams":30.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 133 do PDF: Chuchu"}
+{"food":112,"label":"colher de sopa","grams":20.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 133 do PDF: Chuchu"}
+{"food":112,"label":"colher de servir","grams":45.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 133 do PDF: Chuchu"}
+{"food":112,"label":"concha","grams":110.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 133 do PDF: Chuchu"}
+{"food":112,"label":"escumadeira","grams":110.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 133 do PDF: Chuchu"}
+{"food":112,"label":"pedaço","grams":30.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 133 do PDF: Chuchu"}
+{"food":115,"label":"folha","grams":20.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 106 do PDF: Couve"}
+{"food":115,"label":"colher de sopa","grams":20.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 106 do PDF: Couve"}
+{"food":115,"label":"colher de servir","grams":42.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 106 do PDF: Couve"}
+{"food":115,"label":"concha","grams":84.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 106 do PDF: Couve"}
+{"food":115,"label":"escumadeira","grams":42.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 106 do PDF: Couve"}
+{"food":115,"label":"prato raso","grams":120.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 107 do PDF: Couve"}
+{"food":115,"label":"colher de chá","grams":5.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 106 do PDF: Couve"}
+{"food":116,"label":"folha","grams":25.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 108 do PDF: Couve"}
+{"food":116,"label":"colher de sopa","grams":20.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 107 do PDF: Couve"}
+{"food":116,"label":"colher de servir","grams":42.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 107 do PDF: Couve"}
+{"food":116,"label":"concha","grams":84.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 108 do PDF: Couve"}
+{"food":116,"label":"escumadeira","grams":42.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 108 do PDF: Couve"}
+{"food":116,"label":"prato fundo","grams":120.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 108 do PDF: Couve"}
+{"food":116,"label":"colher de sobremesa","grams":10.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 107 do PDF: Couve"}
+{"food":118,"label":"unidade","grams":60.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 110 do PDF: Couve-flor"}
+{"food":118,"label":"colher de sopa","grams":25.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 110 do PDF: Couve-flor"}
+{"food":118,"label":"colher de servir","grams":50.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 110 do PDF: Couve-flor"}
+{"food":118,"label":"concha","grams":100.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 110 do PDF: Couve-flor"}
+{"food":118,"label":"escumadeira","grams":50.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 110 do PDF: Couve-flor"}
+{"food":118,"label":"pedaço","grams":60.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 110 do PDF: Couve-flor"}
+{"food":118,"label":"colher de sobremesa","grams":12.5,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 110 do PDF: Couve-flor"}
+{"food":121,"label":"colher de sopa","grams":16.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 80 do PDF: Farinha de mandioca"}
+{"food":121,"label":"colher de servir","grams":33.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 80 do PDF: Farinha de mandioca"}
+{"food":121,"label":"xícara de chá","grams":148.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 81 do PDF: Farinha de mandioca"}
+{"food":121,"label":"colher de sobremesa","grams":10.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 80 do PDF: Farinha de mandioca"}
+{"food":121,"label":"colher de chá","grams":5.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 80 do PDF: Farinha de mandioca"}
+{"food":121,"label":"colher de café","grams":3.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 80 do PDF: Farinha de mandioca"}
+{"food":122,"label":"colher de sopa","grams":16.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 80 do PDF: Farinha de mandioca"}
+{"food":122,"label":"colher de servir","grams":33.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 80 do PDF: Farinha de mandioca"}
+{"food":122,"label":"xícara de chá","grams":148.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 81 do PDF: Farinha de mandioca"}
+{"food":122,"label":"colher de sobremesa","grams":10.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 80 do PDF: Farinha de mandioca"}
+{"food":122,"label":"colher de chá","grams":5.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 80 do PDF: Farinha de mandioca"}
+{"food":122,"label":"colher de café","grams":3.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 80 do PDF: Farinha de mandioca"}
+{"food":129,"label":"fatia","grams":100.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 54 do PDF: Mandioca"}
+{"food":129,"label":"colher de sopa","grams":30.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 54 do PDF: Mandioca"}
+{"food":129,"label":"colher de servir","grams":60.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 54 do PDF: Mandioca"}
+{"food":129,"label":"concha","grams":120.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 54 do PDF: Mandioca"}
+{"food":129,"label":"escumadeira","grams":60.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 54 do PDF: Mandioca"}
+{"food":129,"label":"pedaço","grams":100.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 55 do PDF: Mandioca"}
+{"food":129,"label":"porção","grams":128.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 55 do PDF: Mandioca"}
+{"food":131,"label":"colher de sopa","grams":15.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 511 do PDF: Farofa"}
+{"food":131,"label":"colher de servir","grams":45.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 510 do PDF: Farofa"}
+{"food":131,"label":"concha","grams":58.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 511 do PDF: Farofa"}
+{"food":131,"label":"escumadeira","grams":58.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 511 do PDF: Farofa"}
+{"food":132,"label":"fatia","grams":70.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 55 do PDF: Mandioca"}
+{"food":132,"label":"colher de sopa","grams":35.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 55 do PDF: Mandioca"}
+{"food":132,"label":"colher de servir","grams":60.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 55 do PDF: Mandioca"}
+{"food":132,"label":"concha","grams":95.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 55 do PDF: Mandioca"}
+{"food":132,"label":"pedaço","grams":80.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 55 do PDF: Mandioca"}
+{"food":132,"label":"porção","grams":80.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 55 do PDF: Mandioca"}
+{"food":140,"label":"unidade","grams":20.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 394 do PDF: Pão de queijo"}
+{"food":142,"label":"unidade","grams":100.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 133 do PDF: Pepino"}
+{"food":142,"label":"fatia","grams":3.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 132 do PDF: Pepino"}
+{"food":142,"label":"colher de sopa","grams":18.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 132 do PDF: Pepino"}
+{"food":142,"label":"colher de servir","grams":36.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 132 do PDF: Pepino"}
+{"food":142,"label":"escumadeira","grams":36.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 132 do PDF: Pepino"}
+{"food":142,"label":"pedaço","grams":3.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 132 do PDF: Pepino"}
+{"food":142,"label":"colher de sobremesa","grams":9.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 132 do PDF: Pepino"}
+{"food":149,"label":"folha","grams":26.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 113 do PDF: Repolho"}
+{"food":149,"label":"colher de sopa","grams":10.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 113 do PDF: Repolho"}
+{"food":149,"label":"colher de servir","grams":25.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 113 do PDF: Repolho"}
+{"food":149,"label":"concha","grams":50.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 113 do PDF: Repolho"}
+{"food":149,"label":"escumadeira","grams":25.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 113 do PDF: Repolho"}
+{"food":149,"label":"prato raso","grams":150.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 113 do PDF: Repolho"}
+{"food":149,"label":"colher de sobremesa","grams":5.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 113 do PDF: Repolho"}
+{"food":151,"label":"colher de sopa","grams":20.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 114 do PDF: Repolho"}
+{"food":151,"label":"colher de servir","grams":45.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 114 do PDF: Repolho"}
+{"food":151,"label":"concha","grams":50.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 114 do PDF: Repolho"}
+{"food":151,"label":"escumadeira","grams":45.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 114 do PDF: Repolho"}
+{"food":151,"label":"prato raso","grams":150.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 115 do PDF: Repolho"}
+{"food":151,"label":"colher de sobremesa","grams":5.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 114 do PDF: Repolho"}
+{"food":151,"label":"colher de chá","grams":2.5,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 114 do PDF: Repolho"}
+{"food":152,"label":"folha","grams":6.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 124 do PDF: Rúcula"}
+{"food":152,"label":"colher de sopa","grams":8.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 124 do PDF: Rúcula"}
+{"food":152,"label":"colher de servir","grams":16.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 124 do PDF: Rúcula"}
+{"food":152,"label":"escumadeira","grams":16.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 124 do PDF: Rúcula"}
+{"food":152,"label":"prato raso","grams":80.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 124 do PDF: Rúcula"}
+{"food":152,"label":"prato fundo","grams":60.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 124 do PDF: Rúcula"}
+{"food":152,"label":"porção","grams":27.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 124 do PDF: Rúcula"}
+{"food":157,"label":"unidade","grams":100.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 143 do PDF: Tomate"}
+{"food":157,"label":"fatia","grams":15.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 143 do PDF: Tomate"}
+{"food":157,"label":"colher de sopa","grams":30.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 143 do PDF: Tomate"}
+{"food":157,"label":"colher de servir","grams":60.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 143 do PDF: Tomate"}
+{"food":157,"label":"concha","grams":120.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 143 do PDF: Tomate"}
+{"food":157,"label":"escumadeira","grams":60.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 143 do PDF: Tomate"}
+{"food":157,"label":"pedaço","grams":15.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 143 do PDF: Tomate"}
+{"food":159,"label":"colher de sopa","grams":20.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 216 do PDF: Molho de tomate"}
+{"food":159,"label":"colher de servir","grams":45.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 216 do PDF: Molho de tomate"}
+{"food":159,"label":"concha","grams":80.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 217 do PDF: Molho de tomate"}
+{"food":159,"label":"colher de sobremesa","grams":17.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 216 do PDF: Molho de tomate"}
+{"food":159,"label":"colher de chá","grams":8.5,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 216 do PDF: Molho de tomate"}
+{"food":161,"label":"unidade","grams":100.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 143 do PDF: Tomate"}
+{"food":161,"label":"fatia","grams":15.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 143 do PDF: Tomate"}
+{"food":161,"label":"colher de sopa","grams":30.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 143 do PDF: Tomate"}
+{"food":161,"label":"colher de servir","grams":60.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 143 do PDF: Tomate"}
+{"food":161,"label":"concha","grams":120.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 143 do PDF: Tomate"}
+{"food":161,"label":"escumadeira","grams":60.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 143 do PDF: Tomate"}
+{"food":161,"label":"pedaço","grams":15.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 143 do PDF: Tomate"}
+{"food":163,"label":"unidade","grams":430.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 159 do PDF: Abacate"}
+{"food":163,"label":"fatia","grams":90.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 159 do PDF: Abacate"}
+{"food":163,"label":"colher de sopa","grams":45.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 159 do PDF: Abacate"}
+{"food":163,"label":"pedaço","grams":22.5,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 159 do PDF: Abacate"}
+{"food":163,"label":"porção","grams":45.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 159 do PDF: Abacate"}
+{"food":164,"label":"unidade","grams":750.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 159 do PDF: Abacaxi"}
+{"food":164,"label":"fatia","grams":75.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 158 do PDF: Abacaxi"}
+{"food":164,"label":"pedaço","grams":11.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 158 do PDF: Abacaxi"}
+{"food":164,"label":"rodela","grams":75.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 159 do PDF: Abacaxi"}
+{"food":164,"label":"porção","grams":130.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 159 do PDF: Abacaxi"}
+{"food":172,"label":"unidade","grams":42.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 166 do PDF: Ameixa"}
+{"food":172,"label":"porção","grams":30.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 166 do PDF: Ameixa"}
+{"food":175,"label":"unidade","grams":75.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 153 do PDF: Banana (ouro, prata, d´água, da terra, etc.)"}
+{"food":175,"label":"fatia","grams":26.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 152 do PDF: Banana (ouro, prata, d´água, da terra, etc.)"}
+{"food":175,"label":"pedaço","grams":16.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 152 do PDF: Banana (ouro, prata, d´água, da terra, etc.)"}
+{"food":175,"label":"porção","grams":86.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 153 do PDF: Banana (ouro, prata, d´água, da terra, etc.)"}
+{"food":178,"label":"unidade","grams":75.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 153 do PDF: Banana (ouro, prata, d´água, da terra, etc.)"}
+{"food":178,"label":"fatia","grams":26.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 152 do PDF: Banana (ouro, prata, d´água, da terra, etc.)"}
+{"food":178,"label":"pedaço","grams":16.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 152 do PDF: Banana (ouro, prata, d´água, da terra, etc.)"}
+{"food":178,"label":"porção","grams":86.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 153 do PDF: Banana (ouro, prata, d´água, da terra, etc.)"}
+{"food":179,"label":"unidade","grams":75.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 153 do PDF: Banana (ouro, prata, d´água, da terra, etc.)"}
+{"food":179,"label":"fatia","grams":26.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 152 do PDF: Banana (ouro, prata, d´água, da terra, etc.)"}
+{"food":179,"label":"pedaço","grams":16.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 152 do PDF: Banana (ouro, prata, d´água, da terra, etc.)"}
+{"food":179,"label":"porção","grams":86.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 153 do PDF: Banana (ouro, prata, d´água, da terra, etc.)"}
+{"food":180,"label":"unidade","grams":75.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 153 do PDF: Banana (ouro, prata, d´água, da terra, etc.)"}
+{"food":180,"label":"fatia","grams":26.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 152 do PDF: Banana (ouro, prata, d´água, da terra, etc.)"}
+{"food":180,"label":"pedaço","grams":16.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 152 do PDF: Banana (ouro, prata, d´água, da terra, etc.)"}
+{"food":180,"label":"porção","grams":86.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 153 do PDF: Banana (ouro, prata, d´água, da terra, etc.)"}
+{"food":182,"label":"unidade","grams":75.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 153 do PDF: Banana (ouro, prata, d´água, da terra, etc.)"}
+{"food":182,"label":"fatia","grams":26.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 152 do PDF: Banana (ouro, prata, d´água, da terra, etc.)"}
+{"food":182,"label":"pedaço","grams":16.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 152 do PDF: Banana (ouro, prata, d´água, da terra, etc.)"}
+{"food":182,"label":"porção","grams":86.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 153 do PDF: Banana (ouro, prata, d´água, da terra, etc.)"}
+{"food":189,"label":"unidade","grams":110.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 160 do PDF: Caqui"}
+{"food":189,"label":"fatia","grams":27.5,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 159 do PDF: Caqui"}
+{"food":189,"label":"pedaço","grams":27.5,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 160 do PDF: Caqui"}
+{"food":197,"label":"unidade","grams":170.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 165 do PDF: Goiaba"}
+{"food":197,"label":"pedaço","grams":42.5,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 165 do PDF: Goiaba"}
+{"food":200,"label":"unidade","grams":170.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 165 do PDF: Goiaba"}
+{"food":200,"label":"pedaço","grams":42.5,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 165 do PDF: Goiaba"}
+{"food":207,"label":"unidade","grams":94.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 174 do PDF: Kiwi"}
+{"food":207,"label":"pedaço","grams":23.5,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 174 do PDF: Kiwi"}
+{"food":207,"label":"rodela","grams":11.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 174 do PDF: Kiwi"}
+{"food":208,"label":"unidade","grams":180.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 156 do PDF: Laranja (pera, seleta, lima, da terra, etc.)"}
+{"food":208,"label":"fatia","grams":18.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 156 do PDF: Laranja (pera, seleta, lima, da terra, etc.)"}
+{"food":208,"label":"pedaço","grams":18.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 156 do PDF: Laranja (pera, seleta, lima, da terra, etc.)"}
+{"food":208,"label":"rodela","grams":18.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 156 do PDF: Laranja (pera, seleta, lima, da terra, etc.)"}
+{"food":208,"label":"gomo","grams":18.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 156 do PDF: Laranja (pera, seleta, lima, da terra, etc.)"}
+{"food":208,"label":"porção","grams":144.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 156 do PDF: Laranja (pera, seleta, lima, da terra, etc.)"}
+{"food":209,"label":"xícara de chá","grams":200.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 489 do PDF: Suco de laranja"}
+{"food":209,"label":"copo americano","grams":150.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 488 do PDF: Suco de laranja"}
+{"food":209,"label":"copo médio","grams":240.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 488 do PDF: Suco de laranja"}
+{"food":209,"label":"copo de requeijão","grams":240.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 488 do PDF: Suco de laranja"}
+{"food":209,"label":"copo grande","grams":300.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 488 do PDF: Suco de laranja"}
+{"food":209,"label":"lata (350 ml)","grams":350.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 488 do PDF: Suco de laranja"}
+{"food":209,"label":"garrafa (600 ml)","grams":600.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 488 do PDF: Suco de laranja"}
+{"food":210,"label":"unidade","grams":180.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 156 do PDF: Laranja (pera, seleta, lima, da terra, etc.)"}
+{"food":210,"label":"fatia","grams":18.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 156 do PDF: Laranja (pera, seleta, lima, da terra, etc.)"}
+{"food":210,"label":"pedaço","grams":18.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 156 do PDF: Laranja (pera, seleta, lima, da terra, etc.)"}
+{"food":210,"label":"rodela","grams":18.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 156 do PDF: Laranja (pera, seleta, lima, da terra, etc.)"}
+{"food":210,"label":"gomo","grams":18.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 156 do PDF: Laranja (pera, seleta, lima, da terra, etc.)"}
+{"food":210,"label":"porção","grams":144.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 156 do PDF: Laranja (pera, seleta, lima, da terra, etc.)"}
+{"food":211,"label":"xícara de chá","grams":200.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 489 do PDF: Suco de laranja"}
+{"food":211,"label":"copo americano","grams":150.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 488 do PDF: Suco de laranja"}
+{"food":211,"label":"copo médio","grams":240.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 488 do PDF: Suco de laranja"}
+{"food":211,"label":"copo de requeijão","grams":240.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 488 do PDF: Suco de laranja"}
+{"food":211,"label":"copo grande","grams":300.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 488 do PDF: Suco de laranja"}
+{"food":211,"label":"lata (350 ml)","grams":350.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 488 do PDF: Suco de laranja"}
+{"food":211,"label":"garrafa (600 ml)","grams":600.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 488 do PDF: Suco de laranja"}
+{"food":212,"label":"unidade","grams":180.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 156 do PDF: Laranja (pera, seleta, lima, da terra, etc.)"}
+{"food":212,"label":"fatia","grams":18.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 156 do PDF: Laranja (pera, seleta, lima, da terra, etc.)"}
+{"food":212,"label":"pedaço","grams":18.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 156 do PDF: Laranja (pera, seleta, lima, da terra, etc.)"}
+{"food":212,"label":"rodela","grams":18.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 156 do PDF: Laranja (pera, seleta, lima, da terra, etc.)"}
+{"food":212,"label":"gomo","grams":18.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 156 do PDF: Laranja (pera, seleta, lima, da terra, etc.)"}
+{"food":212,"label":"porção","grams":144.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 156 do PDF: Laranja (pera, seleta, lima, da terra, etc.)"}
+{"food":213,"label":"xícara de chá","grams":200.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 489 do PDF: Suco de laranja"}
+{"food":213,"label":"copo americano","grams":150.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 488 do PDF: Suco de laranja"}
+{"food":213,"label":"copo médio","grams":240.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 488 do PDF: Suco de laranja"}
+{"food":213,"label":"copo de requeijão","grams":240.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 488 do PDF: Suco de laranja"}
+{"food":213,"label":"copo grande","grams":300.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 488 do PDF: Suco de laranja"}
+{"food":213,"label":"lata (350 ml)","grams":350.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 488 do PDF: Suco de laranja"}
+{"food":213,"label":"garrafa (600 ml)","grams":600.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 488 do PDF: Suco de laranja"}
+{"food":214,"label":"unidade","grams":180.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 156 do PDF: Laranja (pera, seleta, lima, da terra, etc.)"}
+{"food":214,"label":"fatia","grams":18.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 156 do PDF: Laranja (pera, seleta, lima, da terra, etc.)"}
+{"food":214,"label":"pedaço","grams":18.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 156 do PDF: Laranja (pera, seleta, lima, da terra, etc.)"}
+{"food":214,"label":"rodela","grams":18.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 156 do PDF: Laranja (pera, seleta, lima, da terra, etc.)"}
+{"food":214,"label":"gomo","grams":18.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 156 do PDF: Laranja (pera, seleta, lima, da terra, etc.)"}
+{"food":214,"label":"porção","grams":144.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 156 do PDF: Laranja (pera, seleta, lima, da terra, etc.)"}
+{"food":215,"label":"xícara de chá","grams":200.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 489 do PDF: Suco de laranja"}
+{"food":215,"label":"copo americano","grams":150.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 488 do PDF: Suco de laranja"}
+{"food":215,"label":"copo médio","grams":240.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 488 do PDF: Suco de laranja"}
+{"food":215,"label":"copo de requeijão","grams":240.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 488 do PDF: Suco de laranja"}
+{"food":215,"label":"copo grande","grams":300.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 488 do PDF: Suco de laranja"}
+{"food":215,"label":"lata (350 ml)","grams":350.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 488 do PDF: Suco de laranja"}
+{"food":215,"label":"garrafa (600 ml)","grams":600.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 488 do PDF: Suco de laranja"}
+{"food":216,"label":"unidade","grams":180.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 156 do PDF: Laranja (pera, seleta, lima, da terra, etc.)"}
+{"food":216,"label":"fatia","grams":18.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 156 do PDF: Laranja (pera, seleta, lima, da terra, etc.)"}
+{"food":216,"label":"pedaço","grams":18.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 156 do PDF: Laranja (pera, seleta, lima, da terra, etc.)"}
+{"food":216,"label":"rodela","grams":18.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 156 do PDF: Laranja (pera, seleta, lima, da terra, etc.)"}
+{"food":216,"label":"gomo","grams":18.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 156 do PDF: Laranja (pera, seleta, lima, da terra, etc.)"}
+{"food":216,"label":"porção","grams":144.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 156 do PDF: Laranja (pera, seleta, lima, da terra, etc.)"}
+{"food":217,"label":"xícara de chá","grams":200.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 489 do PDF: Suco de laranja"}
+{"food":217,"label":"copo americano","grams":150.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 488 do PDF: Suco de laranja"}
+{"food":217,"label":"copo médio","grams":240.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 488 do PDF: Suco de laranja"}
+{"food":217,"label":"copo de requeijão","grams":240.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 488 do PDF: Suco de laranja"}
+{"food":217,"label":"copo grande","grams":300.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 488 do PDF: Suco de laranja"}
+{"food":217,"label":"lata (350 ml)","grams":350.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 488 do PDF: Suco de laranja"}
+{"food":217,"label":"garrafa (600 ml)","grams":600.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 488 do PDF: Suco de laranja"}
+{"food":220,"label":"unidade","grams":84.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 157 do PDF: Limão (comum, galego, etc.)"}
+{"food":220,"label":"fatia","grams":16.8,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 156 do PDF: Limão (comum, galego, etc.)"}
+{"food":220,"label":"pedaço","grams":16.8,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 157 do PDF: Limão (comum, galego, etc.)"}
+{"food":220,"label":"rodela","grams":16.8,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 157 do PDF: Limão (comum, galego, etc.)"}
+{"food":220,"label":"porção","grams":252.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 157 do PDF: Limão (comum, galego, etc.)"}
+{"food":221,"label":"unidade","grams":150.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 160 do PDF: Maçã"}
+{"food":221,"label":"fatia","grams":37.5,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 160 do PDF: Maçã"}
+{"food":221,"label":"pedaço","grams":37.5,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 160 do PDF: Maçã"}
+{"food":221,"label":"porção","grams":130.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 160 do PDF: Maçã"}
+{"food":222,"label":"unidade","grams":150.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 160 do PDF: Maçã"}
+{"food":222,"label":"fatia","grams":37.5,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 160 do PDF: Maçã"}
+{"food":222,"label":"pedaço","grams":37.5,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 160 do PDF: Maçã"}
+{"food":222,"label":"porção","grams":130.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 160 do PDF: Maçã"}
+{"food":225,"label":"unidade","grams":310.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 161 do PDF: Mamão"}
+{"food":225,"label":"fatia","grams":170.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 160 do PDF: Mamão"}
+{"food":225,"label":"colher de sopa","grams":40.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 160 do PDF: Mamão"}
+{"food":225,"label":"pedaço","grams":120.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 161 do PDF: Mamão"}
+{"food":225,"label":"rodela","grams":170.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 161 do PDF: Mamão"}
+{"food":225,"label":"porção","grams":160.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 161 do PDF: Mamão"}
+{"food":226,"label":"unidade","grams":310.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 161 do PDF: Mamão"}
+{"food":226,"label":"fatia","grams":170.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 160 do PDF: Mamão"}
+{"food":226,"label":"colher de sopa","grams":40.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 160 do PDF: Mamão"}
+{"food":226,"label":"pedaço","grams":120.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 161 do PDF: Mamão"}
+{"food":226,"label":"rodela","grams":170.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 161 do PDF: Mamão"}
+{"food":226,"label":"porção","grams":160.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 161 do PDF: Mamão"}
+{"food":228,"label":"unidade","grams":140.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 162 do PDF: Manga"}
+{"food":228,"label":"fatia","grams":22.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 161 do PDF: Manga"}
+{"food":228,"label":"pedaço","grams":22.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 161 do PDF: Manga"}
+{"food":228,"label":"porção","grams":110.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 162 do PDF: Manga"}
+{"food":229,"label":"unidade","grams":140.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 162 do PDF: Manga"}
+{"food":229,"label":"fatia","grams":22.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 161 do PDF: Manga"}
+{"food":229,"label":"pedaço","grams":22.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 161 do PDF: Manga"}
+{"food":229,"label":"porção","grams":110.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 162 do PDF: Manga"}
+{"food":231,"label":"unidade","grams":140.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 162 do PDF: Manga"}
+{"food":231,"label":"fatia","grams":22.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 161 do PDF: Manga"}
+{"food":231,"label":"pedaço","grams":22.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 161 do PDF: Manga"}
+{"food":231,"label":"porção","grams":110.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 162 do PDF: Manga"}
+{"food":232,"label":"unidade","grams":45.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 162 do PDF: Maracujá"}
+{"food":235,"label":"fatia","grams":200.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 162 do PDF: Melancia"}
+{"food":235,"label":"pedaço","grams":150.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 162 do PDF: Melancia"}
+{"food":235,"label":"porção","grams":296.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 162 do PDF: Melancia"}
+{"food":236,"label":"unidade","grams":660.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 163 do PDF: Melão"}
+{"food":236,"label":"fatia","grams":90.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 162 do PDF: Melão"}
+{"food":236,"label":"pedaço","grams":22.5,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 163 do PDF: Melão"}
+{"food":236,"label":"porção","grams":230.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 163 do PDF: Melão"}
+{"food":237,"label":"unidade","grams":135.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 157 do PDF: Mexerica"}
+{"food":237,"label":"gomo","grams":16.9,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 157 do PDF: Mexerica"}
+{"food":238,"label":"unidade","grams":135.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 157 do PDF: Mexerica"}
+{"food":238,"label":"gomo","grams":16.9,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 157 do PDF: Mexerica"}
+{"food":239,"label":"unidade","grams":12.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 169 do PDF: Morango"}
+{"food":239,"label":"porção","grams":120.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 169 do PDF: Morango"}
+{"food":242,"label":"unidade","grams":130.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 163 do PDF: Pera"}
+{"food":242,"label":"fatia","grams":32.5,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 163 do PDF: Pera"}
+{"food":242,"label":"pedaço","grams":32.5,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 163 do PDF: Pera"}
+{"food":243,"label":"unidade","grams":130.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 163 do PDF: Pera"}
+{"food":243,"label":"fatia","grams":32.5,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 163 do PDF: Pera"}
+{"food":243,"label":"pedaço","grams":32.5,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 163 do PDF: Pera"}
+{"food":244,"label":"unidade","grams":60.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 163 do PDF: Pêssego"}
+{"food":244,"label":"pedaço","grams":15.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 163 do PDF: Pêssego"}
+{"food":244,"label":"porção","grams":226.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 163 do PDF: Pêssego"}
+{"food":251,"label":"unidade","grams":135.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 157 do PDF: Tangerina"}
+{"food":251,"label":"gomo","grams":16.9,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 157 do PDF: Tangerina"}
+{"food":256,"label":"unidade","grams":8.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 164 do PDF: Uva"}
+{"food":256,"label":"gomo","grams":8.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 164 do PDF: Uva"}
+{"food":256,"label":"cacho","grams":170.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 164 do PDF: Uva"}
+{"food":256,"label":"porção","grams":99.2,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 164 do PDF: Uva"}
+{"food":257,"label":"unidade","grams":8.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 164 do PDF: Uva"}
+{"food":257,"label":"gomo","grams":8.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 164 do PDF: Uva"}
+{"food":257,"label":"cacho","grams":170.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 164 do PDF: Uva"}
+{"food":257,"label":"porção","grams":99.2,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 164 do PDF: Uva"}
+{"food":260,"label":"colher de sopa","grams":8.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 473 do PDF: Azeite de oliva"}
+{"food":260,"label":"colher de sobremesa","grams":5.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 473 do PDF: Azeite de oliva"}
+{"food":260,"label":"colher de chá","grams":2.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 473 do PDF: Azeite de oliva"}
+{"food":260,"label":"colher de café","grams":1.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 473 do PDF: Azeite de oliva"}
+{"food":261,"label":"colher de sopa","grams":32.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 375 do PDF: Manteiga com ou sem sal"}
+{"food":261,"label":"colher de sobremesa","grams":23.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 375 do PDF: Manteiga com ou sem sal"}
+{"food":261,"label":"colher de chá","grams":8.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 375 do PDF: Manteiga com ou sem sal"}
+{"food":261,"label":"colher de café","grams":4.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 375 do PDF: Manteiga com ou sem sal"}
+{"food":261,"label":"ponta de faca","grams":5.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 376 do PDF: Manteiga com ou sem sal"}
+{"food":262,"label":"colher de sopa","grams":32.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 375 do PDF: Manteiga com ou sem sal"}
+{"food":262,"label":"colher de sobremesa","grams":23.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 375 do PDF: Manteiga com ou sem sal"}
+{"food":262,"label":"colher de chá","grams":8.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 375 do PDF: Manteiga com ou sem sal"}
+{"food":262,"label":"colher de café","grams":4.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 375 do PDF: Manteiga com ou sem sal"}
+{"food":262,"label":"ponta de faca","grams":5.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 376 do PDF: Manteiga com ou sem sal"}
+{"food":263,"label":"colher de sopa","grams":32.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 376 do PDF: Margarina com ou sem sal"}
+{"food":263,"label":"colher de sobremesa","grams":23.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 376 do PDF: Margarina com ou sem sal"}
+{"food":263,"label":"colher de chá","grams":8.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 376 do PDF: Margarina com ou sem sal"}
+{"food":263,"label":"colher de café","grams":4.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 376 do PDF: Margarina com ou sem sal"}
+{"food":263,"label":"ponta de faca","grams":5.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 377 do PDF: Margarina com ou sem sal"}
+{"food":264,"label":"colher de sopa","grams":32.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 376 do PDF: Margarina com ou sem sal"}
+{"food":264,"label":"colher de sobremesa","grams":23.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 376 do PDF: Margarina com ou sem sal"}
+{"food":264,"label":"colher de chá","grams":8.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 376 do PDF: Margarina com ou sem sal"}
+{"food":264,"label":"colher de café","grams":4.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 376 do PDF: Margarina com ou sem sal"}
+{"food":264,"label":"ponta de faca","grams":5.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 377 do PDF: Margarina com ou sem sal"}
+{"food":265,"label":"colher de sopa","grams":32.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 376 do PDF: Margarina com ou sem sal"}
+{"food":265,"label":"colher de sobremesa","grams":23.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 376 do PDF: Margarina com ou sem sal"}
+{"food":265,"label":"colher de chá","grams":8.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 376 do PDF: Margarina com ou sem sal"}
+{"food":265,"label":"colher de café","grams":4.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 376 do PDF: Margarina com ou sem sal"}
+{"food":265,"label":"ponta de faca","grams":5.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 377 do PDF: Margarina com ou sem sal"}
+{"food":266,"label":"colher de sopa","grams":32.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 376 do PDF: Margarina com ou sem sal"}
+{"food":266,"label":"colher de sobremesa","grams":23.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 376 do PDF: Margarina com ou sem sal"}
+{"food":266,"label":"colher de chá","grams":8.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 376 do PDF: Margarina com ou sem sal"}
+{"food":266,"label":"colher de café","grams":4.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 376 do PDF: Margarina com ou sem sal"}
+{"food":266,"label":"ponta de faca","grams":5.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 377 do PDF: Margarina com ou sem sal"}
+{"food":272,"label":"colher de sopa","grams":8.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 474 do PDF: Óleo de soja"}
+{"food":272,"label":"colher de chá","grams":2.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 474 do PDF: Óleo de soja"}
+{"food":272,"label":"colher de café","grams":1.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 474 do PDF: Óleo de soja"}
+{"food":277,"label":"colher de sopa","grams":16.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 320 do PDF: Atum em conserva"}
+{"food":277,"label":"colher de sobremesa","grams":10.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 320 do PDF: Atum em conserva"}
+{"food":277,"label":"porção","grams":112.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 320 do PDF: Atum em conserva"}
+{"food":301,"label":"filé","grams":120.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 292 do PDF: Peixe de mar (inteiro, em posta, em filé, etc.)"}
+{"food":301,"label":"posta","grams":200.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 292 do PDF: Peixe de mar (inteiro, em posta, em filé, etc.)"}
+{"food":301,"label":"porção","grams":75.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 292 do PDF: Peixe de mar (inteiro, em posta, em filé, etc.)"}
+{"food":303,"label":"filé","grams":120.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 292 do PDF: Peixe de mar (inteiro, em posta, em filé, etc.)"}
+{"food":303,"label":"posta","grams":200.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 292 do PDF: Peixe de mar (inteiro, em posta, em filé, etc.)"}
+{"food":303,"label":"porção","grams":75.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 292 do PDF: Peixe de mar (inteiro, em posta, em filé, etc.)"}
+{"food":305,"label":"filé","grams":120.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 292 do PDF: Peixe de mar (inteiro, em posta, em filé, etc.)"}
+{"food":305,"label":"posta","grams":200.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 292 do PDF: Peixe de mar (inteiro, em posta, em filé, etc.)"}
+{"food":305,"label":"porção","grams":75.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 292 do PDF: Peixe de mar (inteiro, em posta, em filé, etc.)"}
+{"food":308,"label":"filé","grams":120.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 292 do PDF: Peixe de mar (inteiro, em posta, em filé, etc.)"}
+{"food":308,"label":"posta","grams":200.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 292 do PDF: Peixe de mar (inteiro, em posta, em filé, etc.)"}
+{"food":308,"label":"porção","grams":75.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 292 do PDF: Peixe de mar (inteiro, em posta, em filé, etc.)"}
+{"food":313,"label":"filé","grams":120.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 303 do PDF: Peixe de água doce (inteiro, em posta, em filé, etc.)"}
+{"food":313,"label":"posta","grams":200.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 303 do PDF: Peixe de água doce (inteiro, em posta, em filé, etc.)"}
+{"food":313,"label":"porção","grams":75.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 303 do PDF: Peixe de água doce (inteiro, em posta, em filé, etc.)"}
+{"food":315,"label":"filé","grams":120.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 291 do PDF: Peixe de mar (inteiro, em posta, em filé, etc.)"}
+{"food":315,"label":"posta","grams":200.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 291 do PDF: Peixe de mar (inteiro, em posta, em filé, etc.)"}
+{"food":315,"label":"porção","grams":75.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 291 do PDF: Peixe de mar (inteiro, em posta, em filé, etc.)"}
+{"food":317,"label":"filé","grams":120.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 291 do PDF: Peixe de mar (inteiro, em posta, em filé, etc.)"}
+{"food":317,"label":"posta","grams":200.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 291 do PDF: Peixe de mar (inteiro, em posta, em filé, etc.)"}
+{"food":317,"label":"porção","grams":75.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 291 do PDF: Peixe de mar (inteiro, em posta, em filé, etc.)"}
+{"food":319,"label":"unidade","grams":41.5,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 319 do PDF: Sardinha em conserva"}
+{"food":319,"label":"colher de sopa","grams":16.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 319 do PDF: Sardinha em conserva"}
+{"food":323,"label":"fatia","grams":15.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 430 do PDF: Apresuntado"}
+{"food":326,"label":"colher de sopa","grams":25.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 259 do PDF: Carne moída"}
+{"food":326,"label":"colher de servir","grams":60.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 259 do PDF: Carne moída"}
+{"food":326,"label":"concha","grams":120.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 259 do PDF: Carne moída"}
+{"food":326,"label":"escumadeira","grams":60.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 259 do PDF: Carne moída"}
+{"food":326,"label":"porção","grams":63.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 260 do PDF: Carne moída"}
+{"food":328,"label":"colher de servir","grams":70.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 233 do PDF: Acém"}
+{"food":328,"label":"bife","grams":100.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 233 do PDF: Acém"}
+{"food":328,"label":"pedaço","grams":35.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 233 do PDF: Acém"}
+{"food":328,"label":"porção","grams":75.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 233 do PDF: Acém"}
+{"food":340,"label":"bife","grams":80.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 223 do PDF: Contrafilé"}
+{"food":344,"label":"bife","grams":100.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 222 do PDF: Contrafilé"}
+{"food":344,"label":"pedaço","grams":35.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 222 do PDF: Contrafilé"}
+{"food":346,"label":"bife","grams":100.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 222 do PDF: Contrafilé"}
+{"food":346,"label":"pedaço","grams":35.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 222 do PDF: Contrafilé"}
+{"food":347,"label":"pedaço","grams":40.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 239 do PDF: Costela bovina"}
+{"food":356,"label":"bife","grams":100.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 245 do PDF: Fígado bovino"}
+{"food":356,"label":"pedaço","grams":35.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 246 do PDF: Fígado bovino"}
+{"food":358,"label":"fatia","grams":35.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 220 do PDF: Filé mignon"}
+{"food":358,"label":"filé","grams":100.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 220 do PDF: Filé mignon"}
+{"food":358,"label":"bife","grams":100.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 220 do PDF: Filé mignon"}
+{"food":358,"label":"pedaço","grams":35.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 220 do PDF: Filé mignon"}
+{"food":370,"label":"fatia","grams":35.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 225 do PDF: Alcatra"}
+{"food":370,"label":"bife","grams":100.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 225 do PDF: Alcatra"}
+{"food":370,"label":"pedaço","grams":35.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 225 do PDF: Alcatra"}
+{"food":370,"label":"porção","grams":75.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 225 do PDF: Alcatra"}
+{"food":371,"label":"colher de sopa","grams":30.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 235 do PDF: Músculo bovino"}
+{"food":371,"label":"concha","grams":140.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 235 do PDF: Músculo bovino"}
+{"food":371,"label":"bife","grams":100.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 235 do PDF: Músculo bovino"}
+{"food":371,"label":"pedaço","grams":35.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 235 do PDF: Músculo bovino"}
+{"food":371,"label":"porção","grams":75.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 236 do PDF: Músculo bovino"}
+{"food":377,"label":"fatia","grams":35.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 229 do PDF: Patinho"}
+{"food":377,"label":"bife","grams":100.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 229 do PDF: Patinho"}
+{"food":377,"label":"pedaço","grams":35.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 229 do PDF: Patinho"}
+{"food":381,"label":"fatia","grams":90.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 227 do PDF: Picanha"}
+{"food":381,"label":"filé","grams":100.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 228 do PDF: Picanha"}
+{"food":381,"label":"bife","grams":100.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 227 do PDF: Picanha"}
+{"food":381,"label":"pedaço","grams":35.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 228 do PDF: Picanha"}
+{"food":381,"label":"porção","grams":75.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 228 do PDF: Picanha"}
+{"food":383,"label":"fatia","grams":90.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 227 do PDF: Picanha"}
+{"food":383,"label":"filé","grams":100.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 228 do PDF: Picanha"}
+{"food":383,"label":"bife","grams":100.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 227 do PDF: Picanha"}
+{"food":383,"label":"pedaço","grams":35.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 228 do PDF: Picanha"}
+{"food":383,"label":"porção","grams":75.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 228 do PDF: Picanha"}
+{"food":384,"label":"colher de sopa","grams":18.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 411 do PDF: Carne seca"}
+{"food":384,"label":"colher de servir","grams":28.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 411 do PDF: Carne seca"}
+{"food":384,"label":"pedaço","grams":65.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 411 do PDF: Carne seca"}
+{"food":384,"label":"porção","grams":40.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 411 do PDF: Carne seca"}
+{"food":386,"label":"unidade","grams":50.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 476 do PDF: Coxinha"}
+{"food":388,"label":"unidade","grams":55.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 475 do PDF: Croquete"}
+{"food":389,"label":"unidade","grams":55.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 476 do PDF: Empada (queijo, carne, camarão, etc.)"}
+{"food":396,"label":"coxa","grams":55.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 328 do PDF: Frango em pedaços"}
+{"food":398,"label":"coxa","grams":55.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 327 do PDF: Frango em pedaços"}
+{"food":401,"label":"filé","grams":140.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 344 do PDF: Filé de frango"}
+{"food":401,"label":"porção","grams":80.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 344 do PDF: Filé de frango"}
+{"food":403,"label":"coxa","grams":55.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 323 do PDF: Frango inteiro"}
+{"food":403,"label":"sobrecoxa","grams":65.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 323 do PDF: Frango inteiro"}
+{"food":403,"label":"peito","grams":180.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 323 do PDF: Frango inteiro"}
+{"food":403,"label":"asa","grams":40.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 323 do PDF: Frango inteiro"}
+{"food":403,"label":"pedaço","grams":55.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 323 do PDF: Frango inteiro"}
+{"food":403,"label":"porção","grams":100.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 323 do PDF: Frango inteiro"}
+{"food":404,"label":"coxa","grams":55.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 322 do PDF: Frango inteiro"}
+{"food":404,"label":"sobrecoxa","grams":65.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 323 do PDF: Frango inteiro"}
+{"food":404,"label":"peito","grams":180.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 322 do PDF: Frango inteiro"}
+{"food":404,"label":"asa","grams":40.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 322 do PDF: Frango inteiro"}
+{"food":404,"label":"pedaço","grams":55.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 322 do PDF: Frango inteiro"}
+{"food":404,"label":"porção","grams":100.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 322 do PDF: Frango inteiro"}
+{"food":406,"label":"filé","grams":100.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 340 do PDF: Peito de galinha ou frango"}
+{"food":406,"label":"peito","grams":180.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 340 do PDF: Peito de galinha ou frango"}
+{"food":406,"label":"porção","grams":100.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 340 do PDF: Peito de galinha ou frango"}
+{"food":408,"label":"colher de sopa","grams":20.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 339 do PDF: Peito de galinha ou frango"}
+{"food":408,"label":"colher de servir","grams":40.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 339 do PDF: Peito de galinha ou frango"}
+{"food":408,"label":"filé","grams":100.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 339 do PDF: Peito de galinha ou frango"}
+{"food":408,"label":"peito","grams":180.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 339 do PDF: Peito de galinha ou frango"}
+{"food":408,"label":"porção","grams":100.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 339 do PDF: Peito de galinha ou frango"}
+{"food":410,"label":"filé","grams":100.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 339 do PDF: Peito de galinha ou frango"}
+{"food":410,"label":"peito","grams":180.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 340 do PDF: Peito de galinha ou frango"}
+{"food":410,"label":"porção","grams":100.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 340 do PDF: Peito de galinha ou frango"}
+{"food":411,"label":"sobrecoxa","grams":65.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 329 do PDF: Frango em pedaços"}
+{"food":413,"label":"sobrecoxa","grams":65.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 329 do PDF: Frango em pedaços"}
+{"food":416,"label":"unidade","grams":56.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 417 do PDF: Hambúrguer de carne bovina"}
+{"food":417,"label":"unidade","grams":56.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 417 do PDF: Hambúrguer de carne bovina"}
+{"food":419,"label":"unidade","grams":60.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 427 do PDF: Linguiça de frango"}
+{"food":419,"label":"rodela","grams":10.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 427 do PDF: Linguiça de frango"}
+{"food":419,"label":"gomo","grams":60.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 427 do PDF: Linguiça de frango"}
+{"food":420,"label":"unidade","grams":60.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 426 do PDF: Linguiça de frango"}
+{"food":420,"label":"gomo","grams":60.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 426 do PDF: Linguiça de frango"}
+{"food":422,"label":"unidade","grams":60.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 424 do PDF: Linguiça (suína, bovina, mista, etc.)"}
+{"food":422,"label":"fatia","grams":10.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 424 do PDF: Linguiça (suína, bovina, mista, etc.)"}
+{"food":422,"label":"rodela","grams":10.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 424 do PDF: Linguiça (suína, bovina, mista, etc.)"}
+{"food":422,"label":"gomo","grams":60.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 424 do PDF: Linguiça (suína, bovina, mista, etc.)"}
+{"food":423,"label":"unidade","grams":60.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 423 do PDF: Linguiça (suína, bovina, mista, etc.)"}
+{"food":423,"label":"gomo","grams":60.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 423 do PDF: Linguiça (suína, bovina, mista, etc.)"}
+{"food":424,"label":"fatia","grams":15.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 428 do PDF: Mortadela"}
+{"food":428,"label":"bife","grams":70.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 252 do PDF: Bisteca suína"}
+{"food":428,"label":"pedaço","grams":70.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 252 do PDF: Bisteca suína"}
+{"food":429,"label":"bife","grams":70.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 251 do PDF: Bisteca suína"}
+{"food":429,"label":"pedaço","grams":70.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 251 do PDF: Bisteca suína"}
+{"food":430,"label":"unidade","grams":25.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 254 do PDF: Costela suína"}
+{"food":430,"label":"pedaço","grams":25.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 254 do PDF: Costela suína"}
+{"food":430,"label":"porção","grams":40.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 254 do PDF: Costela suína"}
+{"food":432,"label":"fatia","grams":190.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 255 do PDF: Lombo suíno"}
+{"food":432,"label":"pedaço","grams":95.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 255 do PDF: Lombo suíno"}
+{"food":435,"label":"fatia","grams":90.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 252 do PDF: Pernil suíno"}
+{"food":435,"label":"pedaço","grams":42.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 253 do PDF: Pernil suíno"}
+{"food":438,"label":"fatia","grams":15.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 429 do PDF: Presunto"}
+{"food":439,"label":"fatia","grams":15.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 429 do PDF: Presunto"}
+{"food":440,"label":"unidade","grams":50.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 477 do PDF: Quibe"}
+{"food":442,"label":"unidade","grams":50.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 477 do PDF: Quibe"}
+{"food":443,"label":"fatia","grams":20.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 428 do PDF: Salame"}
+{"food":447,"label":"colher de sopa","grams":15.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 371 do PDF: Creme de leite"}
+{"food":447,"label":"colher de servir","grams":30.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 371 do PDF: Creme de leite"}
+{"food":447,"label":"colher de sobremesa","grams":20.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 371 do PDF: Creme de leite"}
+{"food":447,"label":"colher de chá","grams":5.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 371 do PDF: Creme de leite"}
+{"food":447,"label":"colher de café","grams":2.5,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 371 do PDF: Creme de leite"}
+{"food":448,"label":"colher de sopa","grams":15.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 373 do PDF: Iogurte natural"}
+{"food":448,"label":"copo americano","grams":150.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 373 do PDF: Iogurte natural"}
+{"food":448,"label":"copo médio","grams":240.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 373 do PDF: Iogurte natural"}
+{"food":448,"label":"copo de requeijão","grams":240.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 373 do PDF: Iogurte natural"}
+{"food":448,"label":"copo grande","grams":300.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 373 do PDF: Iogurte natural"}
+{"food":449,"label":"copo americano","grams":150.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 373 do PDF: Iogurte desnatado"}
+{"food":449,"label":"copo médio","grams":240.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 373 do PDF: Iogurte desnatado"}
+{"food":450,"label":"colher de sopa","grams":15.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 372 do PDF: Iogurte de qualquer sabor"}
+{"food":450,"label":"copo americano","grams":150.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 372 do PDF: Iogurte de qualquer sabor"}
+{"food":450,"label":"copo médio","grams":240.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 372 do PDF: Iogurte de qualquer sabor"}
+{"food":450,"label":"copo de requeijão","grams":240.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 372 do PDF: Iogurte de qualquer sabor"}
+{"food":450,"label":"copo grande","grams":300.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 372 do PDF: Iogurte de qualquer sabor"}
+{"food":451,"label":"colher de sopa","grams":15.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 372 do PDF: Iogurte de qualquer sabor"}
+{"food":451,"label":"copo americano","grams":150.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 372 do PDF: Iogurte de qualquer sabor"}
+{"food":451,"label":"copo médio","grams":240.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 372 do PDF: Iogurte de qualquer sabor"}
+{"food":451,"label":"copo de requeijão","grams":240.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 372 do PDF: Iogurte de qualquer sabor"}
+{"food":451,"label":"copo grande","grams":300.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 372 do PDF: Iogurte de qualquer sabor"}
+{"food":452,"label":"colher de sopa","grams":15.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 372 do PDF: Iogurte de qualquer sabor"}
+{"food":452,"label":"copo americano","grams":150.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 372 do PDF: Iogurte de qualquer sabor"}
+{"food":452,"label":"copo médio","grams":240.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 372 do PDF: Iogurte de qualquer sabor"}
+{"food":452,"label":"copo de requeijão","grams":240.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 372 do PDF: Iogurte de qualquer sabor"}
+{"food":452,"label":"copo grande","grams":300.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 372 do PDF: Iogurte de qualquer sabor"}
+{"food":453,"label":"colher de sopa","grams":15.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 371 do PDF: Leite condensado"}
+{"food":453,"label":"colher de sobremesa","grams":10.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 371 do PDF: Leite condensado"}
+{"food":453,"label":"colher de chá","grams":2.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 371 do PDF: Leite condensado"}
+{"food":455,"label":"xícara de chá","grams":200.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 382 do PDF: Leite achocolatado"}
+{"food":455,"label":"copo americano","grams":150.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 382 do PDF: Leite achocolatado"}
+{"food":455,"label":"copo médio","grams":240.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 382 do PDF: Leite achocolatado"}
+{"food":455,"label":"copo de requeijão","grams":240.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 382 do PDF: Leite achocolatado"}
+{"food":455,"label":"copo grande","grams":300.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 382 do PDF: Leite achocolatado"}
+{"food":455,"label":"caneca","grams":300.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 382 do PDF: Leite achocolatado"}
+{"food":455,"label":"xícara de café","grams":50.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 382 do PDF: Leite achocolatado"}
+{"food":456,"label":"colher de sopa","grams":10.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 369 do PDF: Leite em pó desnatado"}
+{"food":456,"label":"colher de chá","grams":3.5,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 369 do PDF: Leite em pó desnatado"}
+{"food":456,"label":"colher de café","grams":1.8,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 369 do PDF: Leite em pó desnatado"}
+{"food":457,"label":"xícara de chá","grams":200.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 385 do PDF: Leite de vaca desnatado"}
+{"food":457,"label":"copo americano","grams":150.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 385 do PDF: Leite de vaca desnatado"}
+{"food":457,"label":"copo médio","grams":240.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 385 do PDF: Leite de vaca desnatado"}
+{"food":457,"label":"copo de requeijão","grams":240.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 385 do PDF: Leite de vaca desnatado"}
+{"food":457,"label":"copo grande","grams":300.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 385 do PDF: Leite de vaca desnatado"}
+{"food":457,"label":"caneca","grams":300.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 384 do PDF: Leite de vaca desnatado"}
+{"food":457,"label":"xícara de café","grams":50.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 385 do PDF: Leite de vaca desnatado"}
+{"food":458,"label":"xícara de chá","grams":200.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 368 do PDF: Leite de vaca integral"}
+{"food":458,"label":"copo americano","grams":150.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 367 do PDF: Leite de vaca integral"}
+{"food":458,"label":"copo médio","grams":240.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 367 do PDF: Leite de vaca integral"}
+{"food":458,"label":"copo de requeijão","grams":240.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 367 do PDF: Leite de vaca integral"}
+{"food":458,"label":"copo grande","grams":300.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 367 do PDF: Leite de vaca integral"}
+{"food":458,"label":"caneca","grams":300.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 367 do PDF: Leite de vaca integral"}
+{"food":458,"label":"xícara de café","grams":50.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 367 do PDF: Leite de vaca integral"}
+{"food":459,"label":"colher de sopa","grams":16.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 369 do PDF: Leite em pó integral"}
+{"food":459,"label":"colher de sobremesa","grams":9.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 369 do PDF: Leite em pó integral"}
+{"food":459,"label":"colher de chá","grams":4.5,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 369 do PDF: Leite em pó integral"}
+{"food":459,"label":"colher de café","grams":2.3,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 369 do PDF: Leite em pó integral"}
+{"food":460,"label":"unidade","grams":80.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 375 do PDF: Leite fermentado"}
+{"food":460,"label":"copo médio","grams":240.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 374 do PDF: Leite fermentado"}
+{"food":461,"label":"fatia","grams":45.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 378 do PDF: Queijo de minas"}
+{"food":461,"label":"porção","grams":50.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 378 do PDF: Queijo de minas"}
+{"food":463,"label":"fatia","grams":20.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 377 do PDF: Queijo muçarela"}
+{"food":463,"label":"porção","grams":45.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 377 do PDF: Queijo muçarela"}
+{"food":467,"label":"fatia","grams":15.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 377 do PDF: Queijo prato"}
+{"food":467,"label":"porção","grams":30.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 377 do PDF: Queijo prato"}
+{"food":468,"label":"colher de sopa","grams":30.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 381 do PDF: Requeijão"}
+{"food":468,"label":"colher de sobremesa","grams":15.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 381 do PDF: Requeijão"}
+{"food":468,"label":"colher de chá","grams":7.5,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 381 do PDF: Requeijão"}
+{"food":468,"label":"colher de café","grams":3.8,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 381 do PDF: Requeijão"}
+{"food":468,"label":"ponta de faca","grams":6.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 381 do PDF: Requeijão"}
+{"food":469,"label":"fatia","grams":35.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 379 do PDF: Queijo ricota"}
+{"food":469,"label":"colher de sopa","grams":44.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 379 do PDF: Queijo ricota"}
+{"food":469,"label":"porção","grams":100.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 379 do PDF: Queijo ricota"}
+{"food":471,"label":"xícara de chá","grams":200.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 505 do PDF: Café"}
+{"food":471,"label":"copo americano","grams":150.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 505 do PDF: Café"}
+{"food":471,"label":"copo médio","grams":240.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 505 do PDF: Café"}
+{"food":471,"label":"copo de requeijão","grams":240.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 505 do PDF: Café"}
+{"food":471,"label":"copo grande","grams":300.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 505 do PDF: Café"}
+{"food":471,"label":"caneca","grams":300.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 505 do PDF: Café"}
+{"food":471,"label":"xícara de café","grams":50.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 505 do PDF: Café"}
+{"food":474,"label":"copo americano","grams":150.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 464 do PDF: Cerveja (com ou sem álcool)"}
+{"food":474,"label":"copo médio","grams":240.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 464 do PDF: Cerveja (com ou sem álcool)"}
+{"food":474,"label":"copo de requeijão","grams":240.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 464 do PDF: Cerveja (com ou sem álcool)"}
+{"food":474,"label":"copo grande","grams":300.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 464 do PDF: Cerveja (com ou sem álcool)"}
+{"food":474,"label":"lata (350 ml)","grams":350.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 466 do PDF: Cerveja (com ou sem álcool)"}
+{"food":474,"label":"garrafa (600 ml)","grams":600.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 465 do PDF: Cerveja (com ou sem álcool)"}
+{"food":474,"label":"caneca","grams":300.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 464 do PDF: Cerveja (com ou sem álcool)"}
+{"food":478,"label":"xícara de chá","grams":200.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 449 do PDF: Água de coco"}
+{"food":478,"label":"copo americano","grams":150.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 448 do PDF: Água de coco"}
+{"food":478,"label":"copo médio","grams":240.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 448 do PDF: Água de coco"}
+{"food":478,"label":"copo de requeijão","grams":240.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 448 do PDF: Água de coco"}
+{"food":478,"label":"copo grande","grams":300.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 448 do PDF: Água de coco"}
+{"food":478,"label":"lata (350 ml)","grams":350.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 449 do PDF: Água de coco"}
+{"food":480,"label":"xícara de chá","grams":200.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 436 do PDF: Refrigerante de cola tradicional"}
+{"food":480,"label":"copo americano","grams":150.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 434 do PDF: Refrigerante de cola tradicional"}
+{"food":480,"label":"copo médio","grams":240.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 434 do PDF: Refrigerante de cola tradicional"}
+{"food":480,"label":"copo de requeijão","grams":240.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 434 do PDF: Refrigerante de cola tradicional"}
+{"food":480,"label":"copo grande","grams":300.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 434 do PDF: Refrigerante de cola tradicional"}
+{"food":480,"label":"lata (350 ml)","grams":350.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 435 do PDF: Refrigerante de cola tradicional"}
+{"food":480,"label":"garrafa (600 ml)","grams":600.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 435 do PDF: Refrigerante de cola tradicional"}
+{"food":481,"label":"copo americano","grams":150.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 439 do PDF: Refrigerante de guaraná tradicional"}
+{"food":481,"label":"copo médio","grams":240.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 439 do PDF: Refrigerante de guaraná tradicional"}
+{"food":481,"label":"copo de requeijão","grams":240.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 439 do PDF: Refrigerante de guaraná tradicional"}
+{"food":481,"label":"copo grande","grams":300.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 439 do PDF: Refrigerante de guaraná tradicional"}
+{"food":481,"label":"lata (350 ml)","grams":350.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 440 do PDF: Refrigerante de guaraná tradicional"}
+{"food":481,"label":"garrafa (600 ml)","grams":600.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 440 do PDF: Refrigerante de guaraná tradicional"}
+{"food":481,"label":"caneca","grams":300.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 439 do PDF: Refrigerante de guaraná tradicional"}
+{"food":484,"label":"unidade","grams":65.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 523 do PDF: Omelete"}
+{"food":484,"label":"fatia","grams":10.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 523 do PDF: Omelete"}
+{"food":484,"label":"pedaço","grams":25.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 523 do PDF: Omelete"}
+{"food":485,"label":"unidade","grams":10.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 364 do PDF: Ovo de codorna"}
+{"food":488,"label":"unidade","grams":45.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 362 do PDF: Ovo de galinha"}
+{"food":489,"label":"unidade","grams":45.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 361 do PDF: Ovo de galinha"}
+{"food":490,"label":"unidade","grams":50.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 362 do PDF: Ovo de galinha"}
+{"food":491,"label":"colher de sopa","grams":16.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 181 do PDF: Achocolatado em pó"}
+{"food":491,"label":"colher de sobremesa","grams":11.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 181 do PDF: Achocolatado em pó"}
+{"food":491,"label":"colher de chá","grams":4.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 181 do PDF: Achocolatado em pó"}
+{"food":491,"label":"colher de café","grams":2.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 181 do PDF: Achocolatado em pó"}
+{"food":492,"label":"colher de sopa","grams":24.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 205 do PDF: Açúcar"}
+{"food":492,"label":"colher de sobremesa","grams":16.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 205 do PDF: Açúcar"}
+{"food":492,"label":"colher de chá","grams":5.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 205 do PDF: Açúcar"}
+{"food":492,"label":"colher de café","grams":2.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 205 do PDF: Açúcar"}
+{"food":493,"label":"colher de sopa","grams":19.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 176 do PDF: Açúcar mascavo"}
+{"food":494,"label":"colher de sopa","grams":24.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 205 do PDF: Açúcar"}
+{"food":494,"label":"colher de sobremesa","grams":16.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 205 do PDF: Açúcar"}
+{"food":494,"label":"colher de chá","grams":5.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 205 do PDF: Açúcar"}
+{"food":494,"label":"colher de café","grams":2.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 205 do PDF: Açúcar"}
+{"food":495,"label":"unidade","grams":170.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 180 do PDF: Barra de chocolate"}
+{"food":495,"label":"pedaço","grams":6.3,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 179 do PDF: Barra de chocolate"}
+{"food":495,"label":"tablete","grams":6.3,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 180 do PDF: Barra de chocolate"}
+{"food":498,"label":"unidade","grams":170.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 180 do PDF: Barra de chocolate"}
+{"food":498,"label":"pedaço","grams":6.3,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 179 do PDF: Barra de chocolate"}
+{"food":498,"label":"tablete","grams":6.3,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 180 do PDF: Barra de chocolate"}
+{"food":501,"label":"colher de sopa","grams":40.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 198 do PDF: Doce a base de leite"}
+{"food":501,"label":"pedaço","grams":130.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 198 do PDF: Doce a base de leite"}
+{"food":501,"label":"colher de sobremesa","grams":25.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 198 do PDF: Doce a base de leite"}
+{"food":501,"label":"colher de chá","grams":12.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 198 do PDF: Doce a base de leite"}
+{"food":501,"label":"colher de café","grams":8.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 198 do PDF: Doce a base de leite"}
+{"food":524,"label":"colher de sopa","grams":27.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 216 do PDF: Maionese (molho)"}
+{"food":524,"label":"colher de sobremesa","grams":17.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 216 do PDF: Maionese (molho)"}
+{"food":524,"label":"colher de chá","grams":6.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 216 do PDF: Maionese (molho)"}
+{"food":524,"label":"colher de café","grams":3.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 216 do PDF: Maionese (molho)"}
+{"food":524,"label":"ponta de faca","grams":4.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 216 do PDF: Maionese (molho)"}
+{"food":524,"label":"sachê","grams":8.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 216 do PDF: Maionese (molho)"}
+{"food":526,"label":"colher de sopa","grams":30.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 535 do PDF: Arroz carreteiro"}
+{"food":526,"label":"colher de servir","grams":60.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 535 do PDF: Arroz carreteiro"}
+{"food":526,"label":"concha","grams":120.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 535 do PDF: Arroz carreteiro"}
+{"food":526,"label":"escumadeira","grams":60.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 535 do PDF: Arroz carreteiro"}
+{"food":526,"label":"prato raso","grams":100.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 535 do PDF: Arroz carreteiro"}
+{"food":526,"label":"prato fundo","grams":200.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 535 do PDF: Arroz carreteiro"}
+{"food":526,"label":"porção","grams":180.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 535 do PDF: Arroz carreteiro"}
+{"food":527,"label":"colher de sopa","grams":21.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 516 do PDF: Baião de dois"}
+{"food":527,"label":"colher de servir","grams":55.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 516 do PDF: Baião de dois"}
+{"food":527,"label":"concha","grams":95.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 516 do PDF: Baião de dois"}
+{"food":527,"label":"escumadeira","grams":111.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 516 do PDF: Baião de dois"}
+{"food":527,"label":"porção","grams":42.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 516 do PDF: Baião de dois"}
+{"food":533,"label":"fatia","grams":135.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 192 do PDF: Cuscuz"}
+{"food":533,"label":"colher de sopa","grams":12.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 192 do PDF: Cuscuz"}
+{"food":533,"label":"colher de servir","grams":24.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 192 do PDF: Cuscuz"}
+{"food":533,"label":"pedaço","grams":135.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 193 do PDF: Cuscuz"}
+{"food":537,"label":"colher de sopa","grams":25.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 321 do PDF: Strogonoff"}
+{"food":537,"label":"colher de servir","grams":40.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 321 do PDF: Strogonoff"}
+{"food":537,"label":"concha","grams":170.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 321 do PDF: Strogonoff"}
+{"food":537,"label":"escumadeira","grams":80.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 321 do PDF: Strogonoff"}
+{"food":537,"label":"porção","grams":50.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 321 do PDF: Strogonoff"}
+{"food":538,"label":"colher de sopa","grams":25.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 321 do PDF: Strogonoff"}
+{"food":538,"label":"colher de servir","grams":40.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 321 do PDF: Strogonoff"}
+{"food":538,"label":"concha","grams":170.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 321 do PDF: Strogonoff"}
+{"food":538,"label":"escumadeira","grams":80.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 321 do PDF: Strogonoff"}
+{"food":538,"label":"porção","grams":50.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 321 do PDF: Strogonoff"}
+{"food":540,"label":"colher de sopa","grams":35.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 316 do PDF: Feijoada"}
+{"food":540,"label":"colher de servir","grams":70.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 315 do PDF: Feijoada"}
+{"food":540,"label":"concha","grams":225.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 316 do PDF: Feijoada"}
+{"food":540,"label":"porção","grams":120.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 316 do PDF: Feijoada"}
+{"food":542,"label":"colher de sopa","grams":25.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 89 do PDF: Macarrão"}
+{"food":542,"label":"colher de servir","grams":50.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 89 do PDF: Macarrão"}
+{"food":542,"label":"concha","grams":110.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 89 do PDF: Macarrão"}
+{"food":542,"label":"escumadeira","grams":110.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 89 do PDF: Macarrão"}
+{"food":542,"label":"prato raso","grams":320.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 90 do PDF: Macarrão"}
+{"food":542,"label":"prato fundo","grams":400.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 90 do PDF: Macarrão"}
+{"food":542,"label":"porção","grams":105.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 90 do PDF: Macarrão"}
+{"food":545,"label":"colher de sopa","grams":38.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 499 do PDF: Salada de maionese"}
+{"food":545,"label":"colher de servir","grams":70.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 499 do PDF: Salada de maionese"}
+{"food":545,"label":"concha","grams":90.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 499 do PDF: Salada de maionese"}
+{"food":545,"label":"escumadeira","grams":90.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 499 do PDF: Salada de maionese"}
+{"food":545,"label":"porção","grams":76.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 499 do PDF: Salada de maionese"}
+{"food":551,"label":"unidade","grams":50.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 84 do PDF: Tapioca de goma"}
+{"food":558,"label":"colher de sopa","grams":17.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 39 do PDF: Amendoim (em grão) (in natura )"}
+{"food":558,"label":"punhado","grams":30.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 39 do PDF: Amendoim (em grão) (in natura )"}
+{"food":558,"label":"pacote","grams":50.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 39 do PDF: Amendoim (em grão) (in natura )"}
+{"food":560,"label":"colher de sopa","grams":27.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 311 do PDF: Ervilha em conserva"}
+{"food":560,"label":"colher de servir","grams":38.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 311 do PDF: Ervilha em conserva"}
+{"food":560,"label":"colher de sobremesa","grams":13.5,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 311 do PDF: Ervilha em conserva"}
+{"food":560,"label":"colher de chá","grams":6.8,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 311 do PDF: Ervilha em conserva"}
+{"food":561,"label":"colher de sopa","grams":17.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 43 do PDF: Feijão (preto, mulatinho, roxo, rosinha, etc.)"}
+{"food":561,"label":"colher de servir","grams":35.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 43 do PDF: Feijão (preto, mulatinho, roxo, rosinha, etc.)"}
+{"food":561,"label":"concha","grams":140.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 43 do PDF: Feijão (preto, mulatinho, roxo, rosinha, etc.)"}
+{"food":561,"label":"escumadeira","grams":35.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 43 do PDF: Feijão (preto, mulatinho, roxo, rosinha, etc.)"}
+{"food":561,"label":"porção","grams":50.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 43 do PDF: Feijão (preto, mulatinho, roxo, rosinha, etc.)"}
+{"food":563,"label":"colher de sopa","grams":17.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 43 do PDF: Feijão (preto, mulatinho, roxo, rosinha, etc.)"}
+{"food":563,"label":"colher de servir","grams":35.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 43 do PDF: Feijão (preto, mulatinho, roxo, rosinha, etc.)"}
+{"food":563,"label":"concha","grams":140.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 43 do PDF: Feijão (preto, mulatinho, roxo, rosinha, etc.)"}
+{"food":563,"label":"escumadeira","grams":35.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 43 do PDF: Feijão (preto, mulatinho, roxo, rosinha, etc.)"}
+{"food":563,"label":"porção","grams":50.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 43 do PDF: Feijão (preto, mulatinho, roxo, rosinha, etc.)"}
+{"food":565,"label":"colher de sopa","grams":17.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 43 do PDF: Feijão (preto, mulatinho, roxo, rosinha, etc.)"}
+{"food":565,"label":"colher de servir","grams":35.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 43 do PDF: Feijão (preto, mulatinho, roxo, rosinha, etc.)"}
+{"food":565,"label":"concha","grams":140.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 43 do PDF: Feijão (preto, mulatinho, roxo, rosinha, etc.)"}
+{"food":565,"label":"escumadeira","grams":35.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 43 do PDF: Feijão (preto, mulatinho, roxo, rosinha, etc.)"}
+{"food":565,"label":"porção","grams":50.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 43 do PDF: Feijão (preto, mulatinho, roxo, rosinha, etc.)"}
+{"food":567,"label":"colher de sopa","grams":17.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 43 do PDF: Feijão (preto, mulatinho, roxo, rosinha, etc.)"}
+{"food":567,"label":"colher de servir","grams":35.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 43 do PDF: Feijão (preto, mulatinho, roxo, rosinha, etc.)"}
+{"food":567,"label":"concha","grams":140.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 43 do PDF: Feijão (preto, mulatinho, roxo, rosinha, etc.)"}
+{"food":567,"label":"escumadeira","grams":35.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 43 do PDF: Feijão (preto, mulatinho, roxo, rosinha, etc.)"}
+{"food":567,"label":"porção","grams":50.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 43 do PDF: Feijão (preto, mulatinho, roxo, rosinha, etc.)"}
+{"food":569,"label":"colher de sopa","grams":17.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 43 do PDF: Feijão (preto, mulatinho, roxo, rosinha, etc.)"}
+{"food":569,"label":"colher de servir","grams":35.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 43 do PDF: Feijão (preto, mulatinho, roxo, rosinha, etc.)"}
+{"food":569,"label":"concha","grams":140.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 43 do PDF: Feijão (preto, mulatinho, roxo, rosinha, etc.)"}
+{"food":569,"label":"escumadeira","grams":35.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 43 do PDF: Feijão (preto, mulatinho, roxo, rosinha, etc.)"}
+{"food":569,"label":"porção","grams":50.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 43 do PDF: Feijão (preto, mulatinho, roxo, rosinha, etc.)"}
+{"food":571,"label":"colher de sopa","grams":17.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 43 do PDF: Feijão (preto, mulatinho, roxo, rosinha, etc.)"}
+{"food":571,"label":"colher de servir","grams":35.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 43 do PDF: Feijão (preto, mulatinho, roxo, rosinha, etc.)"}
+{"food":571,"label":"concha","grams":140.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 43 do PDF: Feijão (preto, mulatinho, roxo, rosinha, etc.)"}
+{"food":571,"label":"escumadeira","grams":35.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 43 do PDF: Feijão (preto, mulatinho, roxo, rosinha, etc.)"}
+{"food":571,"label":"porção","grams":50.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 43 do PDF: Feijão (preto, mulatinho, roxo, rosinha, etc.)"}
+{"food":573,"label":"colher de sopa","grams":17.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 43 do PDF: Feijão (preto, mulatinho, roxo, rosinha, etc.)"}
+{"food":573,"label":"colher de servir","grams":35.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 43 do PDF: Feijão (preto, mulatinho, roxo, rosinha, etc.)"}
+{"food":573,"label":"concha","grams":140.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 43 do PDF: Feijão (preto, mulatinho, roxo, rosinha, etc.)"}
+{"food":573,"label":"escumadeira","grams":35.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 43 do PDF: Feijão (preto, mulatinho, roxo, rosinha, etc.)"}
+{"food":573,"label":"porção","grams":50.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 43 do PDF: Feijão (preto, mulatinho, roxo, rosinha, etc.)"}
+{"food":577,"label":"colher de sopa","grams":18.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 42 do PDF: Lentilha"}
+{"food":577,"label":"colher de servir","grams":32.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 42 do PDF: Lentilha"}
+{"food":577,"label":"concha","grams":160.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 42 do PDF: Lentilha"}
+{"food":577,"label":"escumadeira","grams":32.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 42 do PDF: Lentilha"}
+{"food":577,"label":"porção","grams":48.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 42 do PDF: Lentilha"}
+{"food":579,"label":"unidade","grams":30.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 194 do PDF: Paçoca"}
+{"food":584,"label":"fatia","grams":20.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 384 do PDF: Tofu"}
+{"food":588,"label":"unidade","grams":2.5,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 100 do PDF: Castanha de caju"}
+{"food":588,"label":"punhado","grams":40.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 100 do PDF: Castanha de caju"}
+{"food":589,"label":"unidade","grams":4.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 100 do PDF: Castanha-do-pará"}
+{"food":589,"label":"punhado","grams":40.0,"ref":"IBGE, POF 2008-2009, Tabela de Medidas Referidas, p. 100 do PDF: Castanha-do-pará"}

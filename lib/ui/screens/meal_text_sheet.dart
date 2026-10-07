@@ -18,11 +18,11 @@ class _Line {
     required this.source,
     required this.candidates,
     required this.food,
-    double? grams,
+    this.portion,
     this.parsed,
     this.owner,
   }) : grams = TextEditingController(
-         text: grams == null ? '' : formatForInput(grams),
+         text: portion == null ? '' : formatForInput(portion.grams),
        );
 
   /// O trecho do texto que originou a linha.
@@ -31,6 +31,21 @@ class _Line {
   FoodRow? food;
   final TextEditingController grams;
   final ParsedMealItem? parsed;
+
+  /// A porção proposta, na medida em que foi dita.
+  Portion? portion;
+
+  /// A porção que será salva: a proposta, enquanto os gramas não forem
+  /// alterados à mão; depois disso, os gramas digitados.
+  Portion? get chosenPortion {
+    final typed = gramsValue;
+    if (typed == null) return null;
+    final proposed = portion;
+    if (proposed != null && (proposed.grams - typed).abs() < 0.005) {
+      return proposed;
+    }
+    return Portion.grams(typed);
+  }
 
   /// Preenchido nas linhas de óleo: o item preparado que gerou a sugestão.
   final _Line? owner;
@@ -85,7 +100,7 @@ class _MealTextSheetState extends ConsumerState<MealTextSheet> {
       source: S.oilEstimateFor(preparationLabel(preparation)),
       candidates: [oil],
       food: oil,
-      grams: grams,
+      portion: Portion.grams(grams),
       owner: owner,
     );
   }
@@ -102,7 +117,7 @@ class _MealTextSheetState extends ConsumerState<MealTextSheet> {
         source: item.parsed.source,
         candidates: item.candidates,
         food: item.food,
-        grams: item.grams,
+        portion: item.portion,
         parsed: item.parsed,
       );
       lines.add(line);
@@ -118,16 +133,17 @@ class _MealTextSheetState extends ConsumerState<MealTextSheet> {
 
   Future<void> _changeFood(_Line line, FoodRow food) async {
     final lines = _lines!;
-    final grams = line.parsed == null
+    final portion = line.parsed == null
         ? null
-        : await _resolver.gramsFor(line.parsed!, food);
+        : await _resolver.portionFor(line.parsed!, food);
     if (!mounted) return;
     setState(() {
       line.food = food;
       // A gramatura só é reescrita quando vinha de uma medida do alimento
       // anterior; gramas digitados pelo usuário ou lidos do texto ficam.
       if (line.parsed?.kind == QuantityKind.measure) {
-        line.grams.text = grams == null ? '' : formatForInput(grams);
+        line.portion = portion;
+        line.grams.text = portion == null ? '' : formatForInput(portion.grams);
       }
       lines.removeWhere((other) => other.owner == line);
       final oil = _oilLineFor(line);
@@ -148,7 +164,7 @@ class _MealTextSheetState extends ConsumerState<MealTextSheet> {
           foodId: line.food!.id,
           foodName: line.food!.name,
           per100: line.food!.per100,
-          portion: Portion.grams(line.gramsValue!),
+          portion: line.chosenPortion!,
           isEstimate: line.isOilEstimate,
         ),
     ];
@@ -227,6 +243,13 @@ class _MealTextSheetState extends ConsumerState<MealTextSheet> {
       ),
     );
   }
+}
+
+/// "2 × fatia de 25 g", quando a quantidade veio de uma medida caseira.
+String? _measureNote(_Line line) {
+  final portion = line.chosenPortion;
+  if (portion == null || portion.isInGrams) return null;
+  return S.measureNote(portion);
 }
 
 class _LineEditor extends StatelessWidget {
@@ -318,7 +341,9 @@ class _LineEditor extends StatelessWidget {
                   max: 5000,
                   helper: line.gramsValue == null
                       ? S.parserGramsMissing
-                      : (line.isOilEstimate ? S.oilEstimateHelp : null),
+                      : line.isOilEstimate
+                      ? S.oilEstimateHelp
+                      : _measureNote(line),
                   onChanged: (_) => onChanged(),
                 ),
               ),

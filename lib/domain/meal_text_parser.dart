@@ -111,6 +111,14 @@ const _measures = [
   ('lata', 'lata'),
   ('potes', 'pote'),
   ('pote', 'pote'),
+  ('scoops', 'scoop'),
+  ('scoop', 'scoop'),
+  ('dosadores', 'dosador'),
+  ('dosador', 'dosador'),
+  ('punhados', 'punhado'),
+  ('punhado', 'punhado'),
+  ('rodelas', 'rodela'),
+  ('rodela', 'rodela'),
 ];
 
 // Vírgula só separa itens quando não está entre dois dígitos ("1,5").
@@ -142,11 +150,16 @@ String _simplify(String text) {
 /// O parser é heurístico. Ele não inventa gramatura: quando o texto não traz
 /// quantidade em massa, [ParsedMealItem.grams] fica null.
 List<ParsedMealItem> parseMealText(String text) {
-  final simplified = _simplify(text)
-      .replaceAllMapped(_andHalf, (match) => '${match.group(1)}.5');
-  return simplified
+  // A divisão em itens é feita no texto como foi digitado, para que o trecho
+  // mostrado ao usuário mantenha os acentos. Cada trecho é simplificado só
+  // na hora de ser lido.
+  final lowered = text.toLowerCase().replaceAllMapped(
+    _andHalf,
+    (match) => '${match.group(1)}.5',
+  );
+  return lowered
       .split(_separator)
-      .map((segment) => segment.trim())
+      .map((segment) => segment.replaceAll(RegExp(r'[ \t]+'), ' ').trim())
       .where((segment) => segment.isNotEmpty)
       .map(_parseSegment)
       .whereType<ParsedMealItem>()
@@ -154,7 +167,7 @@ List<ParsedMealItem> parseMealText(String text) {
 }
 
 ParsedMealItem? _parseSegment(String segment) {
-  var rest = segment;
+  var rest = _simplify(segment);
   double? quantity;
 
   final numberMatch = _number.firstMatch(rest);

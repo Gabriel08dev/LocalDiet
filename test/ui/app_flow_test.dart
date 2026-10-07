@@ -80,8 +80,12 @@ void main() {
     await tester.tap(find.text('Arroz, integral, cozido'));
     await tester.pumpAndSettle();
 
-    // A folha de porção abre em 100 g para um alimento nunca registrado.
-    expect(find.text('124 kcal'), findsOneWidget);
+    // Para um alimento nunca registrado, a folha abre na primeira medida
+    // caseira: 1 colher de sopa de arroz integral, 20 g.
+    expect(find.text('25 kcal'), findsOneWidget);
+    expect(find.text('= 20 g'), findsOneWidget);
+    await tester.tap(find.text('gramas'));
+    await tester.pump();
     await tester.enterText(find.byType(TextField).last, '252');
     await tester.pump();
     expect(find.text('312 kcal'), findsOneWidget);
@@ -235,8 +239,8 @@ void main() {
     await searchFood(tester, 'pao frances');
     await tester.tap(find.text('Pão, trigo, francês'));
     await tester.pumpAndSettle();
-    await tester.enterText(find.byType(TextField).last, '50');
-    await tester.pump();
+    // A folha já abre em 1 unidade de pão francês, 50 g.
+    expect(find.text('unidade · 50 g'), findsOneWidget);
     await tester.tap(find.widgetWithText(FilledButton, 'Adicionar'));
     await tester.pumpAndSettle();
     await tester.tap(find.text('Revisar'));
@@ -302,7 +306,7 @@ void main() {
     await tester.pumpAndSettle();
     await tester.enterText(
       find.byType(TextField).last,
-      '100 g de quiabo frito, 2 ovos fritos',
+      '100 g de quiabo frito, 2 ovos fritos, 2 jilós',
     );
     await tester.pump();
     await tester.tap(find.text('Interpretar'));
@@ -315,7 +319,8 @@ void main() {
     expect(find.textContaining('estimativa do app'), findsOneWidget);
     expect(find.text('Ovo, de galinha, inteiro, frito'), findsOneWidget);
 
-    // "2 ovos" não tem medida documentada: sem gramas, não dá para seguir.
+    // O jiló não tem medida caseira: sem gramas, não dá para seguir.
+    expect(find.text('Jiló, cru'), findsOneWidget);
     final confirm = find.widgetWithText(FilledButton, 'Adicionar à refeição');
     await tester.ensureVisible(confirm);
     await tester.pumpAndSettle();

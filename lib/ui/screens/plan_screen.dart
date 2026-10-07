@@ -63,6 +63,7 @@ class PlanScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final entries = ref.watch(planProvider);
     final target = ref.watch(calorieTargetProvider);
+    final adherence = ref.watch(planAdherenceProvider).value;
 
     return Scaffold(
       appBar: AppBar(title: const Text(S.planTitle)),
@@ -104,6 +105,10 @@ class PlanScreen extends ConsumerWidget {
                         ),
                 ),
               ),
+              if (list.isNotEmpty) ...[
+                const SizedBox(height: Gap.md),
+                _AdherenceCard(adherence: adherence),
+              ],
               for (final meal in MealType.values)
                 MealBlock(
                   title: mealLabel(meal),
@@ -133,6 +138,52 @@ class PlanScreen extends ConsumerWidget {
             ],
           );
         },
+      ),
+    );
+  }
+}
+
+/// Quantas refeições do plano foram seguidas nos últimos sete dias.
+class _AdherenceCard extends StatelessWidget {
+  const _AdherenceCard({required this.adherence});
+
+  final PlanAdherence? adherence;
+
+  @override
+  Widget build(BuildContext context) {
+    final marked = adherence?.marked ?? 0;
+    final muted = context.text.bodySmall?.copyWith(
+      color: context.colors.onSurfaceVariant,
+    );
+    return Card(
+      child: Padding(
+        padding: const EdgeInsets.all(Gap.lg),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(S.adherenceTitle, style: context.text.labelLarge),
+            const SizedBox(height: Gap.xs),
+            if (marked == 0)
+              Text(S.adherenceEmpty, style: context.text.bodyMedium)
+            else ...[
+              Text(
+                S.adherenceSummary(adherence!.followed, marked),
+                style: context.text.titleMedium,
+              ),
+              const SizedBox(height: Gap.sm),
+              ClipRRect(
+                borderRadius: BorderRadius.circular(4),
+                child: LinearProgressIndicator(
+                  value: adherence!.rate,
+                  minHeight: 8,
+                  backgroundColor: context.colors.surfaceContainerHighest,
+                ),
+              ),
+              const SizedBox(height: Gap.sm),
+              Text(S.adherenceOther(adherence!.other), style: muted),
+            ],
+          ],
+        ),
       ),
     );
   }

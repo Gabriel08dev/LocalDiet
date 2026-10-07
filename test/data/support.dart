@@ -17,6 +17,16 @@ AppDatabase memoryDatabase() {
 /// Conteúdo real do asset da TACO.
 String tacoAsset() => File(tacoAssetPath).readAsStringSync();
 
+/// Conteúdo real do asset de medidas caseiras.
+String measuresAsset() => File(measuresAssetPath).readAsStringSync();
+
+/// Banco em memória com a TACO e as medidas caseiras do app.
+Future<AppDatabase> databaseWithAssets() async {
+  final db = await databaseWithTaco();
+  await AssetImporter(db).syncMeasures(measuresAsset());
+  return db;
+}
+
 /// Banco em memória já com a TACO importada.
 Future<AppDatabase> databaseWithTaco() async {
   final db = memoryDatabase();

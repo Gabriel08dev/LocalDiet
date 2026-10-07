@@ -21,7 +21,7 @@ lib/
 
 ## Banco
 
-Schema na versão 1. O arquivo se chama `localdiet2.sqlite`, nome diferente do usado pela primeira versão do app, e é aberto em isolate de segundo plano por `drift_flutter`.
+Schema na versão 2. O arquivo se chama `localdiet2.sqlite`, nome diferente do usado pela primeira versão do app, e é aberto em isolate de segundo plano por `drift_flutter`.
 
 | Tabela | Conteúdo |
 |---|---|
@@ -31,6 +31,7 @@ Schema na versão 1. O arquivo se chama `localdiet2.sqlite`, nome diferente do u
 | `asset_versions` | Versão importada de cada asset |
 | `diary_items` | Itens consumidos, com snapshot |
 | `plan_items` | Itens do Plano Base |
+| `plan_checks` | Marcação diária de cada refeição do plano: seguida ou trocada (desde a versão 2) |
 | `body_measurements` | Peso e medidas corporais |
 | `profiles` | Perfil (uma linha) |
 | `favorites` | Alimentos favoritos |
@@ -45,7 +46,7 @@ Schema na versão 1. O arquivo se chama `localdiet2.sqlite`, nome diferente do u
 
 ### Datas
 
-Datas sem hora (`profiles.birth_date`, `diary_items.date`, `body_measurements.date`) são texto `AAAA-MM-DD`, convertidas por `LocalDateConverter`. Instantes de verdade (`created_at`, `imported_at`) usam o tipo de data e hora do Drift.
+Datas sem hora (`profiles.birth_date`, `diary_items.date`, `body_measurements.date`, `plan_checks.date`) são texto `AAAA-MM-DD`, convertidas por `LocalDateConverter`. Instantes de verdade (`created_at`, `imported_at`) usam o tipo de data e hora do Drift.
 
 ## Sincronização dos assets
 
@@ -68,7 +69,7 @@ Como a versão vem do conteúdo, alterar o asset basta para a sincronização ro
 
 A importação analisa o arquivo inteiro antes de escrever e substitui os dados em uma transação. Arquivo de outro formato, com seção ausente, linha inválida, `formatVersion` ou `schemaVersion` maiores que os do app é recusado.
 
-Ao criar a versão 2 do schema, a importação precisa ganhar um passo que converta backups da versão 1.
+Backups do schema 1 não têm a seção `planChecks` e são aceitos sem ela. Ao criar uma nova versão do schema que mude dados existentes, a importação precisa de um passo que converta backups antigos.
 
 ## Testes
 
@@ -76,23 +77,26 @@ Ao criar a versão 2 do schema, a importação precisa ganhar um passo que conve
 test/
   domain/      regras puras
   data/        importadores, busca, repositórios, backup e parser com a base real
-  migrations/  schema atual contra o snapshot exportado
+  migrations/  cada versão antiga migrada até cada versão seguinte
   ui/          fluxos de ponta a ponta, layout e capturas
 ```
 
 - Os testes de `data/` e `ui/` usam um banco em memória com a TACO real.
 - `test/ui/layout_test.dart` percorre todas as telas em 390 × 844 e 320 × 568, com a fonte em 1×, 1,5× e 2×. Conteúdo que estoura o espaço faz o teste falhar.
 - `test/flutter_test_config.dart` carrega as fontes reais do Material, para que as capturas mostrem texto de verdade.
+- `test/ui/day_test.dart` percorre um dia de uso como uma pessoa faria: segue o plano no café, troca o almoço e o registra pela busca em colheres e conchas, descreve o lanche em texto e ajusta o jantar no Diário.
 - `test/ui/screenshots_test.dart` gera `docs/screenshots/` e só roda com `--update-goldens`. As imagens variam entre sistemas, então não são usadas como teste de regressão.
 
 ## Migrations
 
-O snapshot do schema atual está em `drift_schemas/app/drift_schema_v1.json`. Para mudar o schema:
+Os snapshots de cada versão do schema estão em `drift_schemas/app/`. As migrations ficam em `lib/data/app_database.dart`, uma função por passo (`from1To2`, e assim por diante). `test/migrations/app/migration_test.dart` migra um banco de cada versão antiga até cada versão seguinte e confere o resultado contra o snapshot; para a versão 1, também confere que os dados de um banco como o do primeiro APK continuam intactos.
+
+Para mudar o schema:
 
 1. Altere as tabelas e aumente `schemaVersion` em `lib/data/app_database.dart`.
 2. Rode `dart run build_runner build`.
-3. Rode `dart run drift_dev make-migrations`. Ele exporta o snapshot da nova versão e gera os passos de migration e os testes que partem de um banco real na versão anterior.
-4. Escreva a migration e, se o backup for afetado, o passo de conversão de backups antigos.
+3. Rode `dart run drift_dev make-migrations`. Ele exporta o snapshot da nova versão e regenera `lib/data/app_database.steps.dart` e `test/migrations/app/generated/`. Ele também reescreve `migration_test.dart` com um modelo: restaure o arquivo mantido à mão com `git checkout` e acrescente o teste da nova versão.
+4. Escreva o passo da migration e, se o backup for afetado, o tratamento de backups antigos.
 
 ## Build e publicação
 

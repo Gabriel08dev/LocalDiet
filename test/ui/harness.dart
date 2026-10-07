@@ -18,6 +18,7 @@ import 'package:localdiet/ui/app.dart';
 const testToday = LocalDate(2026, 10, 7);
 
 final _taco = File(tacoAssetPath).readAsStringSync();
+final _measures = File(measuresAssetPath).readAsStringSync();
 
 /// Abre o app inteiro sobre um banco em memória com a TACO real.
 ///
@@ -42,6 +43,7 @@ Future<AppDatabase> pumpApp(
   final db = AppDatabase(NativeDatabase.memory());
   await tester.runAsync(() async {
     await AssetImporter(db).syncTaco(_taco);
+    await AssetImporter(db).syncMeasures(_measures);
     if (onboarded) {
       await ProfileRepository(db).completeOnboarding(
         name: 'Gabriel',
@@ -67,7 +69,7 @@ Future<AppDatabase> pumpApp(
       overrides: [
         databaseProvider.overrideWithValue(db),
         assetLoaderProvider.overrideWithValue(
-          (path) async => path == tacoAssetPath ? _taco : '',
+          (path) async => path == tacoAssetPath ? _taco : _measures,
         ),
         todayProvider.overrideWithValue(testToday),
       ],

@@ -2,14 +2,15 @@
 
 ## Pendências desta versão
 
-- **Validação em aparelho.** O app foi verificado por testes automatizados e pelo build no CI. Ainda não foi usado em um Android físico nesta reconstrução.
-- **Medidas caseiras do sistema.** O asset está vazio. Refazer a base a partir de uma fonte com página documentada. Ver [docs/NUTRITION_DATA.md](docs/NUTRITION_DATA.md).
-- **Termos de uso da TACO.** Confirmar o que o NEPA permite quanto à redistribuição dos dados.
+- **Medidas caseiras para os demais alimentos.** 225 dos 597 alimentos têm medidas do IBGE. Ampliar o cruzamento em `tool/build_measures.py`. Ver [docs/NUTRITION_DATA.md](docs/NUTRITION_DATA.md).
+- **Nome do alimento 540 da TACO.** "Feijoada" foi inferido, porque a planilha traz só "L". Conferir com a edição em PDF.
+- **Termos de uso da TACO e do IBGE.** Confirmar o que as duas fontes permitem quanto à redistribuição dos dados.
 - **Desempenho no Android.** Medir partida a frio, primeira abertura, busca e quadros lentos. Ver [docs/PERFORMANCE.md](docs/PERFORMANCE.md).
 - **Ícone do app.** Ainda é o ícone padrão do Flutter.
 
 ## Próximos passos
 
+- Seguir o plano: esta é uma primeira versão. Faltam o histórico de adesão por dia e por refeição, a opção de marcar uma refeição como pulada e planos diferentes para dias diferentes da semana.
 - Redesign visual, se houver um arquivo de design. Cores, tipografia e componentes estão isolados em `lib/ui/theme/` e `lib/ui/widgets/`.
 - Resumo semanal: média de calorias frente à meta e tendência de peso.
 - Receitas: um alimento composto de outros alimentos.

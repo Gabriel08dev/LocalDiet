@@ -193,9 +193,18 @@ class _PortionSheetState extends ConsumerState<_PortionSheet> {
     });
   }
 
+  /// Em gramas, o passo é 10. Em medidas, o passo é 1, com meia medida entre
+  /// zero e um: de 1 diminui para 0,5, e de 0,5 aumenta para 1.
   void _step(int direction) {
-    final step = _selected.isGram ? 10.0 : 0.5;
-    final next = (_quantityValue ?? 0) + direction * step;
+    final current = _quantityValue ?? 0;
+    final double next;
+    if (_selected.isGram) {
+      next = current + direction * 10;
+    } else if (direction < 0) {
+      next = current > 1 ? (current - 1 < 1 ? 1 : current - 1) : current - 0.5;
+    } else {
+      next = current < 1 ? current + 0.5 : current + 1;
+    }
     setState(() => _quantity.text = formatForInput(next < 0 ? 0 : next));
   }
 
@@ -498,16 +507,30 @@ class _NewMeasureDialogState extends State<_NewMeasureDialog> {
   Widget build(BuildContext context) {
     return AlertDialog(
       title: const Text(S.myPortion),
+      scrollable: true,
       content: Form(
         key: _form,
         child: Column(
           mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(S.myPortionHelp, style: context.text.bodyMedium),
-            const SizedBox(height: Gap.lg),
+            const SizedBox(height: Gap.md),
+            Wrap(
+              spacing: Gap.xs,
+              runSpacing: Gap.xs,
+              children: [
+                for (final name in S.portionNameSuggestions)
+                  ActionChip(
+                    label: Text(name),
+                    visualDensity: VisualDensity.compact,
+                    onPressed: () => setState(() => _label.text = name),
+                  ),
+              ],
+            ),
+            const SizedBox(height: Gap.md),
             TextFormField(
               controller: _label,
-              autofocus: true,
               textCapitalization: TextCapitalization.none,
               textInputAction: TextInputAction.next,
               decoration: const InputDecoration(

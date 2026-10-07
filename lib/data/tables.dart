@@ -19,6 +19,15 @@ enum FoodSource { taco, user }
 
 enum MeasureSource { system, user }
 
+/// O que o usuário marcou para uma refeição do Plano Base em um dia.
+enum PlanCheckStatus {
+  /// Comeu o que estava planejado.
+  followed,
+
+  /// Comeu outra coisa no lugar.
+  other,
+}
+
 /// Alimentos da TACO e alimentos criados pelo usuário.
 ///
 /// O `id` é estável entre reimportações e backups: `taco:<número>` para a
@@ -133,6 +142,21 @@ class PlanItems extends Table {
 
   @override
   Set<Column> get primaryKey => {id};
+}
+
+/// Marcação diária de cada refeição do Plano Base: seguida ou trocada.
+///
+/// Só existe linha para o que o usuário marcou. A marcação não guarda os
+/// alimentos: o que foi comido está no Diário.
+@DataClassName('PlanCheckRow')
+class PlanChecks extends Table {
+  TextColumn get date => text().map(const LocalDateConverter())();
+  TextColumn get meal => textEnum<MealType>()();
+  TextColumn get status => textEnum<PlanCheckStatus>()();
+  DateTimeColumn get checkedAt => dateTime()();
+
+  @override
+  Set<Column> get primaryKey => {date, meal};
 }
 
 @DataClassName('BodyMeasurementRow')

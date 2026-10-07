@@ -47,6 +47,8 @@ Future<void> _populate(AppDatabase db) async {
   await DiaryRepository(db)
       .addItems(_today.addDays(-1), MealType.dinner, [portionOf(rice, 100)]);
   await PlanRepository(db).addItems(MealType.breakfast, [portionOf(whey, 30)]);
+  await PlanRepository(db).followMeal(_today, MealType.breakfast);
+  await PlanRepository(db).markOther(_today, MealType.dinner);
   await foods.setFavorite(riceId, favorite: true);
   await foods.setFavorite(wheyId, favorite: true);
   await SettingsRepository(db).setValue('theme', 'dark');
@@ -67,6 +69,7 @@ Future<Map<String, Object?>> _userData(AppDatabase db) async {
     ),
     'diary': await table('SELECT * FROM diary_items ORDER BY id'),
     'plan': await table('SELECT * FROM plan_items ORDER BY id'),
+    'checks': await table('SELECT * FROM plan_checks ORDER BY date, meal'),
     'favorites': await table('SELECT * FROM favorites ORDER BY food_id'),
     'settings': await table('SELECT * FROM settings ORDER BY key'),
   };
@@ -102,7 +105,8 @@ void main() {
         jsonDecode(await BackupRepository(db).export()) as Map<String, dynamic>;
     expect(json['format'], backupFormat);
     expect(json['formatVersion'], backupFormatVersion);
-    expect(json['schemaVersion'], 1);
+    expect(json['schemaVersion'], 2);
+    expect(json['planChecks'], hasLength(2));
     expect(DateTime.parse(json['exportedAt'] as String).isUtc, isTrue);
     expect(json['userFoods'], hasLength(1));
     expect(json['userMeasures'], hasLength(2));
@@ -117,7 +121,7 @@ void main() {
     final backup = BackupRepository(db);
     final summary = backup.inspect(await backup.export());
     expect(summary.hasProfile, isTrue);
-    expect(summary.diaryItems, 3);
+    expect(summary.diaryItems, 4);
     expect(summary.diaryDays, 2);
     expect(summary.planItems, 1);
     expect(summary.bodyMeasurements, 1);
@@ -138,7 +142,8 @@ void main() {
 
     await backup.restore(file);
     final data = await _userData(db);
-    expect(data['diary'], hasLength(3));
+    expect(data['diary'], hasLength(4));
+    expect(data['checks'], hasLength(2));
     expect(data['foods'], hasLength(1));
     expect(await FoodRepository(db).search('zzextra'), isEmpty);
   });
@@ -216,6 +221,30 @@ void main() {
       ];
       return expectRejected(jsonEncode(broken));
     });
+  });
+
+  test('backup do schema 1, sem marcações do plano, é aceito', () async {
+    final json =
+        jsonDecode(await BackupRepository(db).export()) as Map<String, dynamic>;
+    json
+      ..['schemaVersion'] = 1
+      ..remove('planChecks');
+    final fresh = await databaseWithTaco();
+    addTearDown(fresh.close);
+    await BackupRepository(fresh).restore(jsonEncode(json));
+    final data = await _userData(fresh);
+    expect(data['diary'], hasLength(4));
+    expect(data['checks'], isEmpty);
+  });
+
+  test('backup do schema 2 sem a seção de marcações é recusado', () async {
+    final json =
+        jsonDecode(await BackupRepository(db).export()) as Map<String, dynamic>;
+    json.remove('planChecks');
+    await expectLater(
+      BackupRepository(db).restore(jsonEncode(json)),
+      throwsA(isA<BackupFormatException>()),
+    );
   });
 
   test(

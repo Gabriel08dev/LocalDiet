@@ -77,6 +77,16 @@ extension AppThemeContext on BuildContext {
   AppColors get appColors => Theme.of(this).extension<AppColors>()!;
 }
 
+/// Botão mais baixo, para ações dentro de listas e cartões.
+final compactButton = ButtonStyle(
+  minimumSize: const WidgetStatePropertyAll(Size(48, 40)),
+  padding: const WidgetStatePropertyAll(
+    EdgeInsets.symmetric(horizontal: Gap.md),
+  ),
+  tapTargetSize: MaterialTapTargetSize.padded,
+  visualDensity: VisualDensity.compact,
+);
+
 const _seed = Color(0xFF1F8A5B);
 
 ThemeData buildTheme(Brightness brightness) {

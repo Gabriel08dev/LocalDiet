@@ -170,13 +170,61 @@ void main() {
       expect(await count('measures'), 0);
     });
 
-    test('o asset de medidas do projeto é aceito pelo importador', () async {
+    test(
+      'o asset do projeto traz as medidas do IBGE, todas com fonte',
+      () async {
+        await db.close();
+        db = await databaseWithTaco();
+        await AssetImporter(db).syncAll((path) async {
+          return path == tacoAssetPath ? tacoAsset() : measuresAsset();
+        });
+        expect(await count('foods'), 597);
+        expect(await count('measures'), 912);
+        final foods = await db
+            .customSelect('SELECT COUNT(DISTINCT food_id) AS c FROM measures')
+            .getSingle();
+        expect(foods.read<int>('c'), 225);
+        final unsourced = await db
+            .customSelect(
+              "SELECT COUNT(*) AS c FROM measures WHERE reference IS NULL OR "
+              "reference NOT LIKE 'IBGE, POF 2008-2009%p. % do PDF:%'",
+            )
+            .getSingle();
+        expect(unsourced.read<int>('c'), 0);
+        final invalid = await db
+            .customSelect('SELECT COUNT(*) AS c FROM measures WHERE grams <= 0')
+            .getSingle();
+        expect(invalid.read<int>('c'), 0);
+      },
+    );
+
+    test('medidas de alimentos do dia a dia', () async {
       await db.close();
-      db = await databaseWithTaco();
-      await AssetImporter(db).syncAll((path) async {
-        return path == tacoAssetPath ? tacoAsset() : '';
-      });
-      expect(await count('foods'), 597);
+      db = await databaseWithAssets();
+      Future<Map<String, double>> of(int tacoNumber) async => {
+        for (final measure in await MeasureRepository(
+          db,
+        ).forFood(tacoFoodId(tacoNumber)))
+          measure.label: measure.grams,
+      };
+
+      final rice = await of(3);
+      expect(rice['colher de sopa'], 25);
+      expect(rice['colher de servir'], 45);
+      expect(rice['concha'], 100);
+      expect(rice.keys.first, 'colher de sopa', reason: 'ordem do asset');
+
+      expect((await of(561))['concha'], 140);
+      expect(await of(53), {'unidade': 50});
+      expect(await of(490), {'unidade': 50});
+      expect((await of(182))['unidade'], 75);
+      expect((await of(458))['copo médio'], 240);
+      expect((await of(52))['fatia'], 25);
+
+      // Formas cruas de alimentos que se comem cozidos ficam sem medida: as
+      // quantidades do IBGE são do alimento pronto.
+      expect(await of(4), isEmpty);
+      expect(await of(562), isEmpty);
     });
   });
 

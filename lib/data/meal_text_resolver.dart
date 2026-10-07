@@ -1,4 +1,5 @@
 import '../domain/meal_text_parser.dart';
+import '../domain/portion.dart';
 import '../domain/preparation.dart';
 import '../domain/search_text.dart';
 import 'app_database.dart';
@@ -14,7 +15,7 @@ class ResolvedMealItem {
     required this.parsed,
     required this.candidates,
     this.food,
-    this.grams,
+    this.portion,
   });
 
   final ParsedMealItem parsed;
@@ -25,13 +26,25 @@ class ResolvedMealItem {
   /// O alimento proposto, ou null quando nada foi encontrado.
   FoodRow? food;
 
-  /// Gramatura, ou null quando o texto não permite determiná-la.
-  double? grams;
+  /// A porção na medida em que foi dita ("2 fatias" fica como 2 × fatia), ou
+  /// null quando o texto não permite determinar a gramatura.
+  Portion? portion;
+
+  double? get grams => portion?.grams;
 
   /// Óleo de preparo sugerido para o alimento proposto, em gramas.
   double? get oilGrams =>
       food == null ? null : suggestedOilGrams(parsed.preparation, food!.name);
 }
+
+/// A medida entendida quando o texto traz só a palavra genérica: "1 copo de
+/// leite" é lido como copo médio, "2 colheres de arroz" como colher de sopa.
+const _genericMeasures = {
+  'colher': 'colher de sopa',
+  'copo': 'copo medio',
+  'xicara': 'xicara de cha',
+  'prato': 'prato raso',
+};
 
 /// Liga o resultado do parser de texto aos alimentos e medidas da base.
 class MealTextResolver {
@@ -50,7 +63,7 @@ class MealTextResolver {
           parsed: parsed,
           candidates: candidates,
           food: food,
-          grams: food == null ? null : await gramsFor(parsed, food),
+          portion: food == null ? null : await portionFor(parsed, food),
         ),
       );
     }
@@ -69,30 +82,43 @@ class MealTextResolver {
     return _foods.search(withoutPreparation, limit: 6);
   }
 
-  /// A gramatura de [parsed] para o alimento [food].
+  /// A porção de [parsed] para o alimento [food].
   ///
-  /// Massa vem direto do texto. Medida caseira só vira gramas se o alimento
+  /// Massa vem direto do texto. Medida caseira só vira porção se o alimento
   /// tiver uma medida com esse nome; caso contrário devolve null, e é o
-  /// usuário quem informa.
-  Future<double?> gramsFor(ParsedMealItem parsed, FoodRow food) async {
+  /// usuário quem informa os gramas.
+  Future<Portion?> portionFor(ParsedMealItem parsed, FoodRow food) async {
     switch (parsed.kind) {
       case QuantityKind.mass:
-        return parsed.grams;
+        return Portion.grams(parsed.grams!);
       case QuantityKind.measure:
         final wanted = parsed.measure!;
         final measures = await _measures.forFood(food.id);
-        for (final measure in measures) {
-          final label = normalizeSearchText(measure.label);
-          if (label == wanted || label.startsWith('$wanted ')) {
-            return parsed.quantity! * measure.grams;
-          }
-        }
-        return null;
+        final byLabel = {
+          for (final measure in measures)
+            normalizeSearchText(measure.label): measure,
+        };
+        final measure =
+            byLabel[wanted] ??
+            byLabel[_genericMeasures[wanted]] ??
+            byLabel.entries
+                .where((entry) => entry.key.startsWith('$wanted '))
+                .firstOrNull
+                ?.value;
+        if (measure == null) return null;
+        return Portion(
+          measureLabel: measure.label,
+          measureGrams: measure.grams,
+          quantity: parsed.quantity!,
+        );
       case QuantityKind.volume:
       case QuantityKind.unspecified:
         return null;
     }
   }
+
+  Future<double?> gramsFor(ParsedMealItem parsed, FoodRow food) async =>
+      (await portionFor(parsed, food))?.grams;
 
   /// O alimento usado na sugestão de óleo de preparo.
   Future<FoodRow?> oilFood() => _foods.byTacoNumber(oilTacoNumber);

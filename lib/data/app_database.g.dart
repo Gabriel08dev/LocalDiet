@@ -3351,6 +3351,334 @@ class PlanItemsCompanion extends UpdateCompanion<PlanItemRow> {
   }
 }
 
+class $PlanChecksTable extends PlanChecks
+    with TableInfo<$PlanChecksTable, PlanCheckRow> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $PlanChecksTable(this.attachedDatabase, [this._alias]);
+  @override
+  late final GeneratedColumnWithTypeConverter<LocalDate, String> date =
+      GeneratedColumn<String>(
+        'date',
+        aliasedName,
+        false,
+        type: DriftSqlType.string,
+        requiredDuringInsert: true,
+      ).withConverter<LocalDate>($PlanChecksTable.$converterdate);
+  @override
+  late final GeneratedColumnWithTypeConverter<MealType, String> meal =
+      GeneratedColumn<String>(
+        'meal',
+        aliasedName,
+        false,
+        type: DriftSqlType.string,
+        requiredDuringInsert: true,
+      ).withConverter<MealType>($PlanChecksTable.$convertermeal);
+  @override
+  late final GeneratedColumnWithTypeConverter<PlanCheckStatus, String> status =
+      GeneratedColumn<String>(
+        'status',
+        aliasedName,
+        false,
+        type: DriftSqlType.string,
+        requiredDuringInsert: true,
+      ).withConverter<PlanCheckStatus>($PlanChecksTable.$converterstatus);
+  static const VerificationMeta _checkedAtMeta = const VerificationMeta(
+    'checkedAt',
+  );
+  @override
+  late final GeneratedColumn<DateTime> checkedAt = GeneratedColumn<DateTime>(
+    'checked_at',
+    aliasedName,
+    false,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: true,
+  );
+  @override
+  List<GeneratedColumn> get $columns => [date, meal, status, checkedAt];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'plan_checks';
+  @override
+  VerificationContext validateIntegrity(
+    Insertable<PlanCheckRow> instance, {
+    bool isInserting = false,
+  }) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('checked_at')) {
+      context.handle(
+        _checkedAtMeta,
+        checkedAt.isAcceptableOrUnknown(data['checked_at']!, _checkedAtMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_checkedAtMeta);
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {date, meal};
+  @override
+  PlanCheckRow map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return PlanCheckRow(
+      date: $PlanChecksTable.$converterdate.fromSql(
+        attachedDatabase.typeMapping.read(
+          DriftSqlType.string,
+          data['${effectivePrefix}date'],
+        )!,
+      ),
+      meal: $PlanChecksTable.$convertermeal.fromSql(
+        attachedDatabase.typeMapping.read(
+          DriftSqlType.string,
+          data['${effectivePrefix}meal'],
+        )!,
+      ),
+      status: $PlanChecksTable.$converterstatus.fromSql(
+        attachedDatabase.typeMapping.read(
+          DriftSqlType.string,
+          data['${effectivePrefix}status'],
+        )!,
+      ),
+      checkedAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}checked_at'],
+      )!,
+    );
+  }
+
+  @override
+  $PlanChecksTable createAlias(String alias) {
+    return $PlanChecksTable(attachedDatabase, alias);
+  }
+
+  static JsonTypeConverter2<LocalDate, String, String> $converterdate =
+      const LocalDateConverter();
+  static JsonTypeConverter2<MealType, String, String> $convertermeal =
+      const EnumNameConverter<MealType>(MealType.values);
+  static JsonTypeConverter2<PlanCheckStatus, String, String> $converterstatus =
+      const EnumNameConverter<PlanCheckStatus>(PlanCheckStatus.values);
+}
+
+class PlanCheckRow extends DataClass implements Insertable<PlanCheckRow> {
+  final LocalDate date;
+  final MealType meal;
+  final PlanCheckStatus status;
+  final DateTime checkedAt;
+  const PlanCheckRow({
+    required this.date,
+    required this.meal,
+    required this.status,
+    required this.checkedAt,
+  });
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    {
+      map['date'] = Variable<String>(
+        $PlanChecksTable.$converterdate.toSql(date),
+      );
+    }
+    {
+      map['meal'] = Variable<String>(
+        $PlanChecksTable.$convertermeal.toSql(meal),
+      );
+    }
+    {
+      map['status'] = Variable<String>(
+        $PlanChecksTable.$converterstatus.toSql(status),
+      );
+    }
+    map['checked_at'] = Variable<DateTime>(checkedAt);
+    return map;
+  }
+
+  PlanChecksCompanion toCompanion(bool nullToAbsent) {
+    return PlanChecksCompanion(
+      date: Value(date),
+      meal: Value(meal),
+      status: Value(status),
+      checkedAt: Value(checkedAt),
+    );
+  }
+
+  factory PlanCheckRow.fromJson(
+    Map<String, dynamic> json, {
+    ValueSerializer? serializer,
+  }) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return PlanCheckRow(
+      date: $PlanChecksTable.$converterdate.fromJson(
+        serializer.fromJson<String>(json['date']),
+      ),
+      meal: $PlanChecksTable.$convertermeal.fromJson(
+        serializer.fromJson<String>(json['meal']),
+      ),
+      status: $PlanChecksTable.$converterstatus.fromJson(
+        serializer.fromJson<String>(json['status']),
+      ),
+      checkedAt: serializer.fromJson<DateTime>(json['checkedAt']),
+    );
+  }
+  @override
+  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return <String, dynamic>{
+      'date': serializer.toJson<String>(
+        $PlanChecksTable.$converterdate.toJson(date),
+      ),
+      'meal': serializer.toJson<String>(
+        $PlanChecksTable.$convertermeal.toJson(meal),
+      ),
+      'status': serializer.toJson<String>(
+        $PlanChecksTable.$converterstatus.toJson(status),
+      ),
+      'checkedAt': serializer.toJson<DateTime>(checkedAt),
+    };
+  }
+
+  PlanCheckRow copyWith({
+    LocalDate? date,
+    MealType? meal,
+    PlanCheckStatus? status,
+    DateTime? checkedAt,
+  }) => PlanCheckRow(
+    date: date ?? this.date,
+    meal: meal ?? this.meal,
+    status: status ?? this.status,
+    checkedAt: checkedAt ?? this.checkedAt,
+  );
+  PlanCheckRow copyWithCompanion(PlanChecksCompanion data) {
+    return PlanCheckRow(
+      date: data.date.present ? data.date.value : this.date,
+      meal: data.meal.present ? data.meal.value : this.meal,
+      status: data.status.present ? data.status.value : this.status,
+      checkedAt: data.checkedAt.present ? data.checkedAt.value : this.checkedAt,
+    );
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('PlanCheckRow(')
+          ..write('date: $date, ')
+          ..write('meal: $meal, ')
+          ..write('status: $status, ')
+          ..write('checkedAt: $checkedAt')
+          ..write(')'))
+        .toString();
+  }
+
+  @override
+  int get hashCode => Object.hash(date, meal, status, checkedAt);
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is PlanCheckRow &&
+          other.date == this.date &&
+          other.meal == this.meal &&
+          other.status == this.status &&
+          other.checkedAt == this.checkedAt);
+}
+
+class PlanChecksCompanion extends UpdateCompanion<PlanCheckRow> {
+  final Value<LocalDate> date;
+  final Value<MealType> meal;
+  final Value<PlanCheckStatus> status;
+  final Value<DateTime> checkedAt;
+  final Value<int> rowid;
+  const PlanChecksCompanion({
+    this.date = const Value.absent(),
+    this.meal = const Value.absent(),
+    this.status = const Value.absent(),
+    this.checkedAt = const Value.absent(),
+    this.rowid = const Value.absent(),
+  });
+  PlanChecksCompanion.insert({
+    required LocalDate date,
+    required MealType meal,
+    required PlanCheckStatus status,
+    required DateTime checkedAt,
+    this.rowid = const Value.absent(),
+  }) : date = Value(date),
+       meal = Value(meal),
+       status = Value(status),
+       checkedAt = Value(checkedAt);
+  static Insertable<PlanCheckRow> custom({
+    Expression<String>? date,
+    Expression<String>? meal,
+    Expression<String>? status,
+    Expression<DateTime>? checkedAt,
+    Expression<int>? rowid,
+  }) {
+    return RawValuesInsertable({
+      if (date != null) 'date': date,
+      if (meal != null) 'meal': meal,
+      if (status != null) 'status': status,
+      if (checkedAt != null) 'checked_at': checkedAt,
+      if (rowid != null) 'rowid': rowid,
+    });
+  }
+
+  PlanChecksCompanion copyWith({
+    Value<LocalDate>? date,
+    Value<MealType>? meal,
+    Value<PlanCheckStatus>? status,
+    Value<DateTime>? checkedAt,
+    Value<int>? rowid,
+  }) {
+    return PlanChecksCompanion(
+      date: date ?? this.date,
+      meal: meal ?? this.meal,
+      status: status ?? this.status,
+      checkedAt: checkedAt ?? this.checkedAt,
+      rowid: rowid ?? this.rowid,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (date.present) {
+      map['date'] = Variable<String>(
+        $PlanChecksTable.$converterdate.toSql(date.value),
+      );
+    }
+    if (meal.present) {
+      map['meal'] = Variable<String>(
+        $PlanChecksTable.$convertermeal.toSql(meal.value),
+      );
+    }
+    if (status.present) {
+      map['status'] = Variable<String>(
+        $PlanChecksTable.$converterstatus.toSql(status.value),
+      );
+    }
+    if (checkedAt.present) {
+      map['checked_at'] = Variable<DateTime>(checkedAt.value);
+    }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('PlanChecksCompanion(')
+          ..write('date: $date, ')
+          ..write('meal: $meal, ')
+          ..write('status: $status, ')
+          ..write('checkedAt: $checkedAt, ')
+          ..write('rowid: $rowid')
+          ..write(')'))
+        .toString();
+  }
+}
+
 class $BodyMeasurementsTable extends BodyMeasurements
     with TableInfo<$BodyMeasurementsTable, BodyMeasurementRow> {
   @override
@@ -4780,6 +5108,7 @@ abstract class _$AppDatabase extends GeneratedDatabase {
   late final $AssetVersionsTable assetVersions = $AssetVersionsTable(this);
   late final $DiaryItemsTable diaryItems = $DiaryItemsTable(this);
   late final $PlanItemsTable planItems = $PlanItemsTable(this);
+  late final $PlanChecksTable planChecks = $PlanChecksTable(this);
   late final $BodyMeasurementsTable bodyMeasurements = $BodyMeasurementsTable(
     this,
   );
@@ -4824,6 +5153,7 @@ abstract class _$AppDatabase extends GeneratedDatabase {
     assetVersions,
     diaryItems,
     planItems,
+    planChecks,
     bodyMeasurements,
     profiles,
     favorites,
@@ -7062,6 +7392,197 @@ typedef $$PlanItemsTableProcessedTableManager =
       PlanItemRow,
       PrefetchHooks Function({bool foodId})
     >;
+typedef $$PlanChecksTableCreateCompanionBuilder = PlanChecksCompanion Function({
+  required LocalDate date,
+  required MealType meal,
+  required PlanCheckStatus status,
+  required DateTime checkedAt,
+  Value<int> rowid,
+});
+typedef $$PlanChecksTableUpdateCompanionBuilder = PlanChecksCompanion Function({
+  Value<LocalDate> date,
+  Value<MealType> meal,
+  Value<PlanCheckStatus> status,
+  Value<DateTime> checkedAt,
+  Value<int> rowid,
+});
+
+class $$PlanChecksTableFilterComposer
+    extends Composer<_$AppDatabase, $PlanChecksTable> {
+  $$PlanChecksTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnWithTypeConverterFilters<LocalDate, LocalDate, String> get date =>
+      $composableBuilder(
+        column: $table.date,
+        builder: (column) => ColumnWithTypeConverterFilters(column),
+      );
+
+  ColumnWithTypeConverterFilters<MealType, MealType, String> get meal =>
+      $composableBuilder(
+        column: $table.meal,
+        builder: (column) => ColumnWithTypeConverterFilters(column),
+      );
+
+  ColumnWithTypeConverterFilters<PlanCheckStatus, PlanCheckStatus, String>
+  get status => $composableBuilder(
+    column: $table.status,
+    builder: (column) => ColumnWithTypeConverterFilters(column),
+  );
+
+  ColumnFilters<DateTime> get checkedAt => $composableBuilder(
+    column: $table.checkedAt,
+    builder: (column) => ColumnFilters(column),
+  );
+}
+
+class $$PlanChecksTableOrderingComposer
+    extends Composer<_$AppDatabase, $PlanChecksTable> {
+  $$PlanChecksTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<String> get date => $composableBuilder(
+    column: $table.date,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get meal => $composableBuilder(
+    column: $table.meal,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get status => $composableBuilder(
+    column: $table.status,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<DateTime> get checkedAt => $composableBuilder(
+    column: $table.checkedAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+}
+
+class $$PlanChecksTableAnnotationComposer
+    extends Composer<_$AppDatabase, $PlanChecksTable> {
+  $$PlanChecksTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumnWithTypeConverter<LocalDate, String> get date =>
+      $composableBuilder(column: $table.date, builder: (column) => column);
+
+  GeneratedColumnWithTypeConverter<MealType, String> get meal =>
+      $composableBuilder(column: $table.meal, builder: (column) => column);
+
+  GeneratedColumnWithTypeConverter<PlanCheckStatus, String> get status =>
+      $composableBuilder(column: $table.status, builder: (column) => column);
+
+  GeneratedColumn<DateTime> get checkedAt =>
+      $composableBuilder(column: $table.checkedAt, builder: (column) => column);
+}
+
+class $$PlanChecksTableTableManager
+    extends
+        RootTableManager<
+          _$AppDatabase,
+          $PlanChecksTable,
+          PlanCheckRow,
+          $$PlanChecksTableFilterComposer,
+          $$PlanChecksTableOrderingComposer,
+          $$PlanChecksTableAnnotationComposer,
+          $$PlanChecksTableCreateCompanionBuilder,
+          $$PlanChecksTableUpdateCompanionBuilder,
+          (
+            PlanCheckRow,
+            BaseReferences<_$AppDatabase, $PlanChecksTable, PlanCheckRow>,
+          ),
+          PlanCheckRow,
+          PrefetchHooks Function()
+        > {
+  $$PlanChecksTableTableManager(_$AppDatabase db, $PlanChecksTable table)
+    : super(
+        TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer: () =>
+              $$PlanChecksTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$PlanChecksTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$PlanChecksTableAnnotationComposer($db: db, $table: table),
+          updateCompanionCallback:
+              ({
+                Value<LocalDate> date = const Value.absent(),
+                Value<MealType> meal = const Value.absent(),
+                Value<PlanCheckStatus> status = const Value.absent(),
+                Value<DateTime> checkedAt = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => PlanChecksCompanion(
+                date: date,
+                meal: meal,
+                status: status,
+                checkedAt: checkedAt,
+                rowid: rowid,
+              ),
+          createCompanionCallback:
+              ({
+                required LocalDate date,
+                required MealType meal,
+                required PlanCheckStatus status,
+                required DateTime checkedAt,
+                Value<int> rowid = const Value.absent(),
+              }) => PlanChecksCompanion.insert(
+                date: date,
+                meal: meal,
+                status: status,
+                checkedAt: checkedAt,
+                rowid: rowid,
+              ),
+          withReferenceMapper: (p0) => p0
+              .map(
+                (e) => (
+                  e.readTable<$PlanChecksTable, PlanCheckRow>(table),
+                  BaseReferences<_$AppDatabase, $PlanChecksTable, PlanCheckRow>(
+                    db,
+                    table,
+                    e,
+                  ),
+                ),
+              )
+              .toList(),
+          prefetchHooksCallback: null,
+        ),
+      );
+}
+
+typedef $$PlanChecksTableProcessedTableManager =
+    ProcessedTableManager<
+      _$AppDatabase,
+      $PlanChecksTable,
+      PlanCheckRow,
+      $$PlanChecksTableFilterComposer,
+      $$PlanChecksTableOrderingComposer,
+      $$PlanChecksTableAnnotationComposer,
+      $$PlanChecksTableCreateCompanionBuilder,
+      $$PlanChecksTableUpdateCompanionBuilder,
+      (
+        PlanCheckRow,
+        BaseReferences<_$AppDatabase, $PlanChecksTable, PlanCheckRow>,
+      ),
+      PlanCheckRow,
+      PrefetchHooks Function()
+    >;
 typedef $$BodyMeasurementsTableCreateCompanionBuilder =
     BodyMeasurementsCompanion Function({
       required String id,
@@ -7992,6 +8513,8 @@ class $AppDatabaseManager {
       $$DiaryItemsTableTableManager(_db, _db.diaryItems);
   $$PlanItemsTableTableManager get planItems =>
       $$PlanItemsTableTableManager(_db, _db.planItems);
+  $$PlanChecksTableTableManager get planChecks =>
+      $$PlanChecksTableTableManager(_db, _db.planChecks);
   $$BodyMeasurementsTableTableManager get bodyMeasurements =>
       $$BodyMeasurementsTableTableManager(_db, _db.bodyMeasurements);
   $$ProfilesTableTableManager get profiles =>

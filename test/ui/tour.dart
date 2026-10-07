@@ -144,7 +144,6 @@ Future<void> tourApp(
   await _tap(tester, find.text('Revisar'));
   await shot('06_revisao');
   await _tap(tester, find.text('Adicionar mais alimentos'));
-  await _tap(tester, find.byTooltip('Limpar'));
   await _tap(tester, find.text('Descrever em texto'));
   await tester.enterText(
     find.byType(TextField).last,
