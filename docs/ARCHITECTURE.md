@@ -21,7 +21,7 @@ lib/
 
 ### Visual e movimento
 
-- **Cores.** Fundo lilás muito claro, cartões brancos e violeta para ações. As demais cores são tons pastel (`Tone`: pêssego, menta, rosa, lavanda, céu e limão), usados nos ícones de refeições e de grupos de alimentos e no degradê do cartão de destaque. O tema escuro usa fundo azul-noite com os mesmos tons como luz.
+- **Cores.** A paleta parte do logo: fundo creme (o do logo), cartões brancos e o verde-escuro da marca para ações. O verde da folha aparece em pastel nos estados selecionados e no degradê do cartão de destaque. As demais cores são tons pastel (`Tone`: pêssego, menta, rosa, lavanda, céu e limão), usados nos ícones de refeições e de grupos de alimentos. O tema escuro usa fundo verde-noite, o verde da folha nas ações e os mesmos tons como luz.
 - **Formas.** Cartões com cantos de 28, botões e etiquetas em pílula, barra de navegação flutuante.
 - **Movimento.** `ui/widgets/motion.dart` reúne as animações: telas que entram surgindo e subindo (`risePage`), troca de aba animada (`BranchSwitcher`), blocos que aparecem em sequência (`Reveal`) e números, barras e anéis que contam até o novo valor (`AnimatedCount`, `AnimatedFraction`). Todas respeitam a opção do sistema de reduzir animações.
 - **Marca.** O logo do NutriViva está em `docs/brand/nutriviva.jpg`. `tool/build_icon.py` separa o símbolo do fundo e gera o ícone do Android (adaptativo do Android 8 em diante, com camada monocromática para o ícone temático) e `assets/brand/mark.png`, que o widget `BrandMark` mostra sobre o fundo claro do logo nos dois temas.

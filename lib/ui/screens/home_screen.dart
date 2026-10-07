@@ -206,7 +206,7 @@ class _DayHero extends StatelessWidget {
     final onButton =
         ThemeData.estimateBrightnessForColor(app.onHero) == Brightness.dark
         ? Colors.white
-        : const Color(0xFF1B1740);
+        : context.colors.surface;
     return Container(
       decoration: BoxDecoration(
         gradient: LinearGradient(
