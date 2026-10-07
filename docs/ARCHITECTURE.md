@@ -24,7 +24,8 @@ lib/
 - **Cores.** Fundo lilás muito claro, cartões brancos e violeta para ações. As demais cores são tons pastel (`Tone`: pêssego, menta, rosa, lavanda, céu e limão), usados nos ícones de refeições e de grupos de alimentos e no degradê do cartão de destaque. O tema escuro usa fundo azul-noite com os mesmos tons como luz.
 - **Formas.** Cartões com cantos de 28, botões e etiquetas em pílula, barra de navegação flutuante.
 - **Movimento.** `ui/widgets/motion.dart` reúne as animações: telas que entram surgindo e subindo (`risePage`), troca de aba animada (`BranchSwitcher`), blocos que aparecem em sequência (`Reveal`) e números, barras e anéis que contam até o novo valor (`AnimatedCount`, `AnimatedFraction`). Todas respeitam a opção do sistema de reduzir animações.
-- **Ícone.** `tool/build_icon.py` gera os PNGs; do Android 8 em diante o ícone é adaptativo, definido em XML.
+- **Marca.** O logo do NutriViva está em `docs/brand/nutriviva.jpg`. `tool/build_icon.py` separa o símbolo do fundo e gera o ícone do Android (adaptativo do Android 8 em diante, com camada monocromática para o ícone temático) e `assets/brand/mark.png`, que o widget `BrandMark` mostra sobre o fundo claro do logo nos dois temas.
+- **Nome antigo.** O app se chamava LocalDiet. O nome continua nos identificadores que não podem mudar sem perder dados: `applicationId` (uma troca instalaria um segundo app, sem o histórico), arquivo do banco, formato do backup e alias da chave de assinatura. O pacote Dart também manteve o nome.
 
 ## Banco
 
@@ -107,6 +108,6 @@ Para mudar o schema:
 
 ## Build e publicação
 
-`.github/workflows/build.yml` roda em cada push: formatação, análise, testes, APK de release assinado e a verificação de que o APK não declara a permissão `INTERNET`. Uma tag `v*` publica o APK em Releases com o nome `LocalDiet.apk`.
+`.github/workflows/build.yml` roda em cada push: formatação, análise, testes, APK de release assinado e a verificação de que o APK não declara a permissão `INTERNET`. Uma tag `v*` publica o APK em Releases com o nome `NutriViva.apk`.
 
 O número de versão do Android (`versionCode`) é o número da execução do workflow, que sempre cresce. O nome da versão vem da tag.

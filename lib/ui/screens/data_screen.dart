@@ -30,6 +30,10 @@ class _DataScreenState extends ConsumerState<DataScreen> {
     setState(() => _busy = true);
     try {
       await action();
+    } catch (_) {
+      // Falha ao abrir, ler ou gravar o arquivo: o usuário precisa saber que
+      // nada foi feito.
+      if (mounted) showMessage(context, S.fileFailed);
     } finally {
       if (mounted) setState(() => _busy = false);
     }
@@ -39,7 +43,7 @@ class _DataScreenState extends ConsumerState<DataScreen> {
     final content = await ref.read(backupRepositoryProvider).export();
     final today = ref.read(todayProvider);
     final saved = await FilePicker.saveFile(
-      fileName: 'localdiet-backup-${today.toIso()}.json',
+      fileName: 'nutriviva-backup-${today.toIso()}.json',
       bytes: Uint8List.fromList(utf8.encode(content)),
       mimeType: 'application/json',
     );

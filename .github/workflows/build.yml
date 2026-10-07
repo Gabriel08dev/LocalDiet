@@ -85,16 +85,16 @@ jobs:
             exit 1
           fi
 
-      - run: cp build/app/outputs/flutter-apk/app-release.apk LocalDiet.apk
+      - run: cp build/app/outputs/flutter-apk/app-release.apk NutriViva.apk
 
       - uses: actions/upload-artifact@v4
         with:
-          name: LocalDiet-apk
-          path: LocalDiet.apk
+          name: NutriViva-apk
+          path: NutriViva.apk
 
       - name: Publicar release
         if: startsWith(github.ref, 'refs/tags/v')
         uses: softprops/action-gh-release@v2
         with:
-          files: LocalDiet.apk
+          files: NutriViva.apk
           generate_release_notes: true

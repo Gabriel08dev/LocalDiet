@@ -33,6 +33,11 @@ class AboutScreen extends StatelessWidget {
       body: ListView(
         padding: const EdgeInsets.fromLTRB(Gap.lg, 0, Gap.lg, Gap.xxl),
         children: [
+          const Align(
+            alignment: Alignment.centerLeft,
+            child: BrandMark(size: 64),
+          ),
+          const SizedBox(height: Gap.md),
           Text(S.appName, style: context.text.headlineMedium),
           Text(
             S.versionLine(appVersion),

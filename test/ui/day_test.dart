@@ -131,7 +131,7 @@ void main() {
     expect(items.last.grams, 100);
 
     // Almoço: comeu outra coisa, registrada pela busca em medidas caseiras.
-    await _tap(tester, find.text('Comi outra coisa'));
+    await _tap(tester, find.text('Fiz outra refeição'));
     expect(find.text('Diário · Hoje'), findsOneWidget);
     expect(
       tester
@@ -291,7 +291,7 @@ void main() {
   testWidgets('sem Plano Base o Início não pergunta nada', (tester) async {
     final db = await pumpApp(tester);
     expect(find.text('Segui o plano'), findsNothing);
-    expect(find.text('Comi outra coisa'), findsNothing);
+    expect(find.text('Fiz outra refeição'), findsNothing);
     expect(find.text('Nada registrado'), findsNWidgets(5));
     await closeApp(tester, db);
   });

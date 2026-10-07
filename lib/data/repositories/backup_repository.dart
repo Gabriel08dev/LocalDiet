@@ -5,10 +5,12 @@ import 'package:drift/drift.dart';
 import '../app_database.dart';
 import '../tables.dart';
 
+// O identificador mantém o nome original do projeto: trocá-lo faria o app
+// recusar os backups já exportados.
 const backupFormat = 'localdiet-backup';
 const backupFormatVersion = 1;
 
-/// O arquivo não é um backup do LocalDiet que esta versão consiga ler.
+/// O arquivo não é um backup do app que esta versão consiga ler.
 class BackupFormatException implements Exception {
   const BackupFormatException(this.message);
 
@@ -113,7 +115,7 @@ class BackupRepository {
       final json = jsonDecode(content);
       if (json is! Map<String, dynamic> || json['format'] != backupFormat) {
         throw const BackupFormatException(
-          'Este arquivo não é um backup do LocalDiet.',
+          'Este arquivo não é um backup do NutriViva.',
         );
       }
       final formatVersion = json['formatVersion'];

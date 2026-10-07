@@ -423,7 +423,7 @@ class FoodTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final kcal = S.kcalPer100(food.kcal);
+    final kcal = S.kcalPer100(food.isEnergyUnknown ? null : food.per100.kcal);
     final isMine = food.source == FoodSource.user;
     return ListTile(
       leading: IconBadge(foodIcon(food), tone: foodTone(context, food)),

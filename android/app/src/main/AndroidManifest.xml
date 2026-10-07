@@ -3,7 +3,7 @@
          allowBackup fica desligado porque os dados nao devem sair do aparelho;
          a copia de seguranca e a exportacao manual feita pelo usuario. -->
     <application
-        android:label="LocalDiet"
+        android:label="NutriViva"
         android:name="${applicationName}"
         android:allowBackup="false"
         android:icon="@mipmap/ic_launcher">

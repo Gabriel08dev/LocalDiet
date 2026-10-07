@@ -1,9 +1,8 @@
-import 'dart:math' as math;
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import '../../domain/intake_comparison.dart';
+import '../../domain/local_date.dart';
 import '../../domain/nutrients.dart';
 import '../../domain/profile_enums.dart';
 import '../format.dart';
@@ -62,7 +61,16 @@ class IconBadge extends StatelessWidget {
   }
 }
 
-/// A marca do app: um anel de progresso com um ponto no centro.
+/// O símbolo do NutriViva, gerado do logo por `tool/build_icon.py`.
+const brandMarkAsset = 'assets/brand/mark.png';
+
+/// O fundo claro do logo. O ícone do app usa a mesma cor.
+const brandPaper = Color(0xFFFDFAF3);
+
+/// A marca do app: o símbolo sobre o fundo claro do logo.
+///
+/// O fundo é sempre o do logo, também no tema escuro, porque o verde-escuro
+/// do símbolo não se lê sobre uma superfície escura.
 class BrandMark extends StatelessWidget {
   const BrandMark({super.key, this.size = 64});
 
@@ -70,48 +78,22 @@ class BrandMark extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final colors = context.appColors;
     return Container(
       width: size,
       height: size,
+      padding: EdgeInsets.all(size * 0.13),
       decoration: BoxDecoration(
-        gradient: LinearGradient(
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-          colors: colors.hero,
-        ),
+        color: brandPaper,
         borderRadius: BorderRadius.circular(size * 0.32),
+        border: Border.all(color: context.colors.outlineVariant),
       ),
-      child: CustomPaint(painter: _BrandPainter(colors.onHero)),
+      child: Image.asset(
+        brandMarkAsset,
+        filterQuality: FilterQuality.medium,
+        excludeFromSemantics: true,
+      ),
     );
   }
-}
-
-class _BrandPainter extends CustomPainter {
-  _BrandPainter(this.color);
-
-  final Color color;
-
-  @override
-  void paint(Canvas canvas, Size size) {
-    final center = size.center(Offset.zero);
-    final radius = size.width * 0.24;
-    canvas.drawArc(
-      Rect.fromCircle(center: center, radius: radius),
-      -math.pi / 2,
-      math.pi * 1.5,
-      false,
-      Paint()
-        ..color = color
-        ..style = PaintingStyle.stroke
-        ..strokeWidth = size.width * 0.085
-        ..strokeCap = StrokeCap.round,
-    );
-    canvas.drawCircle(center, size.width * 0.07, Paint()..color = color);
-  }
-
-  @override
-  bool shouldRepaint(_BrandPainter old) => old.color != color;
 }
 
 /// Estado vazio com ícone, explicação e, quando existe, uma ação real.
@@ -247,6 +229,30 @@ class DecimalField extends StatelessWidget {
       autovalidateMode: AutovalidateMode.onUserInteraction,
     );
   }
+}
+
+/// Abre o calendário e devolve o dia escolhido.
+///
+/// O intervalo é alargado para conter [initial]: o calendário do Flutter
+/// exige que a data inicial esteja entre a primeira e a última, e o dia em
+/// exibição pode estar fora do intervalo habitual.
+Future<LocalDate?> pickDate(
+  BuildContext context, {
+  required LocalDate initial,
+  required LocalDate first,
+  required LocalDate last,
+  String? helpText,
+  DatePickerMode mode = DatePickerMode.day,
+}) async {
+  final picked = await showDatePicker(
+    context: context,
+    initialDate: initial.toLocalNoon(),
+    firstDate: (initial.isBefore(first) ? initial : first).toLocalNoon(),
+    lastDate: (initial.isAfter(last) ? initial : last).toLocalNoon(),
+    helpText: helpText,
+    initialDatePickerMode: mode,
+  );
+  return picked == null ? null : LocalDate.fromDateTime(picked);
 }
 
 Future<bool> confirmAction(
@@ -574,7 +580,7 @@ class MealLine {
 }
 
 /// Bloco de uma refeição: ícone, nome, total, botão de adicionar e os itens.
-class MealBlock extends StatelessWidget {
+class MealBlock extends StatefulWidget {
   const MealBlock({
     super.key,
     required this.title,
@@ -601,7 +607,32 @@ class MealBlock extends StatelessWidget {
   final String? status;
 
   @override
+  State<MealBlock> createState() => _MealBlockState();
+}
+
+class _MealBlockState extends State<MealBlock> {
+  /// Itens deslizados para fora cuja exclusão ainda não voltou do banco.
+  ///
+  /// O Flutter exige que uma linha dispensada saia da árvore de imediato.
+  /// A exclusão no banco é assíncrona, então a linha é escondida aqui até a
+  /// nova lista chegar.
+  final _dismissed = <String>{};
+
+  @override
+  void didUpdateWidget(MealBlock old) {
+    super.didUpdateWidget(old);
+    // Quando o banco confirma a exclusão, o id sai da lista e daqui. Assim,
+    // se o usuário desfizer, a linha volta a aparecer.
+    _dismissed.retainWhere((id) => widget.lines.any((line) => line.id == id));
+  }
+
+  @override
   Widget build(BuildContext context) {
+    final MealBlock(:title, :icon, :tone, :menu, :status, :emptyText, :onAdd) =
+        widget;
+    final lines = widget.lines
+        .where((line) => !_dismissed.contains(line.id))
+        .toList();
     final total = lines.fold<double>(0, (sum, line) => sum + line.kcal);
     final muted = context.colors.onSurfaceVariant;
     return Padding(
@@ -663,7 +694,10 @@ class MealBlock extends StatelessWidget {
                     color: context.colors.onErrorContainer,
                   ),
                 ),
-                onDismissed: (_) => line.onDelete(),
+                onDismissed: (_) {
+                  setState(() => _dismissed.add(line.id));
+                  line.onDelete();
+                },
                 child: ListTile(
                   title: Text(line.title),
                   subtitle: line.warning == null

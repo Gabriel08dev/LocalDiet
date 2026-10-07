@@ -3,6 +3,7 @@
 ## Pendências desta versão
 
 - **Medidas caseiras para os demais alimentos.** 225 dos 597 alimentos têm medidas do IBGE. Ampliar o cruzamento em `tool/build_measures.py`. Ver [docs/NUTRITION_DATA.md](docs/NUTRITION_DATA.md).
+- **Alimentos sem energia na TACO.** Leite integral, leite desnatado UHT, iogurte de abacaxi e coco verde não têm energia nem macronutrientes na 4ª edição, e entram como 0 kcal com aviso. Avaliar uma segunda fonte documentada (por exemplo a TBCA) para esses quatro.
 - **Nome do alimento 540 da TACO.** "Feijoada" foi inferido, porque a planilha traz só "L". Conferir com a edição em PDF.
 - **Termos de uso da TACO e do IBGE.** Confirmar o que as duas fontes permitem quanto à redistribuição dos dados.
 - **Desempenho no Android.** Medir partida a frio, primeira abertura, busca e quadros lentos. Ver [docs/PERFORMANCE.md](docs/PERFORMANCE.md).

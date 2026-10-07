@@ -35,6 +35,20 @@ class MeasureRepository {
     if (!grams.isFinite || grams <= 0) {
       throw ArgumentError.value(grams, 'grams');
     }
+    // Salvar de novo uma medida com o mesmo nome corrige o peso da que já
+    // existe, em vez de criar duas opções iguais.
+    final existing = (await forFood(foodId))
+        .where(
+          (measure) =>
+              measure.source == MeasureSource.user &&
+              measure.label.toLowerCase() == trimmed.toLowerCase(),
+        )
+        .firstOrNull;
+    if (existing != null) {
+      await (_db.update(_db.measures)..where((t) => t.id.equals(existing.id)))
+          .write(MeasuresCompanion(grams: Value(grams)));
+      return existing.id;
+    }
     final id = 'user:${newId()}';
     await _db
         .into(_db.measures)

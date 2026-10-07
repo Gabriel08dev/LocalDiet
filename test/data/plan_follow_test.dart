@@ -69,6 +69,25 @@ void main() {
     });
   });
 
+  test(
+    'seguir de novo uma refeição já seguida não registra em dobro',
+    () async {
+      final first = await plan.followMeal(today, MealType.lunch);
+      final second = await plan.followMeal(today, MealType.lunch);
+      expect(first, hasLength(2));
+      expect(second, isEmpty);
+      expect(await diary.watchDay(today).first, hasLength(2));
+    },
+  );
+
+  test(
+    'refeição marcada como outra ainda pode seguir o plano depois',
+    () async {
+      await plan.markOther(today, MealType.lunch);
+      expect(await plan.followMeal(today, MealType.lunch), hasLength(2));
+    },
+  );
+
   test('o que foi registrado ao seguir o plano é um snapshot', () async {
     final id = await foods.saveUserFood(
       name: 'Granola',

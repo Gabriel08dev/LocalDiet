@@ -53,7 +53,7 @@ A regra de óleo de preparo está em [NUTRITION_DATA.md](NUTRITION_DATA.md).
 Quando o Plano Base tem itens para uma refeição e nada foi registrado nem marcado nela, o Início mostra o que estava planejado e duas respostas:
 
 - **Segui o plano.** Registra no Diário os itens planejados, na mesma transação em que marca a refeição como seguida. Os itens entram com snapshot e podem ser ajustados depois. O aviso oferece desfazer, que remove os itens criados e a marcação.
-- **Comi outra coisa.** Marca a refeição como trocada e abre o registro do que foi comido.
+- **Fiz outra refeição.** Marca a refeição como trocada e abre o registro do que foi comido.
 
 A marcação é uma por refeição e por dia. No Diário, o menu de cada refeição permite seguir o plano em qualquer dia e desmarcar. Desmarcar não apaga o que já foi registrado.
 

@@ -330,6 +330,16 @@ class _LineEditor extends StatelessWidget {
                       )
                     : Text(food.name, style: context.text.titleMedium),
               ),
+              if (food.isEnergyUnknown)
+                Padding(
+                  padding: const EdgeInsets.only(top: Gap.xs, right: Gap.sm),
+                  child: Text(
+                    S.energyUnknownShort,
+                    style: context.text.bodySmall?.copyWith(
+                      color: context.colors.error,
+                    ),
+                  ),
+                ),
               const SizedBox(height: Gap.sm),
               Padding(
                 padding: const EdgeInsets.only(right: Gap.sm),

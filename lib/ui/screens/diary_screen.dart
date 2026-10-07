@@ -24,17 +24,13 @@ class DiaryScreen extends ConsumerWidget {
 
   Future<void> _pickDate(BuildContext context, WidgetRef ref) async {
     final today = ref.read(todayProvider);
-    final picked = await showDatePicker(
-      context: context,
-      initialDate: ref.read(selectedDateProvider).toLocalNoon(),
-      firstDate: DateTime(2000),
-      lastDate: today.addDays(365).toLocalNoon(),
+    final picked = await pickDate(
+      context,
+      initial: ref.read(selectedDateProvider),
+      first: const LocalDate(2000, 1, 1),
+      last: today.addDays(365),
     );
-    if (picked != null) {
-      ref
-          .read(selectedDateProvider.notifier)
-          .select(LocalDate.fromDateTime(picked));
-    }
+    if (picked != null) ref.read(selectedDateProvider.notifier).select(picked);
   }
 
   Future<void> _edit(
@@ -196,7 +192,7 @@ class DiaryScreen extends ConsumerWidget {
               ),
               menu: PopupMenuButton<void>(
                 tooltip: S.moreOptions,
-                itemBuilder: (context) => [
+                itemBuilder: (_) => [
                   if (checks[meal] != PlanCheckStatus.followed &&
                       plan.any((entry) => entry.item.meal == meal))
                     PopupMenuItem(

@@ -295,6 +295,7 @@ class _MeasurementSheetState extends ConsumerState<_MeasurementSheet> {
   late final _neck = _controller(widget.existing?.neckCm);
   late final _hip = _controller(widget.existing?.hipCm);
   bool _empty = false;
+  bool _saving = false;
 
   TextEditingController _controller(double? value) =>
       TextEditingController(text: value == null ? '' : formatForInput(value));
@@ -308,17 +309,17 @@ class _MeasurementSheetState extends ConsumerState<_MeasurementSheet> {
   }
 
   Future<void> _pickDate() async {
-    final picked = await showDatePicker(
-      context: context,
-      initialDate: _date.toLocalNoon(),
-      firstDate: DateTime(2000),
-      lastDate: ref.read(todayProvider).toLocalNoon(),
+    final picked = await pickDate(
+      context,
+      initial: _date,
+      first: const LocalDate(2000, 1, 1),
+      last: ref.read(todayProvider),
     );
-    if (picked != null) setState(() => _date = LocalDate.fromDateTime(picked));
+    if (picked != null) setState(() => _date = picked);
   }
 
   Future<void> _save() async {
-    if (!_form.currentState!.validate()) return;
+    if (_saving || !_form.currentState!.validate()) return;
     final values = [
       _weight,
       _waist,
@@ -329,17 +330,26 @@ class _MeasurementSheetState extends ConsumerState<_MeasurementSheet> {
       setState(() => _empty = true);
       return;
     }
-    await ref
-        .read(bodyRepositoryProvider)
-        .save(
-          id: widget.existing?.id,
-          date: _date,
-          weightKg: values[0],
-          waistCm: values[1],
-          neckCm: values[2],
-          hipCm: values[3],
-        );
-    if (mounted) Navigator.of(context).pop();
+    // Um segundo toque enquanto a gravação está em curso criaria outra
+    // medição igual.
+    setState(() => _saving = true);
+    try {
+      await ref
+          .read(bodyRepositoryProvider)
+          .save(
+            id: widget.existing?.id,
+            date: _date,
+            weightKg: values[0],
+            waistCm: values[1],
+            neckCm: values[2],
+            hipCm: values[3],
+          );
+      if (mounted) Navigator.of(context).pop();
+    } catch (_) {
+      if (!mounted) return;
+      setState(() => _saving = false);
+      showMessage(context, S.saveFailed);
+    }
   }
 
   Future<void> _delete() async {
@@ -433,7 +443,7 @@ class _MeasurementSheetState extends ConsumerState<_MeasurementSheet> {
               SizedBox(
                 width: double.infinity,
                 child: FilledButton(
-                  onPressed: _save,
+                  onPressed: _saving ? null : _save,
                   child: const Text(S.save),
                 ),
               ),

@@ -111,6 +111,16 @@ final planAdherenceProvider = StreamProvider<PlanAdherence>((ref) {
       .watchAdherence(from: today.addDays(-6), to: today);
 });
 
+/// Um alimento pelo id, acompanhando edições.
+final foodProvider = StreamProvider.family<FoodRow?, String>(
+  (ref, id) => ref.watch(foodRepositoryProvider).watchById(id),
+);
+
+/// Se um alimento está nos favoritos.
+final isFavoriteProvider = StreamProvider.family<bool, String>(
+  (ref, id) => ref.watch(foodRepositoryProvider).watchIsFavorite(id),
+);
+
 final userFoodsProvider = StreamProvider<List<FoodRow>>(
   (ref) => ref.watch(foodRepositoryProvider).watchUserFoods(),
 );

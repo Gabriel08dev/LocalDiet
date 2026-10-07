@@ -38,6 +38,7 @@ class _CustomFoodScreenState extends ConsumerState<CustomFoodScreen> {
   final _portionGrams = TextEditingController();
   bool _loading = false;
   bool _saving = false;
+  bool _missing = false;
 
   bool get _isEditing => widget.foodId != null;
 
@@ -51,7 +52,15 @@ class _CustomFoodScreenState extends ConsumerState<CustomFoodScreen> {
     setState(() => _loading = true);
     final food = await ref.read(foodRepositoryProvider).byId(widget.foodId!);
     if (!mounted) return;
-    if (food != null) {
+    // Só alimentos do próprio usuário podem ser editados aqui.
+    if (food == null || food.source != FoodSource.user) {
+      setState(() {
+        _missing = true;
+        _loading = false;
+      });
+      return;
+    }
+    {
       _name.text = food.name;
       _kcal.text = formatForInput(food.per100.kcal);
       _protein.text = formatForInput(food.per100.protein);
@@ -141,7 +150,7 @@ class _CustomFoodScreenState extends ConsumerState<CustomFoodScreen> {
       appBar: AppBar(
         title: Text(_isEditing ? S.editFood : S.createFood),
         actions: [
-          if (_isEditing)
+          if (_isEditing && !_missing)
             IconButton(
               onPressed: _deactivate,
               icon: const Icon(Icons.delete_outline),
@@ -151,6 +160,10 @@ class _CustomFoodScreenState extends ConsumerState<CustomFoodScreen> {
       ),
       body: _loading
           ? const Center(child: CircularProgressIndicator())
+          : _missing
+          ? const Center(
+              child: EmptyState(icon: Icons.search_off, title: S.foodNotFound),
+            )
           : Form(
               key: _form,
               child: ListView(
@@ -353,21 +366,22 @@ class FoodDetailScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
       appBar: AppBar(title: const Text(S.foodSheet)),
-      body: FutureBuilder<FoodRow?>(
-        future: ref.watch(foodRepositoryProvider).byId(foodId),
-        builder: (context, snapshot) {
-          if (snapshot.connectionState != ConnectionState.done) {
-            return const Center(child: CircularProgressIndicator());
-          }
-          final food = snapshot.data;
-          if (food == null) {
-            return const Center(
-              child: EmptyState(icon: Icons.search_off, title: S.foodNotFound),
-            );
-          }
-          return _FoodSheet(food: food);
-        },
-      ),
+      body: ref
+          .watch(foodProvider(foodId))
+          .when(
+            loading: () => const Center(child: CircularProgressIndicator()),
+            error: (error, _) => const Center(
+              child: EmptyState(icon: Icons.error_outline, title: S.loadFailed),
+            ),
+            data: (food) => food == null
+                ? const Center(
+                    child: EmptyState(
+                      icon: Icons.search_off,
+                      title: S.foodNotFound,
+                    ),
+                  )
+                : _FoodSheet(food: food),
+          ),
     );
   }
 }

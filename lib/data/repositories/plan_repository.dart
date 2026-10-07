@@ -134,8 +134,18 @@ class PlanRepository {
   ///
   /// As duas coisas acontecem na mesma transação. Os itens entram com o
   /// snapshot atual de cada alimento e podem ser ajustados depois no Diário.
+  ///
+  /// Se a refeição já está marcada como seguida, não faz nada e devolve uma
+  /// lista vazia: um segundo toque não registra os itens em dobro.
   Future<List<String>> followMeal(LocalDate date, MealType meal) =>
       _db.transaction(() async {
+        final existing =
+            await (_db.select(_db.planChecks)..where(
+                  (t) => t.date.equalsValue(date) & t.meal.equalsValue(meal),
+                ))
+                .getSingleOrNull();
+        if (existing?.status == PlanCheckStatus.followed) return const [];
+
         final query =
             _db.select(_db.planItems).join([
                 innerJoin(

@@ -377,6 +377,58 @@ void main() {
       expect((await FoodRepository(db).byId(riceId))!.isActive, isTrue);
     });
 
+    test('alimento da TACO não pode ser sobrescrito como do usuário', () async {
+      await expectLater(
+        FoodRepository(db)
+            .saveUserFood(id: riceId, name: 'Outro', per100: sampleNutrients),
+        throwsArgumentError,
+      );
+      final rice = (await FoodRepository(db).byId(riceId))!;
+      expect(rice.name, 'Arroz, integral, cozido');
+      expect(rice.source, FoodSource.taco);
+    });
+
+    test('a ficha acompanha a edição do alimento', () async {
+      final foods = FoodRepository(db);
+      final id = await foods.saveUserFood(
+        name: 'Zzmix',
+        per100: sampleNutrients,
+      );
+      final seen = <double?>[];
+      final subscription = foods.watchById(id).listen((food) {
+        seen.add(food?.kcal);
+      });
+      await pumpEventQueue();
+      await foods.saveUserFood(
+        id: id,
+        name: 'Zzmix',
+        per100: const Nutrients(kcal: 123),
+      );
+      await pumpEventQueue();
+      await subscription.cancel();
+      expect(seen, [380, 123]);
+    });
+
+    test(
+      'salvar de novo a mesma medida corrige o peso em vez de duplicar',
+      () async {
+        final measures = MeasureRepository(db);
+        final first = await measures.addUserMeasure(
+          foodId: riceId,
+          label: 'Scoop',
+          grams: 30,
+        );
+        final second = await measures.addUserMeasure(
+          foodId: riceId,
+          label: 'scoop ',
+          grams: 32,
+        );
+        expect(second, first);
+        final listed = await measures.forFood(riceId);
+        expect(listed.single.grams, 32);
+      },
+    );
+
     test('nome em branco é recusado', () async {
       expect(
         () =>

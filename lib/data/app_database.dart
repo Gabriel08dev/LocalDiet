@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:drift/drift.dart';
 import 'package:drift_flutter/drift_flutter.dart';
 
@@ -59,6 +61,21 @@ extension FoodRowNutrients on FoodRow {
     fiber: fiber ?? 0,
     sodium: sodium ?? 0,
   );
+}
+
+extension FoodRowEnergy on FoodRow {
+  /// A fonte não traz a energia deste alimento: na TACO, análise em
+  /// reavaliação (`*`) ou não realizada.
+  ///
+  /// "Não aplicável" (`NA`, como no sal) não entra aqui: é zero de fato.
+  /// Quem mostra calorias usa isto para não exibir "0 kcal" no lugar de um
+  /// valor que a fonte não informa.
+  bool get isEnergyUnknown {
+    if (kcal != null || source != FoodSource.taco) return false;
+    final json = nutrientsJson;
+    if (json == null) return true;
+    return (jsonDecode(json) as Map<String, dynamic>)['energy_kcal'] != 'NA';
+  }
 }
 
 extension DiaryItemRowNutrients on DiaryItemRow {

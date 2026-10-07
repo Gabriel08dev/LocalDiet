@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Fundo do logo do NutriViva. O mesmo valor esta em tool/build_icon.py. -->
+    <color name="ic_launcher_background">#FDFAF3</color>
+</resources>

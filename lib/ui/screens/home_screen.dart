@@ -47,7 +47,8 @@ Future<void> followPlannedMeal(
 ) async {
   final plan = ref.read(planRepositoryProvider);
   final ids = await plan.followMeal(date, meal);
-  if (!context.mounted) return;
+  // Lista vazia: a refeição já estava marcada e nada novo foi registrado.
+  if (ids.isEmpty || !context.mounted) return;
   showUndo(
     context,
     S.planFollowedMessage(mealLabel(meal)),

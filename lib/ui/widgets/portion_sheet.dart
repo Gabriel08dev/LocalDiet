@@ -91,6 +91,10 @@ class _PortionSheetState extends ConsumerState<_PortionSheet> {
   bool _loading = true;
   bool _canAddMeasure = false;
 
+  /// A TACO não informa a energia deste alimento: mostrar "0 kcal" seria
+  /// afirmar algo que a fonte não diz.
+  bool _energyUnknown = false;
+
   @override
   void initState() {
     super.initState();
@@ -122,15 +126,17 @@ class _PortionSheetState extends ConsumerState<_PortionSheet> {
 
   Future<void> _load() async {
     final foodId = widget.foodId;
+    // Os repositórios são lidos antes das esperas: se a folha for fechada no
+    // meio do carregamento, `ref` já não pode ser usado.
+    final foods = ref.read(foodRepositoryProvider);
+    final diary = ref.read(diaryRepositoryProvider);
     final options = await _loadOptions();
     var start = widget.initial;
     FoodRow? food;
     if (foodId != null) {
-      food = await ref.read(foodRepositoryProvider).byId(foodId);
+      food = await foods.byId(foodId);
       if (start == null) {
-        final last = await ref
-            .read(diaryRepositoryProvider)
-            .lastForFood(foodId);
+        final last = await diary.lastForFood(foodId);
         if (last != null) {
           start = Portion(
             measureLabel: last.measureLabel,
@@ -164,6 +170,7 @@ class _PortionSheetState extends ConsumerState<_PortionSheet> {
       _selected = selected!;
       _quantity.text = formatForInput(start!.quantity);
       _canAddMeasure = food != null && food.isActive;
+      _energyUnknown = food != null && food.isEnergyUnknown;
       _loading = false;
     });
   }
@@ -282,7 +289,9 @@ class _PortionSheetState extends ConsumerState<_PortionSheet> {
                       Text(widget.foodName, style: context.text.titleLarge),
                       const SizedBox(height: Gap.xs),
                       Text(
-                        S.kcalPer100(widget.per100.kcal),
+                        S.kcalPer100(
+                          _energyUnknown ? null : widget.per100.kcal,
+                        ),
                         style: context.text.bodyMedium?.copyWith(
                           color: context.colors.onSurfaceVariant,
                         ),
@@ -373,7 +382,12 @@ class _PortionSheetState extends ConsumerState<_PortionSheet> {
               _Preview(
                 nutrients: nutrients,
                 grams: _selected.isGram ? null : portion?.grams,
+                energyUnknown: _energyUnknown,
               ),
+              if (_energyUnknown) ...[
+                const SizedBox(height: Gap.md),
+                const InfoBanner(S.energyUnknownNote),
+              ],
               const SizedBox(height: Gap.lg),
               SizedBox(
                 width: double.infinity,
@@ -393,7 +407,14 @@ class _PortionSheetState extends ConsumerState<_PortionSheet> {
 }
 
 class _Preview extends StatelessWidget {
-  const _Preview({required this.nutrients, required this.grams});
+  const _Preview({
+    required this.nutrients,
+    required this.grams,
+    required this.energyUnknown,
+  });
+
+  /// Quando verdadeiro, a energia aparece como não informada, não como zero.
+  final bool energyUnknown;
 
   final Nutrients nutrients;
 
@@ -433,7 +454,10 @@ class _Preview extends StatelessWidget {
       ),
       child: Column(
         children: [
-          Text(formatKcal(nutrients.kcal), style: context.text.headlineSmall),
+          Text(
+            energyUnknown ? S.energyUnknown : formatKcal(nutrients.kcal),
+            style: context.text.headlineSmall,
+          ),
           if (grams != null)
             Text(
               S.equalsGrams(grams!),
@@ -462,18 +486,14 @@ class _FavoriteButton extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final foods = ref.watch(foodRepositoryProvider);
-    return StreamBuilder<bool>(
-      stream: foods.watchIsFavorite(foodId),
-      builder: (context, snapshot) {
-        final favorite = snapshot.data ?? false;
-        return IconButton(
-          onPressed: () => foods.setFavorite(foodId, favorite: !favorite),
-          icon: Icon(favorite ? Icons.star : Icons.star_border),
-          color: favorite ? context.colors.primary : null,
-          tooltip: favorite ? S.removeFavorite : S.addFavorite,
-        );
-      },
+    final favorite = ref.watch(isFavoriteProvider(foodId)).value ?? false;
+    return IconButton(
+      onPressed: () => ref
+          .read(foodRepositoryProvider)
+          .setFavorite(foodId, favorite: !favorite),
+      icon: Icon(favorite ? Icons.star : Icons.star_border),
+      color: favorite ? context.colors.primary : null,
+      tooltip: favorite ? S.removeFavorite : S.addFavorite,
     );
   }
 }

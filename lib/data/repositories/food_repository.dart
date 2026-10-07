@@ -22,6 +22,9 @@ const _rawWithReadyVersion =
     "substr(f.search_text, 1, length(f.search_text) - 4) || 'assada')) "
     'ELSE 0 END)';
 
+/// Prefixo do id dos alimentos criados pelo usuário.
+const userFoodPrefix = 'user:';
+
 class FoodRepository {
   FoodRepository(this._db);
 
@@ -64,6 +67,11 @@ class FoodRepository {
 
   Future<FoodRow?> byId(String id) =>
       (_db.select(_db.foods)..where((t) => t.id.equals(id))).getSingleOrNull();
+
+  /// O alimento, acompanhando mudanças nele.
+  Stream<FoodRow?> watchById(String id) => (_db.select(
+    _db.foods,
+  )..where((t) => t.id.equals(id))).watchSingleOrNull();
 
   Future<FoodRow?> byTacoNumber(int number) => (_db.select(
     _db.foods,
@@ -143,7 +151,11 @@ class FoodRepository {
   }) async {
     final trimmed = name.trim();
     if (trimmed.isEmpty) throw ArgumentError.value(name, 'name');
-    final foodId = id ?? 'user:${newId()}';
+    // Só alimentos do usuário são editáveis; os da TACO vêm do asset.
+    if (id != null && !id.startsWith(userFoodPrefix)) {
+      throw ArgumentError.value(id, 'id', 'Não é um alimento do usuário');
+    }
+    final foodId = id ?? '$userFoodPrefix${newId()}';
     await _db
         .into(_db.foods)
         .insertOnConflictUpdate(

@@ -66,7 +66,7 @@ String _goalAdjustmentLabel(Goal goal) {
 
 /// Textos da interface, em um só lugar.
 abstract final class S {
-  static const appName = 'LocalDiet';
+  static const appName = 'NutriViva';
 
   // Navegação
   static const home = 'Início';
@@ -193,9 +193,9 @@ abstract final class S {
 
   // Seguir o plano
   static const followPlan = 'Segui o plano';
-  static const ateSomethingElse = 'Comi outra coisa';
+  static const ateSomethingElse = 'Fiz outra refeição';
   static String followPlanFor(String meal) => 'Segui o plano: $meal';
-  static String ateSomethingElseFor(String meal) => 'Comi outra coisa: $meal';
+  static String ateSomethingElseFor(String meal) => 'Fiz outra refeição: $meal';
   static const planFollowed = 'Plano seguido';
   static const otherMeal = 'Outra refeição';
   static const clearPlanCheck = 'Desmarcar';
@@ -206,8 +206,8 @@ abstract final class S {
       '${formatKcal(kcal)}';
   static const adherenceTitle = 'Adesão nos últimos 7 dias';
   static const adherenceEmpty =
-      'No Início, marque em cada refeição se você seguiu o plano ou comeu '
-      'outra coisa. O resumo aparece aqui.';
+      'No Início, marque em cada refeição se você seguiu o plano ou fez '
+      'outra refeição. O resumo aparece aqui.';
   static String adherenceSummary(int followed, int marked) =>
       'Plano seguido em $followed de '
       '${marked == 1 ? '1 refeição marcada' : '$marked refeições marcadas'}';
@@ -263,6 +263,13 @@ abstract final class S {
 
   // Porção
   static const foodSheet = 'Ficha do alimento';
+  static const energyUnknown = 'Energia não informada';
+  static const energyUnknownNote =
+      'A TACO não informa a energia nem os macronutrientes deste alimento '
+      '(análise em reavaliação). No registro, ele conta como 0 kcal. Para '
+      'contar as calorias, crie o seu alimento com os dados do rótulo.';
+  static const energyUnknownShort =
+      'Sem energia na TACO: conta como 0 kcal. Prefira um alimento seu.';
   static const addFavorite = 'Favoritar';
   static const removeFavorite = 'Tirar dos favoritos';
   static const myPortion = 'Minha porção';
@@ -427,9 +434,11 @@ abstract final class S {
       'alimentos, suas porções e favoritos. Guarde em um lugar seguro.';
   static const exportAction = 'Exportar meus dados';
   static const exportDone = 'Arquivo de backup salvo';
+  static const fileFailed =
+      'Não foi possível abrir ou gravar o arquivo. Nada foi alterado.';
   static const importTitle = 'Importar';
   static const importHelp =
-      'Lê um arquivo exportado pelo LocalDiet. Os dados deste aparelho são '
+      'Lê um arquivo exportado pelo NutriViva. Os dados deste aparelho são '
       'substituídos pelos do arquivo, depois da sua confirmação.';
   static const importAction = 'Importar de um arquivo';
   static const importConfirmTitle = 'Substituir os dados deste aparelho?';
@@ -437,7 +446,7 @@ abstract final class S {
   static const importDone = 'Dados importados';
   static const importErrorTitle = 'Não foi possível importar';
   static const importNotText =
-      'O arquivo escolhido não é um backup do LocalDiet.';
+      'O arquivo escolhido não é um backup do NutriViva.';
   static const importFailed =
       'A importação falhou e foi desfeita. Seus dados continuam como estavam.';
   static String importSummary(BackupSummary summary) {
@@ -466,7 +475,7 @@ abstract final class S {
   static const aboutTitle = 'Sobre e fontes';
   static String versionLine(String version) => 'Versão $version';
   static const healthNotice =
-      'O LocalDiet é uma ferramenta de registro. As metas e estimativas são '
+      'O NutriViva é uma ferramenta de registro. As metas e estimativas são '
       'cálculos gerais e não substituem o acompanhamento de nutricionista ou '
       'médico.';
   static const aboutFoodsTitle = 'Composição dos alimentos';
@@ -510,7 +519,7 @@ abstract final class S {
       'o alimento da TACO já traz o preparo no nome.';
   static const aboutPrivacyTitle = 'Privacidade';
   static const aboutPrivacyBody =
-      'O LocalDiet funciona sem internet e não pede essa permissão ao '
+      'O NutriViva funciona sem internet e não pede essa permissão ao '
       'sistema. Seus dados ficam só neste aparelho: não há conta, nuvem nem '
       'estatísticas de uso. A cópia de segurança é o arquivo que você '
       'exporta em Perfil, Exportar e importar dados.';

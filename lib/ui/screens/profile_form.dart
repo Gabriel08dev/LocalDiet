@@ -58,20 +58,17 @@ class _ProfileFormState extends ConsumerState<ProfileForm> {
 
   Future<void> _pickBirthDate() async {
     final today = ref.read(todayProvider);
-    final picked = await showDatePicker(
-      context: context,
-      initialDate: (_birthDate ?? LocalDate(today.year - 30, 1, 1))
-          .toLocalNoon(),
-      firstDate: DateTime(1900),
-      lastDate: today.toLocalNoon(),
+    final picked = await pickDate(
+      context,
+      initial: _birthDate ?? LocalDate(today.year - 30, 1, 1),
+      first: const LocalDate(1900, 1, 1),
+      last: today,
       helpText: S.birthDate,
-      initialDatePickerMode: _birthDate == null
-          ? DatePickerMode.year
-          : DatePickerMode.day,
+      mode: _birthDate == null ? DatePickerMode.year : DatePickerMode.day,
     );
     if (picked == null) return;
     setState(() {
-      _birthDate = LocalDate.fromDateTime(picked);
+      _birthDate = picked;
       _birthDateMissing = false;
     });
   }

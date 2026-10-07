@@ -1,4 +1,6 @@
-# LocalDiet
+<img src="docs/brand/nutriviva.jpg" alt="Logo do NutriViva" width="180">
+
+# NutriViva
 
 Aplicativo Android de acompanhamento nutricional que funciona sem internet. A composição dos alimentos vem da Tabela Brasileira de Composição de Alimentos (TACO), 4ª edição, do NEPA/UNICAMP. Todos os dados ficam no aparelho.
 
@@ -6,9 +8,11 @@ Aplicativo Android de acompanhamento nutricional que funciona sem internet. A co
 
 O APK mais recente fica em:
 
-**https://github.com/Gabriel08dev/LocalDiet/releases/latest/download/LocalDiet.apk**
+**https://github.com/Gabriel08dev/LocalDiet/releases/latest/download/NutriViva.apk**
 
 Abra o link no celular, baixe o arquivo e toque nele para instalar. Na primeira vez, o Android pede permissão para o navegador instalar apps; conceda e repita. As versões seguintes instalam por cima da anterior e mantêm os dados.
+
+O app se chamava LocalDiet até a versão 2.2.0. O NutriViva instala por cima dele e mantém os dados; o repositório e os identificadores internos continuam com o nome antigo.
 
 ## O que o app faz
 
@@ -17,7 +21,7 @@ Abra o link no celular, baixe o arquivo e toque nele para instalar. Na primeira 
 - **Porções em medidas caseiras.** Colher, concha, xícara, copo, fatia e unidade para 225 alimentos, com os pesos da tabela de medidas referidas do IBGE. Nos demais, gramas ou uma porção que você mesmo salva, como um scoop. A escolha de porção abre na última quantidade usada.
 - **Texto livre.** Descreva a refeição ("2 ovos fritos, 3 colheres de arroz e 1 concha de feijão") e confira a proposta antes de salvar.
 - **Plano Base.** A dieta planejada por refeição, que serve de meta para proteína, carboidrato e gordura.
-- **Seguir o plano.** Em cada refeição do dia, marque se seguiu o plano (o app registra o que estava planejado) ou se comeu outra coisa, e acompanhe a adesão da semana.
+- **Seguir o plano.** Em cada refeição do dia, marque se seguiu o plano (o app registra o que estava planejado) ou se fez outra refeição, e acompanhe a adesão da semana.
 - **Meta de calorias.** Calculada a partir do perfil, ou definida manualmente.
 - **Evolução.** Peso, cintura, pescoço e quadril, com gráficos, IMC e estimativa de gordura corporal.
 - **Backup.** Exporte e importe todos os seus dados em um arquivo.
@@ -49,7 +53,13 @@ dart run build_runner build
 Para regenerar as capturas de tela:
 
 ```bash
-flutter test --update-goldens test/ui/screenshots_test.dart
+flutter test --update-goldens test/ui/screenshots_test.dart test/ui/day_test.dart
+```
+
+Para regenerar o ícone e a marca a partir do logo em `docs/brand/nutriviva.jpg` (requer Python com Pillow e numpy):
+
+```bash
+python tool/build_icon.py
 ```
 
 ### Documentação

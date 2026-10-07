@@ -32,7 +32,7 @@ O script confere que saem exatamente 597 alimentos, numerados de 1 a 597, e impr
 - O banco guarda, por alimento, seis valores numéricos usados em somas (energia, proteína, carboidrato, lipídeos, fibra e sódio) e o registro completo da TACO, com os símbolos originais, em `foods.nutrients_json`.
 - Nas somas, `Tr` conta como zero. `NA`, `*` e valor ausente não têm número: ficam nulos no banco e também contam como zero em somas.
 - Na ficha do alimento, cada caso aparece como é (`Tr`, `NA`, `*`, `—`), nunca como "0".
-- Seis alimentos não têm energia numérica na TACO (quatro em reavaliação e dois não aplicáveis). Na busca, eles aparecem com "Energia não informada na TACO".
+- Seis alimentos não têm energia numérica na TACO. Em dois, o sal grosso e o sal dietético, a energia é "não aplicável" e eles aparecem com 0 kcal. Nos outros quatro a análise está em reavaliação, e a tabela também não traz proteína, carboidrato nem gordura, então não há como calcular a energia: leite de vaca integral (458), leite de vaca desnatado UHT (457), iogurte sabor abacaxi (450) e coco verde cru (591). Esses quatro aparecem com "Energia não informada" na busca, na escolha de porção e na proposta do texto livre, com o aviso de que contam como 0 kcal no registro. O app não estima o valor: quem quiser contar as calorias cadastra o alimento com os dados do rótulo.
 
 ### Uso e redistribuição
 

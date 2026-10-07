@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:io';
 
 import 'package:drift/drift.dart';
@@ -14,6 +15,7 @@ import 'package:localdiet/domain/portion.dart';
 import 'package:localdiet/domain/profile_enums.dart';
 import 'package:localdiet/providers.dart';
 import 'package:localdiet/ui/app.dart';
+import 'package:localdiet/ui/widgets/common.dart';
 
 const testToday = LocalDate(2026, 10, 7);
 
@@ -32,6 +34,7 @@ Future<AppDatabase> pumpApp(
   double pixelRatio = 1,
   ThemeMode? themeMode,
   Future<void> Function(AppDatabase db)? seed,
+  LocalDate Function()? today,
 }) async {
   tester.view.devicePixelRatio = pixelRatio;
   tester.view.physicalSize = size * pixelRatio;
@@ -66,6 +69,7 @@ Future<AppDatabase> pumpApp(
       await SettingsRepository(db).setValue('theme', themeMode.name);
     }
     await seed?.call(db);
+    await _loadBrandMark();
   });
 
   await tester.pumpWidget(
@@ -75,13 +79,30 @@ Future<AppDatabase> pumpApp(
         assetLoaderProvider.overrideWithValue(
           (path) async => path == tacoAssetPath ? _taco : _measures,
         ),
-        todayProvider.overrideWithValue(testToday),
+        todayProvider.overrideWith((ref) => today?.call() ?? testToday),
       ],
       child: const LocalDietApp(),
     ),
   );
   await tester.pumpAndSettle();
   return db;
+}
+
+/// Deixa o símbolo da marca no cache de imagens.
+///
+/// Em teste, uma imagem só termina de carregar fora do relógio falso. Sem
+/// isto, as telas com a marca sairiam nas capturas com o espaço em branco.
+Future<void> _loadBrandMark() {
+  final loaded = Completer<void>();
+  const AssetImage(brandMarkAsset)
+      .resolve(ImageConfiguration.empty)
+      .addListener(
+        ImageStreamListener(
+          (_, _) => loaded.isCompleted ? null : loaded.complete(),
+          onError: (error, stack) => loaded.completeError(error, stack),
+        ),
+      );
+  return loaded.future;
 }
 
 /// Desmonta o app e fecha o banco, sem deixar temporizadores pendentes.
