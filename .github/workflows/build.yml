@@ -1,0 +1,99 @@
+name: build
+
+on:
+  push:
+    branches: [main]
+    tags: ['v*']
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: build-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.47.6'
+          channel: stable
+          cache: true
+
+      - run: flutter pub get
+
+      - name: Formatacao
+        run: dart format --output=none --set-exit-if-changed lib test
+
+      - name: Analise estatica
+        run: flutter analyze
+
+      - name: Testes
+        run: flutter test
+
+      - name: Chave de assinatura
+        env:
+          KEYSTORE_BASE64: ${{ secrets.KEYSTORE_BASE64 }}
+          KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
+        run: |
+          if [ -z "$KEYSTORE_BASE64" ]; then
+            echo "Sem chave de release configurada; o APK sera assinado com a chave de debug."
+            exit 0
+          fi
+          echo "$KEYSTORE_BASE64" | base64 -d > android/app/release.p12
+          {
+            echo "storeFile=release.p12"
+            echo "storePassword=$KEYSTORE_PASSWORD"
+            echo "keyPassword=$KEYSTORE_PASSWORD"
+            echo "keyAlias=localdiet"
+          } > android/key.properties
+
+      - name: Versao do build
+        id: version
+        run: |
+          if [[ "$GITHUB_REF" == refs/tags/v* ]]; then
+            echo "name=${GITHUB_REF_NAME#v}" >> "$GITHUB_OUTPUT"
+          else
+            echo "name=$(grep '^version:' pubspec.yaml | sed 's/version: *//; s/+.*//')" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: APK de release
+        run: >
+          flutter build apk --release
+          --build-name=${{ steps.version.outputs.name }}
+          --build-number=${{ github.run_number }}
+
+      - name: O manifesto de release nao pede INTERNET
+        run: |
+          AAPT=$(ls "$ANDROID_HOME"/build-tools/*/aapt2 | sort -V | tail -1)
+          "$AAPT" dump permissions build/app/outputs/flutter-apk/app-release.apk | tee permissions.txt
+          if grep -q 'android.permission.INTERNET' permissions.txt; then
+            echo "O APK de release declara a permissao INTERNET." >&2
+            exit 1
+          fi
+
+      - run: cp build/app/outputs/flutter-apk/app-release.apk LocalDiet.apk
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: LocalDiet-apk
+          path: LocalDiet.apk
+
+      - name: Publicar release
+        if: startsWith(github.ref, 'refs/tags/v')
+        uses: softprops/action-gh-release@v2
+        with:
+          files: LocalDiet.apk
+          generate_release_notes: true

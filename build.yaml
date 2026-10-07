@@ -1,0 +1,13 @@
+targets:
+  $default:
+    builders:
+      drift_dev:
+        options:
+          databases:
+            app: lib/data/app_database.dart
+          schema_dir: drift_schemas/
+          test_dir: test/migrations/
+          sqlite:
+            version: "3.38"
+            modules:
+              - fts5

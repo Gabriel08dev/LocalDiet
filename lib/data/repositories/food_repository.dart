@@ -1,0 +1,151 @@
+import 'package:drift/drift.dart';
+
+import '../../domain/nutrients.dart';
+import '../../domain/search_text.dart';
+import '../app_database.dart';
+import '../ids.dart';
+import '../tables.dart';
+
+class FoodRepository {
+  FoodRepository(this._db);
+
+  final AppDatabase _db;
+
+  /// Busca alimentos ativos pelo texto digitado.
+  ///
+  /// Vêm primeiro os nomes que começam pelo primeiro termo, depois os
+  /// alimentos do usuário, depois a relevância do FTS5 e os nomes mais curtos.
+  Future<List<FoodRow>> search(String input, {int limit = 40}) async {
+    final query = buildFtsQuery(input);
+    if (query == null) return const [];
+    final firstTerm = leadingSearchPrefix(input)!;
+    final rows = await _db
+        .customSelect(
+          'SELECT f.* FROM food_search '
+          'INNER JOIN foods f ON f.id = food_search.food_id '
+          'WHERE food_search MATCH ?1 AND f.is_active = 1 '
+          'ORDER BY (f.search_text LIKE ?2) DESC, '
+          "(f.source = 'user') DESC, "
+          'bm25(food_search), length(f.name), f.name '
+          'LIMIT ?3',
+          variables: [
+            Variable.withString(query),
+            Variable.withString('$firstTerm%'),
+            Variable.withInt(limit),
+          ],
+          readsFrom: {_db.foods},
+        )
+        .get();
+    return rows.map((row) => _db.foods.map(row.data)).toList();
+  }
+
+  Future<FoodRow?> byId(String id) =>
+      (_db.select(_db.foods)..where((t) => t.id.equals(id))).getSingleOrNull();
+
+  Future<FoodRow?> byTacoNumber(int number) => (_db.select(
+    _db.foods,
+  )..where((t) => t.tacoNumber.equals(number))).getSingleOrNull();
+
+  Stream<List<FoodRow>> _watchFromDiary(String orderBy, int limit) => _db
+      .customSelect(
+        'SELECT f.*, MAX(d.created_at) AS last_used, COUNT(*) AS uses '
+        'FROM diary_items d INNER JOIN foods f ON f.id = d.food_id '
+        'WHERE f.is_active = 1 GROUP BY f.id ORDER BY $orderBy LIMIT ?1',
+        variables: [Variable.withInt(limit)],
+        readsFrom: {_db.diaryItems, _db.foods},
+      )
+      .watch()
+      .map((rows) => rows.map((row) => _db.foods.map(row.data)).toList());
+
+  /// Alimentos registrados mais recentemente no Diário.
+  Stream<List<FoodRow>> watchRecents({int limit = 12}) =>
+      _watchFromDiary('last_used DESC', limit);
+
+  /// Alimentos registrados mais vezes no Diário.
+  Stream<List<FoodRow>> watchFrequents({int limit = 12}) =>
+      _watchFromDiary('uses DESC, last_used DESC', limit);
+
+  Stream<List<FoodRow>> watchFavorites() {
+    final query =
+        _db.select(_db.favorites).join([
+            innerJoin(_db.foods, _db.foods.id.equalsExp(_db.favorites.foodId)),
+          ])
+          ..where(_db.foods.isActive.equals(true))
+          ..orderBy([OrderingTerm.asc(_db.foods.name)]);
+    return query.watch().map(
+      (rows) => rows.map((row) => row.readTable(_db.foods)).toList(),
+    );
+  }
+
+  Stream<bool> watchIsFavorite(String foodId) =>
+      (_db.select(_db.favorites)..where((t) => t.foodId.equals(foodId)))
+          .watchSingleOrNull()
+          .map((row) => row != null);
+
+  Future<void> setFavorite(String foodId, {required bool favorite}) async {
+    if (favorite) {
+      await _db
+          .into(_db.favorites)
+          .insertOnConflictUpdate(
+            FavoritesCompanion.insert(
+              foodId: foodId,
+              createdAt: DateTime.now(),
+            ),
+          );
+    } else {
+      await (_db.delete(
+        _db.favorites,
+      )..where((t) => t.foodId.equals(foodId))).go();
+    }
+  }
+
+  Stream<List<FoodRow>> watchUserFoods() =>
+      (_db.select(_db.foods)
+            ..where(
+              (t) =>
+                  t.source.equalsValue(FoodSource.user) &
+                  t.isActive.equals(true),
+            )
+            ..orderBy([(t) => OrderingTerm.asc(t.name)]))
+          .watch();
+
+  /// Cria ou atualiza um alimento do usuário e devolve o id.
+  ///
+  /// Editar um alimento não altera itens já registrados no Diário, que
+  /// guardam o snapshot do momento do registro.
+  Future<String> saveUserFood({
+    String? id,
+    required String name,
+    required Nutrients per100,
+  }) async {
+    final trimmed = name.trim();
+    if (trimmed.isEmpty) throw ArgumentError.value(name, 'name');
+    final foodId = id ?? 'user:${newId()}';
+    await _db
+        .into(_db.foods)
+        .insertOnConflictUpdate(
+          FoodsCompanion.insert(
+            id: foodId,
+            source: FoodSource.user,
+            name: trimmed,
+            searchText: normalizeSearchText(trimmed),
+            kcal: Value(per100.kcal),
+            protein: Value(per100.protein),
+            carb: Value(per100.carb),
+            fat: Value(per100.fat),
+            fiber: Value(per100.fiber),
+            sodium: Value(per100.sodium),
+            isActive: const Value(true),
+          ),
+        );
+    return foodId;
+  }
+
+  /// Desativa um alimento do usuário. Ele some da busca, mas o histórico e o
+  /// Plano continuam a resolvê-lo.
+  Future<void> deactivateUserFood(String id) =>
+      (_db.update(_db.foods)..where(
+            (t) => t.id.equals(id) & t.source.equalsValue(FoodSource.user),
+          ))
+          .write(const FoodsCompanion(isActive: Value(false)));
+}

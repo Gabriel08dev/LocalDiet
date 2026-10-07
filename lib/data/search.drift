@@ -1,0 +1,22 @@
+import 'tables.dart';
+
+-- Índice de busca textual dos alimentos. O conteúdo é o nome já normalizado
+-- (foods.search_text), mantido em sincronia pelos gatilhos abaixo.
+CREATE VIRTUAL TABLE food_search USING fts5 (
+  food_id UNINDEXED,
+  body,
+  tokenize = 'unicode61 remove_diacritics 2'
+);
+
+CREATE TRIGGER foods_search_insert AFTER INSERT ON foods BEGIN
+  INSERT INTO food_search (food_id, body) VALUES (new.id, new.search_text);
+END;
+
+CREATE TRIGGER foods_search_update AFTER UPDATE OF search_text ON foods BEGIN
+  DELETE FROM food_search WHERE food_id = old.id;
+  INSERT INTO food_search (food_id, body) VALUES (new.id, new.search_text);
+END;
+
+CREATE TRIGGER foods_search_delete AFTER DELETE ON foods BEGIN
+  DELETE FROM food_search WHERE food_id = old.id;
+END;
