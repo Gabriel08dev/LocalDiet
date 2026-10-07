@@ -140,6 +140,11 @@ class _ProfileFormState extends ConsumerState<ProfileForm> {
         padding: const EdgeInsets.fromLTRB(Gap.lg, Gap.sm, Gap.lg, Gap.xxl),
         children: [
           if (_isOnboarding) ...[
+            const Align(
+              alignment: Alignment.centerLeft,
+              child: BrandMark(size: 56),
+            ),
+            const SizedBox(height: Gap.lg),
             Text(S.onboardingTitle, style: context.text.headlineMedium),
             const SizedBox(height: Gap.sm),
             Text(

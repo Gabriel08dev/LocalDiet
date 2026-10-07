@@ -27,14 +27,39 @@ class ProfileScreen extends ConsumerWidget {
           : ListView(
               padding: const EdgeInsets.fromLTRB(Gap.lg, 0, Gap.lg, Gap.xxl),
               children: [
-                Text(profile.name, style: context.text.headlineMedium),
-                Text(
-                  S.profileSummary(profile, today),
-                  style: context.text.bodyMedium?.copyWith(
-                    color: context.colors.onSurfaceVariant,
-                  ),
+                Row(
+                  children: [
+                    CircleAvatar(
+                      radius: 30,
+                      backgroundColor: context.colors.primaryContainer,
+                      foregroundColor: context.colors.onPrimaryContainer,
+                      child: Text(
+                        profile.name.characters.first.toUpperCase(),
+                        textScaler: TextScaler.noScaling,
+                        style: const TextStyle(
+                          fontSize: 24,
+                          fontWeight: FontWeight.w700,
+                        ),
+                      ),
+                    ),
+                    const SizedBox(width: Gap.lg),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(profile.name, style: context.text.headlineSmall),
+                          Text(
+                            S.profileSummary(profile, today),
+                            style: context.text.bodyMedium?.copyWith(
+                              color: context.colors.onSurfaceVariant,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
                 ),
-                const SizedBox(height: Gap.lg),
+                const SizedBox(height: Gap.xl),
                 if (target == null)
                   const InfoBanner(S.targetNeedsWeight)
                 else
@@ -45,26 +70,38 @@ class ProfileScreen extends ConsumerWidget {
                   child: Column(
                     children: [
                       ListTile(
-                        leading: const Icon(Icons.person_outline),
+                        leading: IconBadge(
+                          Icons.person_outline,
+                          tone: context.appColors.lavender,
+                        ),
                         title: const Text(S.personalData),
                         trailing: const Icon(Icons.chevron_right),
                         onTap: () => context.push('/profile/edit'),
                       ),
                       ListTile(
-                        leading: const Icon(Icons.restaurant_outlined),
+                        leading: IconBadge(
+                          Icons.restaurant_outlined,
+                          tone: context.appColors.peach,
+                        ),
                         title: const Text(S.myFoods),
                         trailing: const Icon(Icons.chevron_right),
                         onTap: () => context.push('/my-foods'),
                       ),
                       ListTile(
-                        leading: const Icon(Icons.import_export),
+                        leading: IconBadge(
+                          Icons.import_export,
+                          tone: context.appColors.mint,
+                        ),
                         title: const Text(S.dataTitle),
                         subtitle: const Text(S.dataSubtitle),
                         trailing: const Icon(Icons.chevron_right),
                         onTap: () => context.push('/data'),
                       ),
                       ListTile(
-                        leading: const Icon(Icons.info_outline),
+                        leading: IconBadge(
+                          Icons.info_outline,
+                          tone: context.appColors.sky,
+                        ),
                         title: const Text(S.aboutTitle),
                         trailing: const Icon(Icons.chevron_right),
                         onTap: () => context.push('/about'),

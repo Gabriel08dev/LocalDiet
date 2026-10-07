@@ -74,6 +74,8 @@ void main() {
     final db = await pumpApp(tester);
     expect(find.text('Olá, Gabriel'), findsOneWidget);
 
+    await tester.ensureVisible(find.byTooltip('Adicionar a Almoço'));
+    await tester.pumpAndSettle();
     await tester.tap(find.byTooltip('Adicionar a Almoço'));
     await tester.pumpAndSettle();
     await searchFood(tester, 'arroz integral');
@@ -143,6 +145,8 @@ void main() {
         );
       },
     );
+    await tester.ensureVisible(find.byTooltip('Adicionar a Jantar'));
+    await tester.pumpAndSettle();
     await tester.tap(find.byTooltip('Adicionar a Jantar'));
     await tester.pumpAndSettle();
     // O alimento aparece nos recentes antes de qualquer digitação.
@@ -155,6 +159,8 @@ void main() {
 
   testWidgets('sair com alimentos não salvos pede confirmação', (tester) async {
     final db = await pumpApp(tester);
+    await tester.ensureVisible(find.byTooltip('Adicionar a Lanche'));
+    await tester.pumpAndSettle();
     await tester.tap(find.byTooltip('Adicionar a Lanche'));
     await tester.pumpAndSettle();
     await searchFood(tester, 'banana prata');
@@ -174,7 +180,9 @@ void main() {
     await tester.pumpAndSettle();
     await tester.tap(find.text('Descartar'));
     await tester.pumpAndSettle();
-    expect(find.text('Olá, Gabriel'), findsOneWidget);
+    // De volta ao Início, sem a refeição em montagem.
+    expect(find.byType(NavigationBar), findsOneWidget);
+    expect(find.text('Revisar'), findsNothing);
     final saved = await tester.runAsync(
       () => DiaryRepository(db).watchDay(testToday).first,
     );
@@ -219,7 +227,8 @@ void main() {
       },
     );
     // 600 g de arroz integral cru: 2.160 kcal contra a meta de 2.000.
-    expect(find.text('Excedente de 160 kcal'), findsOneWidget);
+    expect(find.text('Excedente hoje'), findsOneWidget);
+    expect(find.text('160 kcal'), findsOneWidget);
     expect(find.textContaining('Restam'), findsNothing);
     await closeApp(tester, db);
   });
@@ -234,6 +243,8 @@ void main() {
       findsOneWidget,
     );
 
+    await tester.ensureVisible(find.byTooltip('Adicionar a Café da manhã'));
+    await tester.pumpAndSettle();
     await tester.tap(find.byTooltip('Adicionar a Café da manhã'));
     await tester.pumpAndSettle();
     await searchFood(tester, 'pao frances');
@@ -300,6 +311,8 @@ void main() {
     tester,
   ) async {
     final db = await pumpApp(tester);
+    await tester.ensureVisible(find.byTooltip('Adicionar a Almoço'));
+    await tester.pumpAndSettle();
     await tester.tap(find.byTooltip('Adicionar a Almoço'));
     await tester.pumpAndSettle();
     await tester.tap(find.text('Descrever em texto'));

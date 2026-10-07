@@ -167,6 +167,18 @@ class DiaryRepository {
         .toList();
   }
 
+  /// Os dias entre [from] e [to], incluindo os dois, que têm registros.
+  Stream<Set<LocalDate>> watchDaysWithItems(LocalDate from, LocalDate to) {
+    final query = _db.selectOnly(_db.diaryItems, distinct: true)
+      ..addColumns([_db.diaryItems.date])
+      ..where(_db.diaryItems.date.isBetweenValues(from.toIso(), to.toIso()));
+    return query.watch().map(
+      (rows) => {
+        for (final row in rows) LocalDate.parse(row.read(_db.diaryItems.date)!),
+      },
+    );
+  }
+
   Future<List<DiaryItemRow>> itemsOfDay(LocalDate date) =>
       (_db.select(_db.diaryItems)
             ..where((t) => t.date.equalsValue(date))

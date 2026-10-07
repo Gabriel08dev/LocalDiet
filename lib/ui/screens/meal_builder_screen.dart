@@ -424,15 +424,55 @@ class FoodTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final kcal = S.kcalPer100(food.kcal);
+    final isMine = food.source == FoodSource.user;
     return ListTile(
+      leading: IconBadge(foodIcon(food), tone: foodTone(context, food)),
       title: Text(food.name),
-      subtitle: Text(
-        food.source == FoodSource.user ? '$kcal · ${S.myFood}' : kcal,
-      ),
-      trailing: const Icon(Icons.add),
+      subtitle: Text(isMine ? '$kcal · ${S.myFood}' : kcal),
+      trailing: Icon(Icons.add_circle, color: context.colors.primary),
       onTap: () => onTap(food),
     );
   }
+}
+
+/// O tom pastel do grupo do alimento.
+Tone foodTone(BuildContext context, FoodRow food) {
+  final colors = context.appColors;
+  if (food.source == FoodSource.user) return colors.lavender;
+  final category = food.category ?? '';
+  if (category.startsWith('Verduras')) return colors.mint;
+  if (category.startsWith('Leguminosas')) return colors.mint;
+  if (category.startsWith('Frutas')) return colors.pink;
+  if (category.startsWith('Produtos açucarados')) return colors.pink;
+  if (category.startsWith('Carnes')) return colors.peach;
+  if (category.startsWith('Nozes')) return colors.peach;
+  if (category.startsWith('Pescados')) return colors.sky;
+  if (category.startsWith('Leite')) return colors.sky;
+  if (category.startsWith('Bebidas')) return colors.lavender;
+  if (category.startsWith('Alimentos preparados')) return colors.lavender;
+  return colors.lemon;
+}
+
+/// Ícone do grupo do alimento na TACO, para reconhecer o tipo de relance.
+IconData foodIcon(FoodRow food) {
+  if (food.source == FoodSource.user) return Icons.bookmark_outline;
+  final category = food.category ?? '';
+  if (category.startsWith('Cereais')) return Icons.bakery_dining_outlined;
+  if (category.startsWith('Verduras')) return Icons.eco_outlined;
+  if (category.startsWith('Frutas')) return Icons.spa_outlined;
+  if (category.startsWith('Gorduras')) return Icons.water_drop_outlined;
+  if (category.startsWith('Pescados')) return Icons.set_meal_outlined;
+  if (category.startsWith('Carnes')) return Icons.kebab_dining_outlined;
+  if (category.startsWith('Leite')) return Icons.local_drink_outlined;
+  if (category.startsWith('Bebidas')) return Icons.local_cafe_outlined;
+  if (category.startsWith('Ovos')) return Icons.egg_outlined;
+  if (category.startsWith('Produtos açucarados')) return Icons.cake_outlined;
+  if (category.startsWith('Leguminosas')) return Icons.grain;
+  if (category.startsWith('Nozes')) return Icons.grain;
+  if (category.startsWith('Alimentos preparados')) {
+    return Icons.ramen_dining_outlined;
+  }
+  return Icons.restaurant_outlined;
 }
 
 /// O que aparece antes de o usuário digitar: atalhos e alimentos já usados.

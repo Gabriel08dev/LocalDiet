@@ -19,6 +19,13 @@ lib/
 
 `ui/strings.dart` concentra os textos da interface, `ui/format.dart` a formatação em pt-BR, e `ui/theme/app_theme.dart` as cores, espaçamentos e raios. Um redesign troca esses arquivos e os componentes de `ui/widgets/` sem tocar em regras de negócio.
 
+### Visual e movimento
+
+- **Cores.** Fundo lilás muito claro, cartões brancos e violeta para ações. As demais cores são tons pastel (`Tone`: pêssego, menta, rosa, lavanda, céu e limão), usados nos ícones de refeições e de grupos de alimentos e no degradê do cartão de destaque. O tema escuro usa fundo azul-noite com os mesmos tons como luz.
+- **Formas.** Cartões com cantos de 28, botões e etiquetas em pílula, barra de navegação flutuante.
+- **Movimento.** `ui/widgets/motion.dart` reúne as animações: telas que entram surgindo e subindo (`risePage`), troca de aba animada (`BranchSwitcher`), blocos que aparecem em sequência (`Reveal`) e números, barras e anéis que contam até o novo valor (`AnimatedCount`, `AnimatedFraction`). Todas respeitam a opção do sistema de reduzir animações.
+- **Ícone.** `tool/build_icon.py` gera os PNGs; do Android 8 em diante o ícone é adaptativo, definido em XML.
+
 ## Banco
 
 Schema na versão 2. O arquivo se chama `localdiet2.sqlite`, nome diferente do usado pela primeira versão do app, e é aberto em isolate de segundo plano por `drift_flutter`.

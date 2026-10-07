@@ -112,6 +112,9 @@ class PlanScreen extends ConsumerWidget {
               for (final meal in MealType.values)
                 MealBlock(
                   title: mealLabel(meal),
+                  icon: mealIcon(meal),
+                  tone: mealTone(context, meal),
+                  emptyText: S.nothingPlanned,
                   onAdd: () =>
                       context.push(addFoodLocation(target: 'plan', meal: meal)),
                   lines: [

@@ -225,12 +225,28 @@ class _TrendPainter extends CustomPainter {
     for (final offset in offsets.skip(1)) {
       path.lineTo(offset.dx, offset.dy);
     }
+
+    // Um brilho suave sob a linha, que some em direção à base.
+    final floor = size.height - _Geometry.bottom;
+    final area = Path.from(path)
+      ..lineTo(offsets.last.dx, floor)
+      ..lineTo(offsets.first.dx, floor)
+      ..close();
+    canvas.drawPath(
+      area,
+      Paint()
+        ..shader = LinearGradient(
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
+          colors: [line.withValues(alpha: 0.22), line.withValues(alpha: 0)],
+        ).createShader(Rect.fromLTRB(0, _Geometry.top, size.width, floor)),
+    );
     canvas.drawPath(
       path,
       Paint()
         ..color = line
         ..style = PaintingStyle.stroke
-        ..strokeWidth = 2
+        ..strokeWidth = 2.5
         ..strokeJoin = StrokeJoin.round
         ..strokeCap = StrokeCap.round,
     );

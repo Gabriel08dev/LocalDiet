@@ -173,9 +173,13 @@ abstract final class S {
     return text[0].toUpperCase() + text.substring(1);
   }
 
+  static const kcalRemainingLabel = 'Restam hoje';
+  static const kcalOverLabel = 'Excedente hoje';
+  static String kcalAmount(double kcal) => formatKcal(kcal);
   static const todayMeals = 'Refeições de hoje';
   static const logFood = 'Registrar refeição';
   static const nothingLogged = 'Nada registrado';
+  static const nothingPlanned = 'Nada planejado';
   static const noKcalTarget = 'Sem meta de calorias';
   static const macrosNeedPlan =
       'Monte um Plano Base para ter metas de proteína, carboidrato e gordura.';
@@ -214,8 +218,9 @@ abstract final class S {
   };
 
   // Diário
-  static const previousDay = 'Dia anterior';
-  static const nextDay = 'Dia seguinte';
+  static const previousWeek = 'Semana anterior';
+  static const nextWeek = 'Próxima semana';
+  static const goToToday = 'Ir para hoje';
   static const chooseDay = 'Escolher o dia';
   static const copyFromAnotherDay = 'Copiar de outro dia';
   static const nothingToCopy = 'Nenhuma refeição anterior';
@@ -363,7 +368,7 @@ abstract final class S {
   static const noWeightYet = 'Registre o peso para ver os indicadores.';
   static const currentWeight = 'Peso atual';
   static const bmi = 'IMC';
-  static const bodyFat = 'Gordura corporal';
+  static const bodyFat = 'Gordura';
   static const chartNeedsTwo =
       'Registre mais uma medição para ver a evolução em gráfico.';
   static String weightChange(double delta, LocalDate since) {

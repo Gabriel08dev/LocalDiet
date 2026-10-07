@@ -6,12 +6,11 @@
 - **Nome do alimento 540 da TACO.** "Feijoada" foi inferido, porque a planilha traz só "L". Conferir com a edição em PDF.
 - **Termos de uso da TACO e do IBGE.** Confirmar o que as duas fontes permitem quanto à redistribuição dos dados.
 - **Desempenho no Android.** Medir partida a frio, primeira abertura, busca e quadros lentos. Ver [docs/PERFORMANCE.md](docs/PERFORMANCE.md).
-- **Ícone do app.** Ainda é o ícone padrão do Flutter.
 
 ## Próximos passos
 
 - Seguir o plano: esta é uma primeira versão. Faltam o histórico de adesão por dia e por refeição, a opção de marcar uma refeição como pulada e planos diferentes para dias diferentes da semana.
-- Redesign visual, se houver um arquivo de design. Cores, tipografia e componentes estão isolados em `lib/ui/theme/` e `lib/ui/widgets/`.
+- Visual: uma fonte própria embutida no app (hoje ele usa a fonte do sistema) e ilustrações nos estados vazios. Cores, formas e animações estão isolados em `lib/ui/theme/` e `lib/ui/widgets/`.
 - Resumo semanal: média de calorias frente à meta e tendência de peso.
 - Receitas: um alimento composto de outros alimentos.
 - Conversão de volume para gramas em líquidos, quando houver densidade documentada.

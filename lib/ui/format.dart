@@ -10,6 +10,7 @@ final _twoDecimals = NumberFormat('#,##0.##', _locale);
 final _longDay = DateFormat("EEEE, d 'de' MMMM", _locale);
 final _dayMonth = DateFormat("d 'de' MMMM", _locale);
 final _weekday = DateFormat('EEEE', _locale);
+final _weekdayShort = DateFormat('E', _locale);
 final _shortDate = DateFormat('dd/MM/yyyy', _locale);
 final _dayMonthShort = DateFormat('dd/MM', _locale);
 
@@ -48,6 +49,10 @@ double? parseDecimal(String text) {
   if (value == null || !value.isFinite || value < 0) return null;
   return value;
 }
+
+/// "seg", "ter", "qua": o dia da semana em três letras.
+String formatWeekdayShort(LocalDate date) =>
+    _weekdayShort.format(date.toLocalNoon()).replaceAll('.', '');
 
 String formatDate(LocalDate date) => _shortDate.format(date.toLocalNoon());
 

@@ -3,7 +3,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../data/app_database.dart';
+import '../../data/repositories/plan_repository.dart';
 import '../../data/tables.dart';
+import '../../domain/intake_comparison.dart';
 import '../../domain/local_date.dart';
 import '../../domain/nutrients.dart';
 import '../../domain/portion.dart';
@@ -13,6 +15,7 @@ import '../format.dart';
 import '../strings.dart';
 import '../theme/app_theme.dart';
 import '../widgets/common.dart';
+import '../widgets/motion.dart';
 import '../widgets/portion_sheet.dart';
 import 'home_screen.dart';
 
@@ -84,122 +87,284 @@ class DiaryScreen extends ConsumerWidget {
       appBar: AppBar(
         title: Text(formatRelativeDay(date, today)),
         actions: [
-          IconButton(
-            onPressed: () => selection.select(date.addDays(-1)),
-            icon: const Icon(Icons.chevron_left),
-            tooltip: S.previousDay,
-          ),
+          if (date != today)
+            IconButton(
+              onPressed: () => selection.select(today),
+              icon: const Icon(Icons.today_outlined),
+              tooltip: S.goToToday,
+            ),
           IconButton(
             onPressed: () => _pickDate(context, ref),
-            icon: const Icon(Icons.calendar_today_outlined),
+            icon: const Icon(Icons.calendar_month_outlined),
             tooltip: S.chooseDay,
-          ),
-          IconButton(
-            onPressed: () => selection.select(date.addDays(1)),
-            icon: const Icon(Icons.chevron_right),
-            tooltip: S.nextDay,
           ),
         ],
       ),
-      body: items.when(
-        loading: () => const Center(child: CircularProgressIndicator()),
-        error: (error, _) =>
-            const EmptyState(icon: Icons.error_outline, title: S.loadFailed),
-        data: (list) => ListView(
-          padding: const EdgeInsets.fromLTRB(Gap.lg, 0, Gap.lg, Gap.xxl),
-          children: [
-            Card(
-              child: Padding(
-                padding: const EdgeInsets.all(Gap.lg),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Wrap(
-                      spacing: Gap.md,
-                      crossAxisAlignment: WrapCrossAlignment.end,
-                      children: [
-                        Text(
-                          formatKcal(comparison.kcal.consumed),
-                          style: context.text.headlineSmall,
-                        ),
-                        KcalStatusText(
-                          comparison.kcal,
-                          style: context.text.bodyMedium,
-                        ),
-                      ],
-                    ),
-                    const SizedBox(height: Gap.sm),
-                    ClipRRect(
-                      borderRadius: BorderRadius.circular(4),
-                      child: LinearProgressIndicator(
-                        value: comparison.kcal.progress ?? 0,
-                        minHeight: 8,
-                        color: comparison.kcal.isOver
-                            ? context.appColors.over
-                            : context.colors.primary,
-                        backgroundColor: context.colors.surfaceContainerHighest,
-                      ),
-                    ),
-                    const SizedBox(height: Gap.lg),
-                    MacroBars(comparison),
-                  ],
+      body: Column(
+        children: [
+          _WeekStrip(selected: date, today: today, onSelect: selection.select),
+          Expanded(
+            // A troca de dia esmaece de um para o outro.
+            child: AnimatedSwitcher(
+              duration: Motion.of(context, Motion.fast),
+              child: KeyedSubtree(
+                key: ValueKey(date),
+                child: _buildDay(
+                  context,
+                  ref,
+                  date,
+                  items,
+                  comparison,
+                  plan,
+                  checks,
                 ),
               ),
             ),
-            for (final meal in MealType.values)
-              MealBlock(
-                title: mealLabel(meal),
-                status: switch (checks[meal]) {
-                  PlanCheckStatus.followed => S.planFollowed,
-                  PlanCheckStatus.other => S.otherMeal,
-                  null => null,
-                },
-                onAdd: () => context.push(
-                  addFoodLocation(target: 'diary', meal: meal, date: date),
-                ),
-                menu: PopupMenuButton<void>(
-                  tooltip: S.moreOptions,
-                  itemBuilder: (context) => [
-                    if (checks[meal] != PlanCheckStatus.followed &&
-                        plan.any((entry) => entry.item.meal == meal))
-                      PopupMenuItem(
-                        onTap: () =>
-                            followPlannedMeal(context, ref, date, meal),
-                        child: const Text(S.followPlan),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildDay(
+    BuildContext context,
+    WidgetRef ref,
+    LocalDate date,
+    AsyncValue<List<DiaryItemRow>> items,
+    DayComparison comparison,
+    List<PlanEntry> plan,
+    Map<MealType, PlanCheckStatus> checks,
+  ) {
+    return items.when(
+      loading: () => const Center(child: CircularProgressIndicator()),
+      error: (error, _) =>
+          const EmptyState(icon: Icons.error_outline, title: S.loadFailed),
+      data: (list) => ListView(
+        padding: const EdgeInsets.fromLTRB(Gap.lg, Gap.sm, Gap.lg, Gap.xxl),
+        children: [
+          Card(
+            child: Padding(
+              padding: const EdgeInsets.all(Gap.lg),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Wrap(
+                    spacing: Gap.md,
+                    crossAxisAlignment: WrapCrossAlignment.end,
+                    children: [
+                      Text(
+                        formatKcal(comparison.kcal.consumed),
+                        style: context.text.headlineSmall,
                       ),
-                    if (checks[meal] != null)
-                      PopupMenuItem(
-                        onTap: () => ref
-                            .read(planRepositoryProvider)
-                            .clearCheck(date, meal),
-                        child: const Text(S.clearPlanCheck),
-                      ),
-                    PopupMenuItem(
-                      onTap: () =>
-                          _copyFromAnotherDay(context, ref, date, meal),
-                      child: const Text(S.copyFromAnotherDay),
-                    ),
-                  ],
-                ),
-                lines: [
-                  for (final item in list.where((item) => item.meal == meal))
-                    MealLine(
-                      id: item.id,
-                      title: item.foodName,
-                      subtitle: S.portionText(
-                        Portion(
-                          measureLabel: item.measureLabel,
-                          measureGrams: item.measureGrams,
-                          quantity: item.quantity,
+                      Padding(
+                        padding: const EdgeInsets.only(bottom: 3),
+                        child: KcalStatusText(
+                          comparison.kcal,
+                          style: context.text.bodyMedium?.copyWith(
+                            color: context.colors.onSurfaceVariant,
+                          ),
                         ),
                       ),
-                      kcal: item.nutrients.kcal,
-                      onTap: () => _edit(context, ref, item),
-                      onDelete: () => _delete(context, ref, item),
-                    ),
+                    ],
+                  ),
+                  const SizedBox(height: Gap.md),
+                  ProgressLine(
+                    value: comparison.kcal.progress ?? 0,
+                    height: 8,
+                    color: comparison.kcal.isOver
+                        ? context.appColors.over
+                        : context.colors.primary,
+                  ),
+                  const SizedBox(height: Gap.lg),
+                  MacroBars(comparison),
                 ],
               ),
-          ],
+            ),
+          ),
+          for (final meal in MealType.values)
+            MealBlock(
+              title: mealLabel(meal),
+              icon: mealIcon(meal),
+              tone: mealTone(context, meal),
+              status: switch (checks[meal]) {
+                PlanCheckStatus.followed => S.planFollowed,
+                PlanCheckStatus.other => S.otherMeal,
+                null => null,
+              },
+              onAdd: () => context.push(
+                addFoodLocation(target: 'diary', meal: meal, date: date),
+              ),
+              menu: PopupMenuButton<void>(
+                tooltip: S.moreOptions,
+                itemBuilder: (context) => [
+                  if (checks[meal] != PlanCheckStatus.followed &&
+                      plan.any((entry) => entry.item.meal == meal))
+                    PopupMenuItem(
+                      onTap: () => followPlannedMeal(context, ref, date, meal),
+                      child: const Text(S.followPlan),
+                    ),
+                  if (checks[meal] != null)
+                    PopupMenuItem(
+                      onTap: () => ref
+                          .read(planRepositoryProvider)
+                          .clearCheck(date, meal),
+                      child: const Text(S.clearPlanCheck),
+                    ),
+                  PopupMenuItem(
+                    onTap: () => _copyFromAnotherDay(context, ref, date, meal),
+                    child: const Text(S.copyFromAnotherDay),
+                  ),
+                ],
+              ),
+              lines: [
+                for (final item in list.where((item) => item.meal == meal))
+                  MealLine(
+                    id: item.id,
+                    title: item.foodName,
+                    subtitle: S.portionText(
+                      Portion(
+                        measureLabel: item.measureLabel,
+                        measureGrams: item.measureGrams,
+                        quantity: item.quantity,
+                      ),
+                    ),
+                    kcal: item.nutrients.kcal,
+                    onTap: () => _edit(context, ref, item),
+                    onDelete: () => _delete(context, ref, item),
+                  ),
+              ],
+            ),
+        ],
+      ),
+    );
+  }
+}
+
+/// A semana do dia selecionado, de segunda a domingo.
+///
+/// Um toque troca de dia. O ponto sob o número marca os dias que têm
+/// registros, e o contorno marca hoje.
+class _WeekStrip extends ConsumerWidget {
+  const _WeekStrip({
+    required this.selected,
+    required this.today,
+    required this.onSelect,
+  });
+
+  final LocalDate selected;
+  final LocalDate today;
+  final ValueChanged<LocalDate> onSelect;
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final monday = selected.addDays(1 - selected.weekday);
+    final logged = ref.watch(daysWithItemsProvider(monday)).value ?? const {};
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: Gap.xs),
+      child: Row(
+        children: [
+          IconButton(
+            onPressed: () => onSelect(selected.addDays(-7)),
+            icon: const Icon(Icons.chevron_left),
+            tooltip: S.previousWeek,
+            visualDensity: VisualDensity.compact,
+          ),
+          for (var offset = 0; offset < 7; offset++)
+            Expanded(
+              child: _DayCell(
+                date: monday.addDays(offset),
+                isSelected: monday.addDays(offset) == selected,
+                isToday: monday.addDays(offset) == today,
+                hasItems: logged.contains(monday.addDays(offset)),
+                onTap: () => onSelect(monday.addDays(offset)),
+              ),
+            ),
+          IconButton(
+            onPressed: () => onSelect(selected.addDays(7)),
+            icon: const Icon(Icons.chevron_right),
+            tooltip: S.nextWeek,
+            visualDensity: VisualDensity.compact,
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class _DayCell extends StatelessWidget {
+  const _DayCell({
+    required this.date,
+    required this.isSelected,
+    required this.isToday,
+    required this.hasItems,
+    required this.onTap,
+  });
+
+  final LocalDate date;
+  final bool isSelected;
+  final bool isToday;
+  final bool hasItems;
+  final VoidCallback onTap;
+
+  @override
+  Widget build(BuildContext context) {
+    final colors = context.colors;
+    return Semantics(
+      button: true,
+      selected: isSelected,
+      label: formatDate(date),
+      excludeSemantics: true,
+      child: InkWell(
+        onTap: onTap,
+        borderRadius: BorderRadius.circular(Corner.md),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(vertical: Gap.xs),
+          // Em telas estreitas ou com fonte ampliada, a célula encolhe em
+          // vez de estourar.
+          child: FittedBox(
+            fit: BoxFit.scaleDown,
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Text(
+                  formatWeekdayShort(date),
+                  style: context.text.labelSmall?.copyWith(
+                    color: colors.onSurfaceVariant,
+                  ),
+                ),
+                const SizedBox(height: Gap.xs),
+                AnimatedContainer(
+                  duration: Motion.of(context, Motion.fast),
+                  width: 36,
+                  height: 36,
+                  alignment: Alignment.center,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: isSelected ? colors.primary : null,
+                    border: isToday && !isSelected
+                        ? Border.all(color: colors.primary, width: 1.5)
+                        : null,
+                  ),
+                  child: Text(
+                    '${date.day}',
+                    textScaler: TextScaler.noScaling,
+                    style: context.text.titleSmall?.copyWith(
+                      color: isSelected ? colors.onPrimary : colors.onSurface,
+                    ),
+                  ),
+                ),
+                const SizedBox(height: Gap.xs),
+                Container(
+                  width: 5,
+                  height: 5,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: hasItems ? colors.primary : Colors.transparent,
+                  ),
+                ),
+              ],
+            ),
+          ),
         ),
       ),
     );

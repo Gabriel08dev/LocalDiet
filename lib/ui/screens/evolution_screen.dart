@@ -120,55 +120,105 @@ class _Indicators extends ConsumerWidget {
             hipCm: _latest((row) => row.hipCm),
           );
 
-    Widget tile(String label, String value, [String? note]) => Padding(
-      padding: const EdgeInsets.only(right: Gap.xl, bottom: Gap.md),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Text(
-            label,
-            style: context.text.labelMedium?.copyWith(
-              color: context.colors.onSurfaceVariant,
+    final muted = context.colors.onSurfaceVariant;
+    Widget tile(IconData icon, String label, String value, [String? note]) =>
+        Card(
+          child: Padding(
+            padding: const EdgeInsets.all(Gap.md),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Row(
+                  children: [
+                    Icon(icon, size: 16, color: muted),
+                    const SizedBox(width: 6),
+                    Flexible(
+                      child: Text(
+                        label,
+                        style: context.text.labelMedium?.copyWith(color: muted),
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: Gap.sm),
+                FittedBox(
+                  fit: BoxFit.scaleDown,
+                  alignment: Alignment.centerLeft,
+                  child: Text(value, style: context.text.titleLarge),
+                ),
+                if (note != null)
+                  Text(
+                    note,
+                    style: context.text.bodySmall?.copyWith(color: muted),
+                  ),
+              ],
             ),
           ),
-          Text(value, style: context.text.titleLarge),
-          if (note != null) Text(note, style: context.text.bodySmall),
-        ],
-      ),
-    );
+        );
 
-    return Card(
-      child: Padding(
-        padding: const EdgeInsets.fromLTRB(Gap.lg, Gap.lg, Gap.lg, Gap.xs),
-        child: SizedBox(
-          width: double.infinity,
-          child: Wrap(
+    final tiles = [
+      if (weight != null)
+        tile(
+          Icons.monitor_weight_outlined,
+          S.currentWeight,
+          '${formatNumber(weight)} kg',
+          weights.length >= 2
+              ? S.weightChange(
+                  weights.last.value - weights.first.value,
+                  weights.first.date,
+                )
+              : null,
+        ),
+      if (bmi != null)
+        tile(
+          Icons.straighten,
+          S.bmi,
+          formatNumber(bmi),
+          bmiRangeLabel(bmiRange(bmi)),
+        ),
+      if (bodyFat != null)
+        tile(Icons.percent, S.bodyFat, '${formatNumber(bodyFat)}%', S.estimate),
+    ];
+    if (tiles.isEmpty) {
+      return const Card(
+        child: Padding(
+          padding: EdgeInsets.all(Gap.lg),
+          child: Text(S.noWeightYet),
+        ),
+      );
+    }
+
+    // Lado a lado quando cabem; em telas estreitas ou com fonte ampliada,
+    // um indicador por linha.
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        final scale = MediaQuery.textScalerOf(context).scale(1);
+        final sideBySide = constraints.maxWidth >= 330 && scale <= 1.3;
+        if (!sideBySide) {
+          return Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              if (weight != null)
-                tile(
-                  S.currentWeight,
-                  '${formatNumber(weight)} kg',
-                  weights.length >= 2
-                      ? S.weightChange(
-                          weights.last.value - weights.first.value,
-                          weights.first.date,
-                        )
-                      : null,
-                ),
-              if (bmi != null)
-                tile(S.bmi, formatNumber(bmi), bmiRangeLabel(bmiRange(bmi))),
-              if (bodyFat != null)
-                tile(S.bodyFat, '${formatNumber(bodyFat)}%', S.estimate),
-              if (weight == null && bmi == null && bodyFat == null)
-                Padding(
-                  padding: const EdgeInsets.only(bottom: Gap.md),
-                  child: Text(S.noWeightYet),
-                ),
+              for (final (index, item) in tiles.indexed) ...[
+                if (index > 0) const SizedBox(height: Gap.sm),
+                item,
+              ],
+            ],
+          );
+        }
+        return IntrinsicHeight(
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              for (final (index, item) in tiles.indexed) ...[
+                if (index > 0) const SizedBox(width: Gap.sm),
+                Expanded(child: item),
+              ],
             ],
           ),
-        ),
-      ),
+        );
+      },
     );
   }
 }

@@ -86,6 +86,13 @@ final diaryDayProvider = StreamProvider.family<List<DiaryItemRow>, LocalDate>(
   (ref, date) => ref.watch(diaryRepositoryProvider).watchDay(date),
 );
 
+/// Os dias com registros na semana que começa em uma segunda-feira.
+final daysWithItemsProvider = StreamProvider.family<Set<LocalDate>, LocalDate>(
+  (ref, monday) => ref
+      .watch(diaryRepositoryProvider)
+      .watchDaysWithItems(monday, monday.addDays(6)),
+);
+
 final planProvider = StreamProvider<List<PlanEntry>>(
   (ref) => ref.watch(planRepositoryProvider).watchAll(),
 );

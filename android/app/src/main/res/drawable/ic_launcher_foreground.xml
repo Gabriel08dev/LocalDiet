@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- A marca do app: um anel de progresso de tres quartos com um ponto no centro.
+     O desenho fica dentro da area segura de 66dp do icone adaptativo. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <path
+        android:pathData="M54,37 A17,17 0 1 1 37,54"
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="6"
+        android:strokeLineCap="round" />
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M49,54 a5,5 0 1 0 10,0 a5,5 0 1 0 -10,0" />
+</vector>

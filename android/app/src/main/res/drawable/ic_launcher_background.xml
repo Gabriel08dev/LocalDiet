@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Degrade lilas, azul e menta, do canto superior esquerdo ao inferior direito. -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android" android:shape="rectangle">
+    <gradient
+        android:angle="315"
+        android:startColor="#8E7CFF"
+        android:centerColor="#6FB8FF"
+        android:endColor="#62DDB4"
+        android:type="linear" />
+</shape>

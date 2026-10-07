@@ -39,6 +39,10 @@ Future<AppDatabase> pumpApp(
   addTearDown(tester.view.reset);
   addTearDown(tester.platformDispatcher.clearTextScaleFactorTestValue);
 
+  // Ao gerar capturas, as sombras aparecem como no aparelho, em vez do
+  // contorno que os testes desenham no lugar. closeApp restaura o padrão.
+  debugDisableShadows = !autoUpdateGoldenFiles;
+
   driftRuntimeOptions.dontWarnAboutMultipleDatabases = true;
   final db = AppDatabase(NativeDatabase.memory());
   await tester.runAsync(() async {
@@ -85,6 +89,7 @@ Future<void> closeApp(WidgetTester tester, AppDatabase db) async {
   await tester.pumpWidget(const SizedBox());
   await tester.pump(const Duration(seconds: 1));
   await tester.runAsync(db.close);
+  debugDisableShadows = true;
 }
 
 /// Vai para uma aba da navegação inferior pelo rótulo.
