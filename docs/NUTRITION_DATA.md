@@ -47,7 +47,7 @@ O script confere que saem exatamente 597 alimentos, numerados de 1 a 597, e impr
 | Endereço | https://biblioteca.ibge.gov.br/visualizacao/livros/liv50000.pdf |
 | Baixado em | 07/10/2026 |
 | SHA-256 | `317ace59e53e25f3fc4913c5f552adf181bf001e6272edb5ae7a46804aa360b0` |
-| Resultado | `assets/data/measures.jsonl`: 912 medidas para 225 alimentos |
+| Resultado | `assets/data/measures.jsonl`: 1.463 medidas para 390 alimentos |
 
 O PDF não é versionado. Para regenerar o asset, salve-o em `tool/source/ibge-medidas-referidas.pdf` e rode (requer o pacote Python `pymupdf`):
 
@@ -63,14 +63,18 @@ python tool/build_measures.py --resumo
 - **A correspondência entre alimentos é feita à mão**, na lista `MAPPING` do script: número do alimento na TACO, código do alimento no IBGE e preparação (cozido, grelhado, frito etc.).
 - **Só alimentos na forma em que são consumidos.** As quantidades do IBGE para arroz e feijão são do alimento cozido, então "Arroz, tipo 1, cru" e "Feijão, carioca, cru" ficam sem medida.
 - **Substituições do IBGE ficam de fora.** Para medidas pouco usuais, o IBGE registra a quantidade de outra medida (uma "caneca" de arroz como "prato fundo raso"). Essas linhas são reconhecidas porque a descrição da fonte não menciona a própria medida, e não entram.
-- **Medidas que descrevem o alimento.** A tabela traz "copo" para laranja (o suco) e "peito" para o alimento "frango em pedaços". O script limita cada tipo de alimento às medidas que fazem sentido para ele: fruta em unidade e fatia, carne em bife e filé, pão em unidade ou fatia.
+- **Medidas que descrevem o alimento.** A tabela traz "copo" para laranja (o suco) e "peito" para o alimento "frango em pedaços". O script limita cada tipo de alimento às medidas que fazem sentido para ele: fruta em unidade e fatia, carne em bife e filé, pão em unidade ou fatia. Folhas cruas (acelga, almeirão, chicória, espinafre) ficam com folha, prato e porção: para a colher de folha crua, a tabela repete a quantidade da folha refogada.
+- **Entrada genérica quando não há específica.** A TACO detalha alimentos que o IBGE só traz de forma genérica. Nesses casos vale a entrada genérica: cortes bovinos sem entrada própria usam "Carne bovina" na mesma preparação; óleos de canola, girassol e milho usam "Óleo não especificado"; pão de soja e pão sovado usam "Pão não especificado"; refrigerantes de laranja e limão usam "Refrigerante não especificado"; peixes de origem ambígua usam "Peixe não especificado". O `ref` de cada medida diz de qual entrada ela veio.
+- **Produto nomeado pela marca no IBGE.** Três correspondências usam entradas que a tabela nomeia pela marca do produto pesquisado: a mistura de cereais para vitamina ("Neston"), a bebida isotônica ("Gatorade") e o extrato de soja fluido ("Ades original").
+- **Medidas descartadas à mão.** Ficaram de fora medidas publicadas que não descrevem o alimento da TACO: a "unidade" de 227 g da graviola e a de 30 g para o camarão sete-barbas, a "unidade" das frutas em calda, a "porção" de 224 g da acerola e a colher de sobremesa da linhaça, incoerente com a colher de sopa.
 - **No máximo sete medidas por alimento**, na ordem em que aparecem no app.
 - **Colheres, conchas e pratos são cheios, e os tamanhos são médios.** É a convenção da publicação.
 - **Bebidas.** O IBGE informa mililitros e adota a densidade da água. O app segue a publicação: 1 ml entra como 1 g.
 
 ### O que não está coberto
 
-- **372 alimentos sem medida.** São as formas cruas de alimentos que se comem cozidos, alimentos regionais ou pouco comuns e os que não têm correspondente claro no IBGE. Para eles, o usuário usa gramas ou salva a própria porção.
+- **207 alimentos sem medida.** São as formas cruas de alimentos que se comem cozidos (carnes, pescados, feijões, arroz, mandioca), polpas congeladas e sucos concentrados, pós e misturas que o IBGE só mediu já preparados (creme de arroz, fubá, macarrão instantâneo, gelatina, capuccino) e os que não têm correspondente claro ou medida aproveitável na tabela (farinha de trigo, farinha de rosca, amido de milho, salsa, gergelim, tabule, virado à paulista, clara e gema de ovo separadas). Para eles, o usuário usa gramas ou salva a própria porção.
+- **Colheres de líquidos e pós são as da publicação.** A tabela registra 8 g por colher de sopa de óleo e 6 g por colher de sopa de shoyu, abaixo do que uma colher cheia costuma pesar. O app mantém o valor publicado; quem mede de outro jeito salva a própria porção.
 - **Variações de tamanho.** A banana de 75 g é a média do IBGE para vários tipos de banana. Uma banana nanica grande pesa mais. A porção salva pelo usuário cobre esses casos.
 - **Suplementos e industrializados.** Não estão na TACO. O usuário cadastra o alimento e a porção, como um scoop.
 

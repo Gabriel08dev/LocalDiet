@@ -17,6 +17,15 @@ String mealLabel(MealType meal) => switch (meal) {
   MealType.other => 'Outro',
 };
 
+/// A refeição depois da preposição: "no almoço", "em Outro".
+String _inMeal(MealType meal) => switch (meal) {
+  MealType.breakfast => 'no café da manhã',
+  MealType.lunch => 'no almoço',
+  MealType.snack => 'no lanche',
+  MealType.dinner => 'no jantar',
+  MealType.other => 'em Outro',
+};
+
 String sexLabel(Sex sex) => switch (sex) {
   Sex.female => 'Feminino',
   Sex.male => 'Masculino',
@@ -236,10 +245,13 @@ abstract final class S {
   static const searchIntro =
       'Busque entre os 597 alimentos da TACO e os que você cadastrar. '
       'Os mais comuns já têm medidas como colher, concha e unidade. '
-      'Os que você usar aparecem aqui para o próximo registro.';
+      'Os que você usar nesta refeição aparecem aqui para o próximo registro.';
   static const favorites = 'Favoritos';
-  static const recents = 'Recentes';
-  static const frequents = 'Mais usados';
+  static String recentsIn(MealType meal) => 'Recentes ${_inMeal(meal)}';
+  static String frequentsIn(MealType meal) => 'Mais usados ${_inMeal(meal)}';
+  static String noRecentsIn(MealType meal) =>
+      'Você ainda não registrou nada ${_inMeal(meal)}. '
+      'Cada refeição guarda o próprio histórico.';
   static const describeMeal = 'Descrever em texto';
   static const describeMealHint =
       'Ex.: 2 ovos fritos, 150 g de arroz e 1 concha de feijão';
@@ -493,7 +505,7 @@ abstract final class S {
       'da Tabela de Medidas Referidas para os Alimentos Consumidos no Brasil, '
       'da Pesquisa de Orçamentos Familiares 2008-2009 do IBGE. Colheres, '
       'conchas e pratos são cheios, e os tamanhos são médios. Elas existem '
-      'para 225 dos 597 alimentos, nas formas em que são consumidos; nos '
+      'para 390 dos 597 alimentos, nas formas em que são consumidos; nos '
       'demais, use gramas ou salve a sua própria porção, como um scoop. Em '
       'bebidas, 1 ml conta como 1 g, como na tabela do IBGE.';
   static const aboutFormulasTitle = 'Fórmulas';

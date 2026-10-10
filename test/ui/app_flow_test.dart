@@ -145,15 +145,44 @@ void main() {
         );
       },
     );
+    await tester.ensureVisible(find.byTooltip('Adicionar a Almoço'));
+    await tester.pumpAndSettle();
+    await tester.tap(find.byTooltip('Adicionar a Almoço'));
+    await tester.pumpAndSettle();
+    // O alimento aparece nos recentes do almoço antes de qualquer digitação.
+    expect(find.text('Recentes no almoço'), findsOneWidget);
+    await tester.tap(find.text('Arroz, integral, cozido'));
+    await tester.pumpAndSettle();
+    expect(find.widgetWithText(TextField, '180'), findsOneWidget);
+    await closeApp(tester, db);
+  });
+
+  testWidgets('os recentes de uma refeição não aparecem em outra', (
+    tester,
+  ) async {
+    final db = await pumpApp(
+      tester,
+      seed: (db) async {
+        await DiaryRepository(db).addItems(
+          testToday.addDays(-1),
+          MealType.lunch,
+          [await portionOfFood(db, 'taco:1', 180)],
+        );
+      },
+    );
     await tester.ensureVisible(find.byTooltip('Adicionar a Jantar'));
     await tester.pumpAndSettle();
     await tester.tap(find.byTooltip('Adicionar a Jantar'));
     await tester.pumpAndSettle();
-    // O alimento aparece nos recentes antes de qualquer digitação.
-    expect(find.text('Recentes'), findsOneWidget);
-    await tester.tap(find.text('Arroz, integral, cozido'));
+    // O arroz foi registrado no almoço: o jantar ainda não tem histórico.
+    expect(find.text('Arroz, integral, cozido'), findsNothing);
+    expect(find.textContaining('Recentes'), findsNothing);
+
+    // Trocar a refeição em montagem troca o histórico mostrado.
+    await tester.tap(find.widgetWithText(ChoiceChip, 'Almoço'));
     await tester.pumpAndSettle();
-    expect(find.widgetWithText(TextField, '180'), findsOneWidget);
+    expect(find.text('Recentes no almoço'), findsOneWidget);
+    expect(find.text('Arroz, integral, cozido'), findsOneWidget);
     await closeApp(tester, db);
   });
 

@@ -179,11 +179,11 @@ void main() {
           return path == tacoAssetPath ? tacoAsset() : measuresAsset();
         });
         expect(await count('foods'), 597);
-        expect(await count('measures'), 912);
+        expect(await count('measures'), 1463);
         final foods = await db
             .customSelect('SELECT COUNT(DISTINCT food_id) AS c FROM measures')
             .getSingle();
-        expect(foods.read<int>('c'), 225);
+        expect(foods.read<int>('c'), 390);
         final unsourced = await db
             .customSelect(
               "SELECT COUNT(*) AS c FROM measures WHERE reference IS NULL OR "
@@ -220,6 +220,28 @@ void main() {
       expect((await of(182))['unidade'], 75);
       expect((await of(458))['copo médio'], 240);
       expect((await of(52))['fatia'], 25);
+
+      // Variações do mesmo alimento do IBGE recebem as mesmas medidas.
+      expect(await of(50), {'fatia': 25});
+      expect(await of(462), await of(461));
+      expect((await of(462))['fatia'], 45);
+      expect(await of(150), await of(149));
+      expect((await of(306))['filé'], 120);
+      expect((await of(496))['tablete'], 6.3);
+
+      // Fatias e colheres de alimentos que antes só tinham gramas.
+      expect(await of(54), {'unidade': 50, 'fatia': 25});
+      expect((await of(198))['fatia'], 60);
+      expect((await of(465))['fatia'], 20);
+      expect((await of(268))['colher de sopa'], 8);
+      expect((await of(507))['colher de sopa'], 15);
+      expect((await of(464))['colher de sopa'], 15);
+      expect((await of(482))['lata (350 ml)'], 350);
+      // Quando a TACO detalha o que o IBGE traz de forma genérica, vale a
+      // entrada genérica: o coxão mole cozido usa "Carne bovina".
+      expect((await of(351))['bife'], 100);
+      // Folha crua não ganha colher: a tabela repete a medida da refogada.
+      expect(await of(84), {'folha': 12, 'porção': 27});
 
       // Formas cruas de alimentos que se comem cozidos ficam sem medida: as
       // quantidades do IBGE são do alimento pronto.

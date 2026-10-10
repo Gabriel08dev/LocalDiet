@@ -17,8 +17,8 @@ O app se chamava LocalDiet até a versão 2.2.0. O NutriViva instala por cima de
 ## O que o app faz
 
 - **Diário.** Registre o que comeu por refeição. Cada registro guarda os valores nutricionais do momento, então mudanças futuras na base não alteram o histórico.
-- **Busca.** 597 alimentos da TACO e os que você cadastrar, com busca por prefixo, sem acentos, e atalhos para recentes, mais usados e favoritos.
-- **Porções em medidas caseiras.** Colher, concha, xícara, copo, fatia e unidade para 225 alimentos, com os pesos da tabela de medidas referidas do IBGE. Nos demais, gramas ou uma porção que você mesmo salva, como um scoop. A escolha de porção abre na última quantidade usada.
+- **Busca.** 597 alimentos da TACO e os que você cadastrar, com busca por prefixo, sem acentos, e atalhos para os favoritos e para os recentes e mais usados de cada refeição.
+- **Porções em medidas caseiras.** Colher, concha, xícara, copo, fatia e unidade para 390 alimentos, com os pesos da tabela de medidas referidas do IBGE. Nos demais, gramas ou uma porção que você mesmo salva, como um scoop. A escolha de porção abre na última quantidade usada.
 - **Texto livre.** Descreva a refeição ("2 ovos fritos, 3 colheres de arroz e 1 concha de feijão") e confira a proposta antes de salvar.
 - **Plano Base.** A dieta planejada por refeição, que serve de meta para proteína, carboidrato e gordura.
 - **Seguir o plano.** Em cada refeição do dia, marque se seguiu o plano (o app registra o que estava planejado) ou se fez outra refeição, e acompanhe a adesão da semana.

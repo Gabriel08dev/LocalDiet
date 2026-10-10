@@ -23,8 +23,8 @@
 
 ## Fluxo de registro
 
-1. **Busca.** Antes de digitar, aparecem favoritos, recentes e mais usados. A busca responde enquanto o usuário digita.
-2. **Porção.** Uma folha sobre a busca, com as medidas como opções (colher, concha, unidade, fatia), quantidade ajustável e calorias e macronutrientes ao vivo. Abre na última porção usada do alimento ou, na primeira vez, em uma unidade da primeira medida caseira. Os botões de mais e menos andam de 1 em 1 em medidas (com meia medida abaixo de 1) e de 10 em 10 em gramas. Depois de adicionar, a busca volta vazia para o próximo alimento.
+1. **Busca.** Antes de digitar, aparecem os favoritos e os recentes e mais usados da refeição em montagem. Cada refeição tem o próprio histórico: o que foi registrado no almoço não aparece no café da manhã, e trocar a refeição troca a lista. Os favoritos valem para todas. A busca responde enquanto o usuário digita.
+2. **Porção.** Uma folha sobre a busca, com as medidas como opções (colher, concha, unidade, fatia), quantidade ajustável e calorias e macronutrientes ao vivo. Abre na última porção usada do alimento, de preferência a da mesma refeição, ou, na primeira vez, em uma unidade da primeira medida caseira. Os botões de mais e menos andam de 1 em 1 em medidas (com meia medida abaixo de 1) e de 10 em 10 em gramas. Depois de adicionar, a busca volta vazia para o próximo alimento.
 3. **Revisão.** Lista dos itens com o total da refeição. Cada item pode ser editado ou removido.
 4. **Gravação.** Só ao confirmar na revisão. Sair antes disso pede confirmação para descartar.
 

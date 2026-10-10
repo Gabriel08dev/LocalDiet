@@ -84,6 +84,7 @@ class _MealBuilderScreenState extends ConsumerState<MealBuilderScreen> {
       foodId: food.id,
       foodName: food.name,
       per100: food.per100,
+      meal: _meal,
       actionLabel: S.add,
     );
     if (portion == null || !mounted) return;
@@ -290,6 +291,7 @@ class _MealBuilderScreenState extends ConsumerState<MealBuilderScreen> {
         Expanded(
           child: _query.isEmpty
               ? _Suggestions(
+                  meal: _meal,
                   onPick: _pick,
                   onDescribe: _describe,
                   onCreate: _createFood,
@@ -475,14 +477,20 @@ IconData foodIcon(FoodRow food) {
   return Icons.restaurant_outlined;
 }
 
-/// O que aparece antes de o usuário digitar: atalhos e alimentos já usados.
+/// O que aparece antes de o usuário digitar: atalhos e alimentos já usados
+/// na refeição em montagem.
+///
+/// Recentes e mais usados são de [meal]: o histórico do almoço não aparece
+/// no café da manhã. Os favoritos valem para todas as refeições.
 class _Suggestions extends ConsumerWidget {
   const _Suggestions({
+    required this.meal,
     required this.onPick,
     required this.onDescribe,
     required this.onCreate,
   });
 
+  final MealType meal;
   final ValueChanged<FoodRow> onPick;
   final VoidCallback onDescribe;
   final VoidCallback onCreate;
@@ -490,11 +498,10 @@ class _Suggestions extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final favorites = ref.watch(favoriteFoodsProvider).value ?? const [];
-    final recents = ref.watch(recentFoodsProvider).value ?? const [];
+    final recents = ref.watch(recentFoodsProvider(meal)).value ?? const [];
+    final used = ref.watch(frequentFoodsProvider(meal)).value ?? const [];
     final shown = {...favorites, ...recents}.map((food) => food.id).toSet();
-    final frequents = (ref.watch(frequentFoodsProvider).value ?? const [])
-        .where((food) => !shown.contains(food.id))
-        .toList();
+    final frequents = used.where((food) => !shown.contains(food.id)).toList();
     final nothingYet = favorites.isEmpty && recents.isEmpty;
 
     return ListView(
@@ -524,17 +531,22 @@ class _Suggestions extends ConsumerWidget {
           for (final food in favorites) FoodTile(food: food, onTap: onPick),
         ],
         if (recents.isNotEmpty) ...[
-          const SectionHeader(S.recents),
+          SectionHeader(S.recentsIn(meal)),
           for (final food in recents) FoodTile(food: food, onTap: onPick),
         ],
         if (frequents.isNotEmpty) ...[
-          const SectionHeader(S.frequents),
+          SectionHeader(S.frequentsIn(meal)),
           for (final food in frequents) FoodTile(food: food, onTap: onPick),
         ],
         if (nothingYet)
           const Padding(
             padding: EdgeInsets.fromLTRB(Gap.lg, Gap.lg, Gap.lg, 0),
             child: InfoBanner(S.searchIntro, icon: Icons.lightbulb_outline),
+          )
+        else if (recents.isEmpty)
+          Padding(
+            padding: const EdgeInsets.fromLTRB(Gap.lg, Gap.lg, Gap.lg, 0),
+            child: InfoBanner(S.noRecentsIn(meal)),
           ),
         const SizedBox(height: Gap.xl),
       ],

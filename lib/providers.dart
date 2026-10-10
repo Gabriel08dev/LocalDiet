@@ -124,12 +124,17 @@ final isFavoriteProvider = StreamProvider.family<bool, String>(
 final userFoodsProvider = StreamProvider<List<FoodRow>>(
   (ref) => ref.watch(foodRepositoryProvider).watchUserFoods(),
 );
-final recentFoodsProvider = StreamProvider<List<FoodRow>>(
-  (ref) => ref.watch(foodRepositoryProvider).watchRecents(),
+
+/// Os alimentos recentes de uma refeição. Cada refeição tem os seus.
+final recentFoodsProvider = StreamProvider.family<List<FoodRow>, MealType>(
+  (ref, meal) => ref.watch(foodRepositoryProvider).watchRecents(meal),
 );
-final frequentFoodsProvider = StreamProvider<List<FoodRow>>(
-  (ref) => ref.watch(foodRepositoryProvider).watchFrequents(),
+
+/// Os alimentos mais usados de uma refeição.
+final frequentFoodsProvider = StreamProvider.family<List<FoodRow>, MealType>(
+  (ref, meal) => ref.watch(foodRepositoryProvider).watchFrequents(meal),
 );
+
 final favoriteFoodsProvider = StreamProvider<List<FoodRow>>(
   (ref) => ref.watch(foodRepositoryProvider).watchFavorites(),
 );

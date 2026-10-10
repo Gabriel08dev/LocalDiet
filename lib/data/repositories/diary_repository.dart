@@ -107,10 +107,18 @@ class DiaryRepository {
 
   /// O registro mais recente de um alimento, para abrir a escolha de porção
   /// na última porção usada.
-  Future<DiaryItemRow?> lastForFood(String foodId) =>
+  ///
+  /// Com [meal], vale primeiro o último registro naquela refeição: a porção
+  /// de pão do café da manhã não precisa ser a do lanche. Sem registro na
+  /// refeição, vale o mais recente de qualquer uma.
+  Future<DiaryItemRow?> lastForFood(String foodId, {MealType? meal}) =>
       (_db.select(_db.diaryItems)
             ..where((t) => t.foodId.equals(foodId))
-            ..orderBy([(t) => OrderingTerm.desc(t.createdAt)])
+            ..orderBy([
+              if (meal != null)
+                (t) => OrderingTerm.desc(t.meal.equalsValue(meal)),
+              (t) => OrderingTerm.desc(t.createdAt),
+            ])
             ..limit(1))
           .getSingleOrNull();
 

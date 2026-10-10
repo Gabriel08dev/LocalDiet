@@ -6,6 +6,7 @@ import '../../data/app_database.dart';
 import '../../data/tables.dart';
 import '../../domain/nutrients.dart';
 import '../../domain/portion.dart';
+import '../../domain/profile_enums.dart';
 import '../../providers.dart';
 import '../format.dart';
 import '../strings.dart';
@@ -14,14 +15,16 @@ import 'common.dart';
 
 /// Abre a escolha de porção de um alimento e devolve a porção confirmada.
 ///
-/// Sem [initial], a folha abre na última porção registrada daquele alimento;
-/// se ele nunca foi registrado, na primeira medida caseira ou em 100 g.
+/// Sem [initial], a folha abre na última porção registrada daquele alimento,
+/// de preferência em [meal]; se ele nunca foi registrado, na primeira medida
+/// caseira ou em 100 g.
 Future<Portion?> showPortionSheet(
   BuildContext context, {
   required String? foodId,
   required String foodName,
   required Nutrients per100,
   Portion? initial,
+  MealType? meal,
   required String actionLabel,
 }) => showModalBottomSheet<Portion>(
   context: context,
@@ -33,6 +36,7 @@ Future<Portion?> showPortionSheet(
     foodName: foodName,
     per100: per100,
     initial: initial,
+    meal: meal,
     actionLabel: actionLabel,
   ),
 );
@@ -71,6 +75,7 @@ class _PortionSheet extends ConsumerStatefulWidget {
     required this.foodName,
     required this.per100,
     required this.initial,
+    required this.meal,
     required this.actionLabel,
   });
 
@@ -78,6 +83,9 @@ class _PortionSheet extends ConsumerStatefulWidget {
   final String foodName;
   final Nutrients per100;
   final Portion? initial;
+
+  /// A refeição em montagem, cuja última porção tem preferência.
+  final MealType? meal;
   final String actionLabel;
 
   @override
@@ -136,7 +144,7 @@ class _PortionSheetState extends ConsumerState<_PortionSheet> {
     if (foodId != null) {
       food = await foods.byId(foodId);
       if (start == null) {
-        final last = await diary.lastForFood(foodId);
+        final last = await diary.lastForFood(foodId, meal: widget.meal);
         if (last != null) {
           start = Portion(
             measureLabel: last.measureLabel,

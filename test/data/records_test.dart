@@ -175,20 +175,56 @@ void main() {
       expect(last.quantity, 3);
     });
 
-    test('recentes e frequentes saem do Diário', () async {
+    test('a última porção da mesma refeição tem preferência', () async {
+      await diary.addItems(yesterday, MealType.breakfast, [
+        portionOf(await rice(), 60),
+      ]);
+      await Future<void>.delayed(const Duration(milliseconds: 1100));
+      await diary.addItems(today, MealType.lunch, [
+        portionOf(await rice(), 200),
+      ]);
+
+      final first = await diary.lastForFood(riceId, meal: MealType.breakfast);
+      expect(first!.grams, 60, reason: 'a do café, não a mais recente');
+      expect((await diary.lastForFood(riceId))!.grams, 200);
+      // Sem registro no jantar, vale o mais recente de qualquer refeição.
+      final dinner = await diary.lastForFood(riceId, meal: MealType.dinner);
+      expect(dinner!.grams, 200);
+    });
+
+    test('recentes e frequentes saem do Diário, por refeição', () async {
       await diary.addItems(yesterday, MealType.lunch, [
         portionOf(await rice(), 100),
         portionOf(await rice(), 50),
       ]);
       await Future<void>.delayed(const Duration(milliseconds: 1100));
+      await diary.addItems(today, MealType.lunch, [
+        portionOf(await egg(), 100),
+      ]);
+
+      final recents = await foods.watchRecents(MealType.lunch).first;
+      expect(recents.map((food) => food.id), ['taco:490', riceId]);
+      final frequents = await foods.watchFrequents(MealType.lunch).first;
+      expect(frequents.map((food) => food.id), [riceId, 'taco:490']);
+    });
+
+    test('o histórico de uma refeição não aparece em outra', () async {
+      await diary.addItems(yesterday, MealType.lunch, [
+        portionOf(await rice(), 100),
+      ]);
       await diary.addItems(today, MealType.breakfast, [
         portionOf(await egg(), 50),
       ]);
 
-      final recents = await foods.watchRecents().first;
-      expect(recents.map((food) => food.id), ['taco:490', riceId]);
-      final frequents = await foods.watchFrequents().first;
-      expect(frequents.map((food) => food.id), [riceId, 'taco:490']);
+      final breakfast = await foods.watchRecents(MealType.breakfast).first;
+      expect(breakfast.map((food) => food.id), ['taco:490']);
+      final lunch = await foods.watchRecents(MealType.lunch).first;
+      expect(lunch.map((food) => food.id), [riceId]);
+      expect(await foods.watchRecents(MealType.dinner).first, isEmpty);
+
+      final frequents = await foods.watchFrequents(MealType.breakfast).first;
+      expect(frequents.map((food) => food.id), ['taco:490']);
+      expect(await foods.watchFrequents(MealType.snack).first, isEmpty);
     });
 
     test(
@@ -202,7 +238,7 @@ void main() {
           portionOf((await foods.byId(id))!, 30),
         ]);
         await foods.deactivateUserFood(id);
-        expect(await foods.watchRecents().first, isEmpty);
+        expect(await foods.watchRecents(MealType.snack).first, isEmpty);
         expect((await diary.watchDay(today).first).single.foodName, 'Barra X');
       },
     );

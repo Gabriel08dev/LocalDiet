@@ -1,6 +1,7 @@
 import 'package:drift/drift.dart';
 
 import '../../domain/nutrients.dart';
+import '../../domain/profile_enums.dart';
 import '../../domain/search_text.dart';
 import '../app_database.dart';
 import '../ids.dart';
@@ -77,24 +78,36 @@ class FoodRepository {
     _db.foods,
   )..where((t) => t.tacoNumber.equals(number))).getSingleOrNull();
 
-  Stream<List<FoodRow>> _watchFromDiary(String orderBy, int limit) => _db
-      .customSelect(
-        'SELECT f.*, MAX(d.created_at) AS last_used, COUNT(*) AS uses '
-        'FROM diary_items d INNER JOIN foods f ON f.id = d.food_id '
-        'WHERE f.is_active = 1 GROUP BY f.id ORDER BY $orderBy LIMIT ?1',
-        variables: [Variable.withInt(limit)],
-        readsFrom: {_db.diaryItems, _db.foods},
-      )
-      .watch()
-      .map((rows) => rows.map((row) => _db.foods.map(row.data)).toList());
+  /// Os alimentos já registrados em [meal], cada um com o último uso e o
+  /// número de usos naquela refeição.
+  Stream<List<FoodRow>> _watchFromDiary(
+    MealType meal,
+    String orderBy,
+    int limit,
+  ) {
+    final query = _db.customSelect(
+      'SELECT f.*, MAX(d.created_at) AS last_used, COUNT(*) AS uses '
+      'FROM diary_items d INNER JOIN foods f ON f.id = d.food_id '
+      'WHERE f.is_active = 1 AND d.meal = ?1 '
+      'GROUP BY f.id ORDER BY $orderBy LIMIT ?2',
+      variables: [Variable.withString(meal.name), Variable.withInt(limit)],
+      readsFrom: {_db.diaryItems, _db.foods},
+    );
+    return query.watch().map(
+      (rows) => rows.map((row) => _db.foods.map(row.data)).toList(),
+    );
+  }
 
-  /// Alimentos registrados mais recentemente no Diário.
-  Stream<List<FoodRow>> watchRecents({int limit = 12}) =>
-      _watchFromDiary('last_used DESC', limit);
+  /// Alimentos registrados mais recentemente em [meal] no Diário.
+  ///
+  /// Cada refeição tem o próprio histórico: o que foi registrado no almoço
+  /// não aparece entre os recentes do café da manhã.
+  Stream<List<FoodRow>> watchRecents(MealType meal, {int limit = 12}) =>
+      _watchFromDiary(meal, 'last_used DESC', limit);
 
-  /// Alimentos registrados mais vezes no Diário.
-  Stream<List<FoodRow>> watchFrequents({int limit = 12}) =>
-      _watchFromDiary('uses DESC, last_used DESC', limit);
+  /// Alimentos registrados mais vezes em [meal] no Diário.
+  Stream<List<FoodRow>> watchFrequents(MealType meal, {int limit = 12}) =>
+      _watchFromDiary(meal, 'uses DESC, last_used DESC', limit);
 
   Stream<List<FoodRow>> watchFavorites() {
     final query =
